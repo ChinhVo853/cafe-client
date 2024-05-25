@@ -44,3 +44,11 @@
     width: 30% !important;
   }
 }
+
+/*Modal*/
+
+.modal-form {
+  width: 50% !important;
+  text-align: center;
+  transform: translate(50%, 20%);
+}

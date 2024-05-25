@@ -3,6 +3,7 @@ import ThongTin from "./components/ThongTin";
 import ButtonSection from "./components/ButtonSection";
 import BanChaySection from "./components/BanChaySection";
 import MoiSection from "./components/MoiSection";
+import ModalSection from "./components/ModalSection";
 
 function TrangChu() {
   return (
@@ -23,6 +24,7 @@ function TrangChu() {
           <MoiSection />
         </div>
       </div>
+      <ModalSection />
     </>
   );
 }
