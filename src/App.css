@@ -48,7 +48,7 @@
 /*Modal*/
 
 .modal-form {
-  width: 50% !important;
+  width: 70% !important;
   text-align: center;
-  transform: translate(50%, 20%);
+  transform: translate(30%, 20%);
 }

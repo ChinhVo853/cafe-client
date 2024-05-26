@@ -1,5 +1,9 @@
-import React from "react";
-function ThongTin() {
+import React, { useState } from "react";
+import ModalMoCuaSection from "./ModalMoCuaSection";
+
+function ThongTin({ data }) {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
   return (
     <>
       <img
@@ -9,28 +13,32 @@ function ThongTin() {
       />
       <br />
       <br />
-      <p className="wel-come">XIN CHÀO ĐẾN VỚI BLACK CAT</p>
+      <p className="wel-come">XIN CHÀO ĐẾN VỚI {data.ten_quan}</p>
 
       <div className="row">
         <div className="col-sm-4 introduce">
-          <p>203</p>
+          <p>{data.data.ten_ban}</p>
         </div>
         <div className="col-sm-4 introduce">
           <div className="btn-group dropend" role="group">
             <button
               type="button"
-              className="btn dropdown-toggle introduce"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
+              className="dropdown-toggle introduce"
+              onClick={() => setModalIsOpen(true)}
             >
               Mở cửa
             </button>
           </div>
         </div>
         <div className="col-sm-4 introduce">
-          <p>abc</p>
+          <p>{localStorage.getItem("tenKhachHang")}</p>
         </div>
       </div>
+      <ModalMoCuaSection
+        data={data}
+        modalIsOpen={modalIsOpen}
+        setModalIsOpen={setModalIsOpen}
+      />
     </>
   );
 }

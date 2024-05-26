@@ -1,11 +1,23 @@
 import Modal from "react-modal";
-import React, { useState } from "react";
+import React, { memo } from "react";
 
-function ModalSection() {
-  const [modalIsOpen, setModalIsOpen] = useState(true);
-  function closeModal() {
+function ModalSection({
+  data,
+  modalIsOpen,
+  setModalIsOpen,
+  inputName,
+  setInputName,
+}) {
+  const closeModal = () => {
     setModalIsOpen(false);
-  }
+  };
+  const luuTen = () => {
+    localStorage.setItem("tenKhachHang", inputName);
+    closeModal();
+  };
+  const handleInputChange = (event) => {
+    setInputName(event.target.value);
+  };
   return (
     <div>
       <Modal
@@ -27,7 +39,7 @@ function ModalSection() {
       >
         <form className="container modal-form row g-3">
           <div className="col-12">
-            <h2>Quán ABC xin chào quý khách</h2>
+            <h2>Quán {data.data.ten_quan} xin chào quý khách</h2>
             <p>
               Bạn vui lòng cho nhà hàng biết tên để phục vụ nhanh chóng và chính
               xác hơn nhé!
@@ -38,11 +50,16 @@ function ModalSection() {
               type="text"
               className="form-control"
               placeholder="tên của bạn"
+              value={inputName}
+              onChange={handleInputChange}
             />
           </div>
-
           <div className="col-12">
-            <button className="btn btn-primary btn-lg" onClick={closeModal}>
+            <button
+              type="button"
+              className="btn btn-primary btn-lg"
+              onClick={() => luuTen()}
+            >
               bắt đầu
             </button>
           </div>
@@ -52,4 +69,4 @@ function ModalSection() {
   );
 }
 
-export default ModalSection;
+export default memo(ModalSection);
