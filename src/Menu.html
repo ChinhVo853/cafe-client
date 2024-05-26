@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Product Menu</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -24,7 +25,7 @@
             overflow-x: hidden;
             transition: 0.3s;
             z-index: 1000;
-            padding-top: 60px; /* To leave space for the search bar */
+            padding-top: 60px;
         }
         .menu.open {
             left: 0;
@@ -76,7 +77,7 @@
             z-index: 1002;
             display: flex;
             align-items: center;
-            width: 400px; /* Adjust width as needed */
+            width: 400px;
         }
         .search-container input[type="text"] {
             padding: 10px;
@@ -111,8 +112,37 @@
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             transform: translateY(1px);
         }
+        .category-container {
+            margin: 80px 20px 20px 270px; /* Adjust margin-left to make space for the menu */
+        }
+        .category {
+            margin-bottom: 40px;
+        }
+        .category-title {
+            font-family: 'Pacifico', cursive;
+            font-size: 36px;
+            color: #e76f51;
+            text-align: left;
+            margin-top: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+        .category-title:before, .category-title:after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 5px;
+            background-color: #e76f51;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .category-title:before {
+            left: -70px;
+        }
+        .category-title:after {
+            right: -70px;
+        }
         .product-container {
-            margin: 80px 20px 20px 20px; /* Adjust margin to fit your layout */
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
             gap: 20px;
@@ -123,7 +153,7 @@
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             overflow: hidden;
             transition: transform 0.3s, box-shadow 0.3s;
-            position: relative; /* Added relative positioning */
+            position: relative;
         }
         .product-card:hover {
             transform: translateY(-5px);
@@ -147,7 +177,7 @@
             color: #f4a261;
         }
         .add-button {
-            position: absolute; /* Absolute positioning for the button */
+            position: absolute;
             top: 10px;
             right: 10px;
             background-color: #f4a261;
@@ -169,104 +199,232 @@
             transform: scale(1.1);
         }
         .product-options {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: rgba(255, 255, 255, 0.9);
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    display: none;
-    z-index: 10;
-    transition: max-height 0.3s, padding 0.3s;
-    overflow: hidden;
-}
-.product-options.open {
-    max-height: 200px; /* Adjust max-height as needed */
-    padding: 20px;
-}
-.product-options label {
-    display: block;
-    margin-bottom: 10px;
-}
-.product-options select,
-.product-options input[type="number"] {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-    margin-bottom: 10px;
-}
-.product-options button {
-    padding: 10px 20px;
-    background-color: #f4a261;
-    border: none;
-    color: #fff;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-.product-options button:hover {
-    background-color: #e76f51;
-}
-</style>
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            display: none;
+            z-index: 10;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            overflow: hidden;
+        }
+        .product-options.open {
+            display: block;
+            max-height: 200px;
+        }
+        .product-options label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        .product-options select,
+        .product-options input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        .product-options button {
+            padding: 10px 20px;
+            background-color: #f4a261;
+            border: none;
+            color: #fff;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .product-options button:hover {
+            background-color: #e76f51;
+        }
+        .cart-container {
+            position: fixed;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #f4a261;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+        .cart-container:hover {
+            background-color: #e76f51;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .cart-details {
+            display: none;
+            position: fixed;
+            bottom: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            width: 80%;
+            max-width: 500px;
+        }
+        .cart-details.open {
+            display: block;
+        }
+        .cart-details h3 {
+            margin-top: 0;
+        }
+        .cart-details ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .cart-details li {
+            border-bottom: 1px solid #ccc;
+            padding: 10px 0;
+        }
+    </style>
 </head>
 <body>
-<div class="menu" id="menu">
-    <ul>
-        <li><a href="#">Trà sữa</a></li>
-        <li><a href="#">Trà trái cây</a></li>
-        <li><a href="#">Soda</a></li>
-        <li><a href="#">Cà phê hạt</a></li>
-        <li><a href="#">Đá xay</a></li>
-        <li><a href="#">Món khác</a></li>
-    </ul>
-</div>
-<button class="menu-toggle" id="menu-toggle">☰</button>
-<div class="search-container">
-    <input type="text" placeholder="Tìm kiếm...">
-    <button type="button">🔍</button>
-</div>
-<div class="product-container">
-    <div class="product-card">
-        <img src="https://via.placeholder.com/200" alt="Sản phẩm 1" class="product-image">
-        <div class="product-info">
-            <div class="product-name">Sản phẩm 1</div>
-            <div class="product-price">$10</div>
-            <button class="add-button">+</button>
-            <div class="product-options">
-                <label for="size">Size:</label>
-                <select id="size">
-                    <option value="small">Small</option>
-                    <option value="medium">Medium</option>
-                    <option value="large">Large</option>
-                </select>
-                <label for="quantity">Số lượng:</label>
-                <input type="number" id="quantity" value="1" min="1">
-                <button>Thêm vào giỏ hàng</button>
+    <div class="menu" id="menu">
+        <ul>
+            <li><a href="#milk-tea">Trà sữa</a></li>
+            <li><a href="#fruit-tea">Trà trái cây</a></li>
+            <li><a href="#soda">Soda</a></li>
+            <li><a href="#coffee">Cà phê hạt</a></li>
+            <li><a href="#ice-blend">Đá xay</a></li>
+            <li><a href="#other">Món khác</a></li>
+        </ul>
+    </div>
+    <button class="menu-toggle" id="menu-toggle">☰</button>
+    <div class="search-container">
+        <input type="text" placeholder="Tìm kiếm...">
+        <button type="button">🔍</button>
+    </div>
+    <div class="category-container">
+        <div class="category" id="milk-tea">
+            <div class="category-title">Trà sữa</div>
+            <div class="product-container">
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/200" alt="Sản phẩm 1" class="product-image">
+                    <div class="product-info">
+                        <div class="product-name">Trà sữa 1</div>
+                        <div class="product-price">10.000đ</div>
+                        <button class="add-button">+</button>
+                        <div class="product-options">
+                            <label for="size">Size:</label>
+                            <select id="size">
+                                <option value="S">S</option>
+                                <option value="M">M</option>
+                                <option value="L">L</option>
+                            </select>
+                            <label for="quantity">Số lượng:</label>
+                            <input type="number" id="quantity" value="1" min="1">
+                            <button class="add-to-cart-button">Thêm vào giỏ hàng</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Add more product cards for Trà sữa -->
             </div>
         </div>
+        <div class="category" id="fruit-tea">
+            <div class="category-title">Trà trái cây</div>
+            <div class="product-container">
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/200" alt="Sản phẩm 2" class="product-image">
+                    <div class="product-info">
+                        <div class="product-name">Trà trái cây 1</div>
+                        <div class="product-price">8.000đ</div>
+                        <button class="add-button">+</button>
+                        <div class="product-options">
+                            <label for="size">Size:</label>
+                            <select id="size">
+                                <option value="S">S</option>
+                                <option value="M">M</option>
+                                <option value="L">L</option>
+                            </select>
+                            <label for="quantity">Số lượng:</label>
+                            <input type="number" id="quantity" value="1" min="1">
+                            <button class="add-to-cart-button">Thêm vào giỏ hàng</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Add more product cards for Trà trái cây -->
+            </div>
+        </div>
+        <!-- Add more categories and product cards as needed -->
     </div>
-    <!-- Add more product cards as needed -->
-</div>
-<script>
-    const menu = document.getElementById('menu');
-    const menuToggle = document.getElementById('menu-toggle');
-    const addButton = document.querySelectorAll('.add-button');
-    
-    menuToggle.addEventListener('click', () => {
-        menu.classList.toggle('open');
-    });
+    <div class="cart-container" id="cart-container">
+        <span>Giỏ hàng:</span>
+        <span class="cart-count" id="cart-count">0</span>
+    </div>
+    <div class="cart-details" id="cart-details">
+        <h3>Giỏ hàng của bạn</h3>
+        <ul id="cart-items">
+            <!-- Cart items will be added here dynamically -->
+        </ul>
+    </div>
+    <script>
+        const menu = document.getElementById('menu');
+        const menuToggle = document.getElementById('menu-toggle');
+        const addButton = document.querySelectorAll('.add-button');
+        const cartCount = document.getElementById('cart-count');
+        const cartContainer = document.getElementById('cart-container');
+        const cartDetails = document.getElementById('cart-details');
+        const cartItems = document.getElementById('cart-items');
+        let cartItemCount = 0;
+        let cart = [];
 
-    addButton.forEach(button => {
-        button.addEventListener('click', () => {
-            const productOptions = button.nextElementSibling;
-            productOptions.classList.toggle('open');
+        menuToggle.addEventListener('click', () => {
+            menu.classList.toggle('open');
         });
-    });
-</script>
+
+        addButton.forEach(button => {
+            button.addEventListener('click', () => {
+                const productOptions = button.nextElementSibling;
+                productOptions.classList.toggle('open');
+            });
+        });
+
+        document.querySelectorAll('.add-to-cart-button').forEach(button => {
+            button.addEventListener('click', () => {
+                const productOptions = button.closest('.product-options');
+                const size = productOptions.querySelector('#size').value;
+                const quantityInput = productOptions.querySelector('#quantity');
+                const quantity = parseInt(quantityInput.value);
+                const productCard = productOptions.closest('.product-card');
+                const productName = productCard.querySelector('.product-name').textContent;
+                const productPrice = productCard.querySelector('.product-price').textContent;
+
+                cartItemCount += quantity;
+                cartCount.textContent = cartItemCount;
+
+                // Add item to cart array
+                cart.push({ name: productName, size, quantity, price: productPrice });
+
+                // Close the product options form
+                productOptions.classList.remove('open');
+            });
+        });
+
+        cartContainer.addEventListener('click', () => {
+            cartDetails.classList.toggle('open');
+            updateCartDetails();
+        });
+
+        function updateCartDetails() {
+            cartItems.innerHTML = '';
+            cart.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = `${item.name} - Size: ${item.size} - Số lượng: ${item.quantity} - Giá: ${item.price}`;
+                cartItems.appendChild(li);
+            });
+        }
+    </script>
 </body>
 </html>
-
