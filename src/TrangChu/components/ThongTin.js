@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import ModalMoCuaSection from "./ModalMoCuaSection";
-
+import config from "../../config";
 function ThongTin({ data }) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   return (
     <>
       <img
-        src="http://127.0.0.1:8000/anh/giaodien.webp"
+        src={`${config.imageBaseUrl}/giaodien.webp`}
         className="w-100"
         alt="Giao diện"
       />

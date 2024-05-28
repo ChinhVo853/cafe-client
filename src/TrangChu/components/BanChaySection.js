@@ -1,5 +1,5 @@
 import React from "react";
-
+import config from "../../config";
 function BanChaySection() {
   return (
     <div className="col">
@@ -8,7 +8,7 @@ function BanChaySection() {
         <div className="carousel-inner">
           <div className="carousel-item active h-450">
             <img
-              src="http://127.0.0.1:8000/anh/giaodien.webp"
+              src={`${config.imageBaseUrl}/giaodien.webp`}
               className="d-block w-100 h-450 object-t-cover"
               alt="..."
             />
@@ -21,7 +21,7 @@ function BanChaySection() {
           </div>
           <div className="carousel-item h-450">
             <img
-              src="http://127.0.0.1:8000/anh/giaodien.webp"
+              src={`${config.imageBaseUrl}/giaodien.webp`}
               className="d-block w-100 h-450 object-t-cover"
               alt="..."
             />
@@ -34,7 +34,7 @@ function BanChaySection() {
           </div>
           <div className="carousel-item h-450">
             <img
-              src="http://127.0.0.1:8000/anh/giaodien.webp"
+              src={`${config.imageBaseUrl}/giaodien.webp`}
               className="d-block w-100 h-450 object-t-cover"
               alt="..."
             />

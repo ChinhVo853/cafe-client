@@ -4,22 +4,19 @@ import ButtonSection from "./components/ButtonSection";
 import BanChaySection from "./components/BanChaySection";
 import MoiSection from "./components/MoiSection";
 import ModalSection from "./components/ModalSection";
-import axios from "axios";
-
+import { getSomeData } from "./getAPI/api";
 function TrangChu() {
   const [modalIsOpen, setModalIsOpen] = useState(true);
   const [data, setData] = useState();
   const [inputName, setInputName] = useState("");
 
-  const LayDuLieu = useCallback(() => {
-    axios
-      .get("http://127.0.0.1:8000/api/Trang-Chu/1")
-      .then((response) => {
-        setData(response.data);
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-      });
+  const LayDuLieu = useCallback(async () => {
+    try {
+      const result = await getSomeData();
+      setData(result);
+    } catch (error) {
+      console.error("Failed to fetch data", error);
+    }
   }, []);
 
   useEffect(() => {
@@ -27,9 +24,11 @@ function TrangChu() {
     if (localStorage.getItem("tenKhachHang") != null) {
       setModalIsOpen(false);
     }
-    setTimeout(() => {
+    const timeoutId = setTimeout(() => {
       localStorage.removeItem("tenKhachHang");
     }, 600000);
+
+    return () => clearTimeout(timeoutId); // Cleanup timeout on component unmount
   }, [LayDuLieu]);
 
   return (
