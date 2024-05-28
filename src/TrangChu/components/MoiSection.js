@@ -1,3 +1,4 @@
+import config from "../../config";
 function MoiSection() {
   return (
     <div>
@@ -6,7 +7,7 @@ function MoiSection() {
       <div className="row">
         <div className="col">
           <img
-            src="http://127.0.0.1:8000/anh/giaodien.webp"
+            src={`${config.imageBaseUrl}/giaodien.webp`}
             className="rounded float-start w-100"
             alt="..."
           />
@@ -14,7 +15,7 @@ function MoiSection() {
         </div>
         <div className="col">
           <img
-            src="http://127.0.0.1:8000/anh/giaodien.webp"
+            src={`${config.imageBaseUrl}/giaodien.webp`}
             className="rounded w-100 d-inline-block"
             alt="..."
           />
@@ -22,7 +23,7 @@ function MoiSection() {
         </div>
         <div className="col">
           <img
-            src="http://127.0.0.1:8000/anh/giaodien.webp"
+            src={`${config.imageBaseUrl}/giaodien.webp`}
             className="rounded w-100"
             alt="..."
           />

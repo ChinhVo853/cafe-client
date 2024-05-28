@@ -1,11 +1,14 @@
 import React from "react";
-
+import config from "../../config";
 function ButtonSection() {
+  const handleClick = () => {
+    window.location.href = "/Menu";
+  };
   return (
     <div className="col">
       <button type="button" className="btn btn-outline-primary b-select">
         <img
-          src="http://127.0.0.1:8000/anh/nhanvien.jpg"
+          src={`${config.imageBaseUrl}/nhanvien.jpg`}
           alt="..."
           className="bd-r w-10 w-30 "
         />
@@ -14,16 +17,20 @@ function ButtonSection() {
       </button>
       <button type="button" className="btn btn-outline-danger b-select">
         <img
-          src="http://127.0.0.1:8000/anh/thanhtoan.png"
+          src={`${config.imageBaseUrl}/thanhtoan.png`}
           alt=""
           className="bd-r w-10 w-30 "
         />
         <br />
         thanh toán
       </button>
-      <button type="button" className="btn btn-outline-warning b-select">
+      <button
+        type="button"
+        className="btn btn-outline-warning b-select"
+        onClick={handleClick}
+      >
         <img
-          src="http://127.0.0.1:8000/anh/thucdon.png"
+          src={`${config.imageBaseUrl}/thucdon.png`}
           alt=""
           className="bd-r w-10 w-30 "
         />
