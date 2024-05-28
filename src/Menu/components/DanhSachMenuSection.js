@@ -1,26 +1,15 @@
-const DanhSachMenuSection = ({ menuIsOpen, handleMenuToggle }) => {
+const DanhSachMenuSection = ({ data, menuIsOpen, handleMenuToggle }) => {
   return (
     <>
       <div className={`menu ${menuIsOpen ? "open" : ""}`} id="menu">
         <ul>
-          <li>
-            <a href="#milk-tea">Trà sữa</a>
-          </li>
-          <li>
-            <a href="#fruit-tea">Trà trái cây</a>
-          </li>
-          <li>
-            <a href="#soda">Soda</a>
-          </li>
-          <li>
-            <a href="#coffee">Cà phê hạt</a>
-          </li>
-          <li>
-            <a href="#ice-blend">Đá xay</a>
-          </li>
-          <li>
-            <a href="#other">Món khá</a>
-          </li>
+          {data.map((item, index) => {
+            return (
+              <li key={index}>
+                <a href="#milk-tea">{item.ten_loai}</a>
+              </li>
+            );
+          })}
         </ul>
       </div>
       <button
