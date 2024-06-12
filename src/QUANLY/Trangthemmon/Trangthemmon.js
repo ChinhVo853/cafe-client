@@ -1,26 +1,37 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-function Trangthemmon (){
-    const [foodImage, setFoodImage] = useState(null);
-    const [foodName, setFoodName] = useState('');
-    const [foodPrice, setFoodPrice] = useState('');
+import '@fortawesome/fontawesome-free/css/all.css';
+
+function Trangthemmon() {
+    const [formData, setFormData] = useState({
+        foodImage: null,
+        foodName: '',
+        foodPrice: '',
+        foodReviews: '',
+        foodCategory: '',
+        foodSize: '',
+        foodStatus: 'Còn hàng'
+    });
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({
+            ...formData,
+            [name]: value
+        });
+    };
 
     const handleImageChange = (e) => {
-        setFoodImage(e.target.files[0]);
-    };
-
-    const handleNameChange = (e) => {
-        setFoodName(e.target.value);
-    };
-
-    const handlePriceChange = (e) => {
-        setFoodPrice(e.target.value);
+        setFormData({
+            ...formData,
+            foodImage: e.target.files[0]
+        });
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
         // Handle the form submission
-        console.log({ foodImage, foodName, foodPrice });
+        console.log(formData);
     };
 
     return (
@@ -38,15 +49,33 @@ function Trangthemmon (){
                 </div>
                 <div className="mb-3">
                     <label htmlFor="foodName" className="form-label">Tên món</label>
-                    <input type="text" className="form-control" id="foodName" placeholder="Nhập tên món ăn" value={foodName} onChange={handleNameChange} />
+                    <input type="text" className="form-control" id="foodName" name="foodName" placeholder="Nhập tên món ăn" value={formData.foodName} onChange={handleChange} />
                 </div>
                 <div className="mb-3">
                     <label htmlFor="foodPrice" className="form-label">Giá</label>
-                    <input type="number" className="form-control" id="foodPrice" placeholder="Nhập giá món ăn" value={foodPrice} onChange={handlePriceChange} />
+                    <input type="number" className="form-control" id="foodPrice" name="foodPrice" placeholder="Nhập giá món ăn" value={formData.foodPrice} onChange={handleChange} />
+                </div>
+                <div className="mb-3">
+                    <label htmlFor="foodReviews" className="form-label">Số lượng đánh giá</label>
+                    <input type="number" className="form-control" id="foodReviews" name="foodReviews" placeholder="Nhập số lượng đánh giá" value={formData.foodReviews} onChange={handleChange} />
+                </div>
+                <div className="mb-3">
+                    <label htmlFor="foodCategory" className="form-label">Loại</label>
+                    <input type="text" className="form-control" id="foodCategory" name="foodCategory" placeholder="Nhập loại món ăn" value={formData.foodCategory} onChange={handleChange} />
+                </div>
+                <div className="mb-3">
+                    <label htmlFor="foodSize" className="form-label">Size</label>
+                    <input type="text" className="form-control" id="foodSize" name="foodSize" placeholder="Nhập size món ăn" value={formData.foodSize} onChange={handleChange} />
+                </div>
+                <div className="mb-3">
+                    <label htmlFor="foodStatus" className="form-label">Trạng thái</label>
+                    <select className="form-control" id="foodStatus" name="foodStatus" value={formData.foodStatus} onChange={handleChange}>
+                        <option value="Còn hàng">Còn hàng</option>
+                        <option value="Hết hàng">Hết hàng</option>
+                    </select>
                 </div>
                 <button type="submit" className="btn btn-custom w-100">Thêm món</button>
                 <a href='/Trangquanlymon' className="quaylai btn btn-secondary go-back-btn" >Hủy</a>
-
             </form>
         </div>
     );
