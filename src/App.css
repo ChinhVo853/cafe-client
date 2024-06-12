@@ -360,3 +360,461 @@ body {
   text-align: center;
   transform: translate(30%, 20%);
 }
+/*------------------------************Trangchuquanly***************----------------------------------*/
+.header {
+  background: linear-gradient(45deg, #4b79a1, #283e51);
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 500;
+  padding-bottom: 30px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.header::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+  animation: shine 5s infinite;
+}
+
+@keyframes shine {
+  0% {
+    transform: translate(-100%, -100%) rotate(45deg);
+  }
+  100% {
+    transform: translate(100%, 100%) rotate(45deg);
+  }
+}
+
+.menu {
+  position: fixed;
+  top: 0;
+  left: -250px;
+  width: 250px;
+  height: 100%;
+  background-color: #333;
+  color: #fff;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  overflow-x: hidden;
+  transition: 0.3s;
+  z-index: 1000;
+  padding-top: 60px;
+}
+
+.menu.open {
+  left: 0;
+}
+
+.menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu li {
+  border-bottom: 1px solid #444;
+}
+
+.menu li:last-child {
+  border-bottom: none;
+}
+
+.menu a {
+  display: block;
+  padding: 15px 20px;
+  text-decoration: none;
+  color: #fff;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.menu a:hover {
+  background-color: #f4a261;
+  color: #333;
+}
+
+.menu-toggle {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background-color: #f4a261;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 18px;
+  transition: background-color 0.3s;
+  z-index: 1001;
+}
+
+.menu-toggle:hover {
+  background-color: #e76f51;
+}
+
+.search-container {
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1002;
+  display: flex;
+  align-items: center;
+  width: 400px;
+}
+
+.search-container input[type="text"] {
+  padding: 10px;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 4px 0 0 4px;
+  font-size: 16px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.search-container input[type="text"]:focus {
+  border-color: #f4a261;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  outline: none;
+}
+
+.search-container button {
+  padding: 10px 15px;
+  border: none;
+  background: linear-gradient(45deg, #f4a261, #e76f51);
+  color: #fff;
+  cursor: pointer;
+  border-radius: 0 4px 4px 0;
+  font-size: 16px;
+  transition: background 0.3s, box-shadow 0.3s;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.search-container button:hover {
+  background: linear-gradient(45deg, #e76f51, #f4a261);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.search-container button:active {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transform: translateY(1px);
+}
+
+.delete-btn {
+  display: inline-block;
+  padding: 10px 15px;
+  background-color: #a72831; /* Green color */
+  color: white;
+  text-decoration: none;
+  transition: background-color 0.3s;
+  border-radius: 4px;
+}
+
+.delete-btn:hover {
+  background-color: #dc3545; /* Red color */
+}
+
+.card-body.occupied {
+  background-color: #e76f51; /* Background color when occupied */
+}
+
+.card-body.vacant {
+  background-color: #2a9d8f; /* Background color when vacant */
+}
+/*---------------------------------***********Trangthemmon**************---------------------------*/
+.them-mon-container {
+  margin-top: 50px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  position: relative;
+  font-family: 'Arial', sans-serif;
+  background-color: #f0f0f0;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+.form-title {
+  font-size: 24px;
+  color: #333;
+  text-align: center;
+}
+
+.btn-custom {
+  background: linear-gradient(45deg, #f4a261, #e76f51);
+  color: #fff;
+  transition: background 0.3s, box-shadow 0.3s;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.btn-custom:hover {
+  background: linear-gradient(45deg, #e76f51, #f4a261);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn-custom:active {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transform: translateY(1px);
+}
+
+.btn-back {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background-color: #f4a261;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 50%;
+  text-decoration: none;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.btn-back:hover {
+  background-color: #e76f51;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn-back:active {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transform: translateY(1px);
+}
+/*--------------------------------------********TRANG QUAN LY MON*******-----------------------------------*/
+.header-custom {
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 500;
+  padding-bottom: 30px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+}
+
+.search-container-custom {
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1002;
+  display: flex;
+  align-items: center;
+  width: 400px;
+}
+
+.search-container-custom input[type="text"] {
+  padding: 10px;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 4px 0 0 4px;
+  font-size: 16px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.search-container-custom input[type="text"]:focus {
+  border-color: #f4a261;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  outline: none;
+}
+
+.search-container-custom button {
+  padding: 10px 15px;
+  border: none;
+  background: linear-gradient(45deg, #f4a261, #e76f51);
+  color: #fff;
+  cursor: pointer;
+  border-radius: 0 4px 4px 0;
+  font-size: 16px;
+  transition: background 0.3s, box-shadow 0.3s;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.search-container-custom button:hover {
+  background: linear-gradient(45deg, #e76f51, #f4a261);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.search-container-custom button:active {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transform: translateY(1px);
+}
+/*-------------------------------------****Trang Yeu Cau Cua Khach Hang*****-------------------------*/
+.request-container {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.request-header {
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 500;
+  margin-bottom: 20px;
+  border-radius: 10px;
+}
+
+.table {
+  margin-top: 20px;
+}
+
+.btn-request-confirm {
+  background: linear-gradient(45deg, #28a745, #218838);
+  color: #fff;
+  transition: background 0.3s, box-shadow 0.3s;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.btn-request-confirm:hover {
+  background: linear-gradient(45deg, #218838, #28a745);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn-request-confirm:active {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transform: translateY(1px);
+}
+
+.btn-request-undo {
+  background: linear-gradient(45deg, #ffc107, #e0a800);
+  color: #fff;
+  transition: background 0.3s, box-shadow 0.3s;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.btn-request-undo:hover {
+  background: linear-gradient(45deg, #e0a800, #ffc107);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn-request-undo:active {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transform: translateY(1px);
+}
+/*----------------------------------------******TrangQLnhanvien********------------------------------------*/
+.employee-container {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.employee-header {
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 500;
+  margin-bottom: 20px;
+  border-radius: 10px;
+}
+
+.btn-add-employee {
+  background: linear-gradient(45deg, #007bff, #0056b3);
+  color: #fff;
+  transition: background 0.3s, box-shadow 0.3s;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.btn-add-employee:hover {
+  background: linear-gradient(45deg, #0056b3, #007bff);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn-add-employee:active {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transform: translateY(1px);
+}
+/*--------------------------------------------********Trangthemnhanvien*********-------------------------------*/
+.add-employee-wrapper {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.add-employee-header {
+  background: linear-gradient(45deg, #4b79a1, #283e51);
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 500;
+  padding-bottom: 30px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.add-employee-header::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+  animation: add-employee-shine 5s infinite;
+}
+
+@keyframes add-employee-shine {
+  0% {
+      transform: translate(-100%, -100%) rotate(45deg);
+  }
+  100% {
+      transform: translate(100%, 100%) rotate(45deg);
+  }
+}
+
+.add-employee-btn-custom {
+  background: linear-gradient(45deg, #f4a261, #e76f51);
+  color: #fff;
+  transition: background 0.3s, box-shadow 0.3s;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  width: 100%;
+}
+
+.add-employee-btn-custom:hover {
+  background: linear-gradient(45deg, #e76f51, #f4a261);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.add-employee-btn-custom:active {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transform: translateY(1px);
+}
+
+.add-employee-form .add-employee-form-label {
+  font-weight: bold;
+}
+.quaylai{
+  margin-top: 10px;
+  width: 100%; /* Đảm bảo nút chiếm toàn bộ chiều rộng của phần tử chứa */
+}
