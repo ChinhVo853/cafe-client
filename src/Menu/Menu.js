@@ -2,22 +2,37 @@ import React, { useState, useCallback, useEffect } from "react";
 import DanhSachMenuSection from "./components/DanhSachMenuSection";
 import SanPhamSection from "./components/SanPhamSection";
 import GioHangSection from "./components/GioHangSection";
-
+import { getSomeData } from "./getAPI.js/API";
 function Menu() {
   const [menuIsOpen, setMenuIsOpen] = useState(false);
   const [productOptions, setProductOptions] = useState({});
-
+  const [data, setData] = useState(null);
   const [cart, setCart] = useState(() => {
     // Khôi phục giỏ hàng từ localStorage nếu có
     const savedCart = localStorage.getItem("cart");
     return savedCart ? JSON.parse(savedCart) : [];
   });
+  const LayDuLieu = useCallback(async () => {
+    try {
+      const result = await getSomeData();
+      setData(result);
+    } catch (error) {
+      console.error("Failed to fetch data", error);
+    }
+  }, []);
+  useEffect(() => {
+    LayDuLieu();
+  }, [LayDuLieu]);
 
   const [cartItemCount, setCartItemCount] = useState(() => {
     // Khôi phục số lượng sản phẩm trong giỏ hàng từ localStorage nếu có
     const savedItemCount = localStorage.getItem("cartItemCount");
     return savedItemCount ? parseInt(savedItemCount, 10) : 0;
   });
+
+  const xoa = () => {
+    localStorage.removeItem("cartItemCount");
+  };
 
   const [cartDetailsIsOpen, setCartDetailsIsOpen] = useState(false);
 
@@ -71,6 +86,7 @@ function Menu() {
   const handleCartContainerClick = () => {
     setCartDetailsIsOpen((prev) => !prev);
   };
+
 
   const updateCartDetails = useCallback(() => {
     // Function logic to update cart details can go here if needed
@@ -187,6 +203,7 @@ function Menu() {
         handleIncreaseQuantity={handleIncreaseQuantity}
         handleDecreaseQuantity={handleDecreaseQuantity}
       />
+
     </>
   );
 }
