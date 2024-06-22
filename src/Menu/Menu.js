@@ -87,50 +87,123 @@ function Menu() {
     setCartDetailsIsOpen((prev) => !prev);
   };
 
+
+  const updateCartDetails = useCallback(() => {
+    // Function logic to update cart details can go here if needed
+  }, [cart]);
+
+  useEffect(() => {
+    updateCartDetails();
+  }, [cart, updateCartDetails]);
+
+  const handleCloseButtonClick = (productId) => {
+    setProductOptions((prevOptions) => ({
+      ...prevOptions,
+      [productId]: false,
+    }));
+  };
+
+  const handleCloseCartClick = () => {
+    setCartDetailsIsOpen(false);
+  };
+
+  const handleIncreaseQuantity = (productId) => {
+    const newCart = cart.map((item) => {
+      if (item.id === productId) {
+        return { ...item, quantity: item.quantity + 1 };
+      }
+      return item;
+    });
+    setCart(newCart);
+    setCartItemCount(cartItemCount + 1);
+  };
+
+  const handleDecreaseQuantity = (productId) => {
+    const newCart = cart.map((item) => {
+      if (item.id === productId && item.quantity > 1) {
+        return { ...item, quantity: item.quantity - 1 };
+      }
+      return item;
+    });
+    setCart(newCart);
+    setCartItemCount(cartItemCount - 1);
+  };
+
+  const addToCart = (product) => {
+    setCart([...cart, product]);
+    setCartItemCount(cartItemCount + 1);
+  };
+
+  
   return (
     <>
-      {data ? (
-        <>
-          <DanhSachMenuSection
-            data={data.data}
-            menuIsOpen={menuIsOpen}
-            handleMenuToggle={handleMenuToggle}
-          />
-          <div className="search-container">
-            <input type="text" placeholder="Tìm kiếm..." />
-            <button type="button">🔍</button>
-          </div>
+      <DanhSachMenuSection
+        menuIsOpen={menuIsOpen}
+        handleMenuToggle={handleMenuToggle}
+      />
+      <div className="search-container-custom">
+        <input type="text" placeholder="Tìm kiếm..." />
+        <button type="button">🔍</button>
+      </div>
+      <div className="category-container">
+        <div className="category row" id="milk-tea">
+          <div className="category-title ">Trà sữa</div>
 
-          <div className="category-container">
-            {data.data.map((item, index) => {
-              return (
-                <div key={index} className="category row" id="milk-tea">
-                  <div className="category-title">{item.ten_loai}</div>
+          <SanPhamSection
+            handleAddButtonClick={handleAddButtonClick}
+            handleAddToCart={handleAddToCart}
+            handleCloseButtonClick={handleCloseButtonClick}
 
-                  <SanPhamSection
-                    handleAddButtonClick={handleAddButtonClick}
-                    handleAddToCart={handleAddToCart}
-                    productOptions={productOptions}
-                    data={item}
-                    productId={item.ten_mon}
-                    name={item.ten_mon}
-                    price={10000}
-                  />
-                </div>
-              );
-            })}
-            <button onClick={xoa()}> xoá</button>
-          </div>
-          <GioHangSection
-            cart={cart}
-            cartItemCount={cartItemCount}
-            cartDetailsIsOpen={cartDetailsIsOpen}
-            handleCartContainerClick={handleCartContainerClick}
+            productOptions={productOptions}
+            productId={1}
+            name="Trà sữa 1"
+            price={10000}
           />
-        </>
-      ) : (
-        <p>loading...</p>
-      )}
+          <SanPhamSection
+            handleAddButtonClick={handleAddButtonClick}
+            handleAddToCart={handleAddToCart}
+            handleCloseButtonClick={handleCloseButtonClick}
+
+            productOptions={productOptions}
+            productId={1}
+            name="Trà sữa 1"
+            price={10000}
+          />
+          <SanPhamSection
+            handleAddButtonClick={handleAddButtonClick}
+            handleAddToCart={handleAddToCart}
+            handleCloseButtonClick={handleCloseButtonClick}
+
+            productOptions={productOptions}
+            productId={1}
+            name="Trà sữa 1"
+            price={10000}
+          />
+        </div>
+        <div className="category" id="fruit-tea">
+          <div className="category-title">Trà trái cây</div>
+          <SanPhamSection
+            handleAddButtonClick={handleAddButtonClick}
+            handleAddToCart={handleAddToCart}
+            handleCloseButtonClick={handleCloseButtonClick}
+
+            productOptions={productOptions}
+            productId={2}
+            name="Trà trái cây 1"
+            price={8000}
+          />
+        </div>
+      </div>
+      <GioHangSection
+        cart={cart}
+        cartItemCount={cartItemCount}
+        cartDetailsIsOpen={cartDetailsIsOpen}
+        handleCartContainerClick={handleCartContainerClick}
+        handleCloseCartClick={handleCloseCartClick}
+        handleIncreaseQuantity={handleIncreaseQuantity}
+        handleDecreaseQuantity={handleDecreaseQuantity}
+      />
+
     </>
   );
 }

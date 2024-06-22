@@ -14,6 +14,11 @@ import Trangcapnhatloai from "./QUANLY/Trangcapnhatloai/Trangcapnhatloai";
 import TrangQLyeucaucuakhachhang from "./QUANLY/TrangQLyeucaucuakhachhang/TrangQLyeucaucuakhachhang";
 import TrangQLnhanvien from "./QUANLY/TrangQLnhanvien/TrangQLnhanvien";
 import Trangthemnhanvien from "./QUANLY/Trangthemnhanvien/Trangthemnhanvien";
+import Trangquanlysize from "./QUANLY/Trangquanlysize/Trangquanlysize";
+import Trangthemsize from "./QUANLY/Trangthemsize/Trangthemsize";
+import Trangcapnhatsize from "./QUANLY/Trangcapnhatsize/Trangcapnhatsize";
+import Trangchugoimon from "./Trangchugoimon/Trangchugoimon";
+import Trangnhapma from "./Trangnhapma/Trangnhapma";
 function App() {
   return (
     <Routes>
@@ -29,12 +34,25 @@ function App() {
       <Route path="/Trangquanlyloai" element={<Trangquanlyloai/>} />
       <Route path="/Trangthemloai" element={<Trangthemloai/>} />
       <Route path="/Trangcapnhatloai" element={<Trangcapnhatloai/>} />
+      {/* -----------------------*******QuanLySize*********----------------- */}
+      <Route path="/Trangquanlysize" element={<Trangquanlysize/>} />
+      <Route path="/Trangthemsize" element={<Trangthemsize/>} />
+      <Route path="/Trangcapnhatsize" element={<Trangcapnhatsize/>} />
       {/* -----------------------*******TrangQLyeucaucuakhachhang*********----------------- */}
       <Route path="/TrangQLyeucaucuakhachhang" element={<TrangQLyeucaucuakhachhang/>} />
       {/* -----------------------*******TrangQLnhanvien*********----------------- */}
       <Route path="/TrangQLnhanvien" element={<TrangQLnhanvien/>} />
       <Route path="/Trangthemnhanvien" element={<Trangthemnhanvien/>} />
-      
+
+
+
+
+
+      {/* ********************************************************************** */}
+      {/* -----------------------*******TRANGCHUGOIMON*********----------------- */}
+      {/* ********************************************************************** */}
+      <Route path="/Trangchugoimon" element={<Trangchugoimon/>} />
+      <Route path="/Trangnhapma" element={<Trangnhapma/>} />
     </Routes>
   );
 }

@@ -1,12 +1,14 @@
 import Menuquanly from "../Menuquanly";
 import Quanlyban from "./components/Quanlyban";
-import React,{useState} from "react";
-function Trangchuquanly (){
+import React, { useState } from "react";
+
+function Trangchuquanly() {
     const [menuOpen, setMenuOpen] = useState(false);
+
     const [tables, setTables] = useState([
-        { id: 1, status: 'occupied' },
-        { id: 2, status: 'vacant' },
-        { id: 3, status: 'occupied' },
+        { id: 1, code: 'T001', status: 'occupied' },
+        { id: 2, code: 'T002', status: 'vacant' },
+        { id: 3, code: 'T003', status: 'occupied' },
     ]);
 
     const toggleMenu = () => {
@@ -17,10 +19,7 @@ function Trangchuquanly (){
         setTables((prevTables) =>
             prevTables.map((table) =>
                 table.id === tableId
-                    ? {
-                          ...table,
-                          status: table.status === 'occupied' ? 'vacant' : 'occupied',
-                      }
+                    ? { ...table, status: table.status === 'occupied' ? 'vacant' : 'occupied' }
                     : table
             )
         );
@@ -44,25 +43,35 @@ function Trangchuquanly (){
         const orderData = JSON.stringify(orders[tableId]);
         localStorage.setItem(`table-${tableId}-order`, orderData);
         window.location.href = (`Thanhtoan?table=${tableId}`);
-
     };
-    return(<>
-   <div>
-   <div className="search-container-custom">
-        <input type="text" placeholder="Tìm kiếm..." />
-        <button type="button">🔍</button>
-      </div>
-            
-            <Menuquanly
-            toggleMenu={toggleMenu}
-            menuOpen={menuOpen}
-            />
-            <Quanlyban 
-            tables={tables}
-            changeStatus={changeStatus}
-            handlePayment={handlePayment}
-             />
-            
-        </div>    </>);
+
+    const handleQRCode = (code) => {
+        console.log(`QR Code for table: ${code}`);
+        // Logic để hiển thị hoặc xử lý mã QR
+    };
+
+    return (
+        <>
+            <div>
+                <div className="search-container-custom">
+                    <input type="text" placeholder="Tìm kiếm..." />
+                    <button type="button">🔍</button>
+                </div>
+                
+                <Menuquanly
+                    toggleMenu={toggleMenu}
+                    menuOpen={menuOpen}
+                />
+                
+                <Quanlyban 
+                    tables={tables}
+                    changeStatus={changeStatus}
+                    handlePayment={handlePayment}
+                    handleQRCode={handleQRCode}
+                />
+            </div>
+        </>
+    );
 }
+
 export default Trangchuquanly;

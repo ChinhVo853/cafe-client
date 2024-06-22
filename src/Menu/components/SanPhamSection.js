@@ -3,6 +3,7 @@ import React from "react";
 const SanPhamSection = ({
   handleAddButtonClick,
   handleAddToCart,
+  handleCloseButtonClick,
   productOptions,
   data,
   price,
@@ -25,20 +26,24 @@ const SanPhamSection = ({
             +
           </button>
           <div
-            className={`product-options ${
-              productOptions[data.ten_mon] ? "open" : ""
-            }`}
-          >
-            <label htmlFor={`size-${data.ten_mon}`}>Size:</label>
 
-            <select id={`size-${data.ten_mon}`}>
-              {data.sizes.map((item, index) => {
-                return (
-                  <option value={item} key={index}>
-                    {item}
-                  </option>
-                );
-              })}
+            className={`product-options ${productOptions[productId] ? "open" : ""
+              }`}
+          >
+            <div className="cart-header">
+              <button
+                className="close-button"
+                onClick={() => handleCloseButtonClick(productId)}
+              >
+                <i className="fas fa-times"></i>
+              </button>
+            </div>
+            <label htmlFor={`size-${productId}`}>Size:</label>
+            <select id={`size-${productId}`}>
+              <option value="S">S</option>
+              <option value="M">M</option>
+              <option value="L">L</option>
+
             </select>
 
             <label htmlFor={`quantity-${data.ten_mon}`}>Số lượng:</label>
