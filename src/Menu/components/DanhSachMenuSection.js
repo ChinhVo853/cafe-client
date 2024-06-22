@@ -1,3 +1,4 @@
+
 const DanhSachMenuSection = ({ menuIsOpen, handleMenuToggle }) => {
   const handleMenuItemClick = (event) => {
     event.preventDefault();
@@ -8,10 +9,12 @@ const DanhSachMenuSection = ({ menuIsOpen, handleMenuToggle }) => {
     }
   };
 
+
   return (
     <>
       <div className={`menu ${menuIsOpen ? "open" : ""}`} id="menu">
         <ul>
+
           <li>
             <a href="#milk-tea" onClick={handleMenuItemClick}>
               <i className="fas fa-coffee"></i> Trà sữa
@@ -42,6 +45,7 @@ const DanhSachMenuSection = ({ menuIsOpen, handleMenuToggle }) => {
               <i className="fas fa-utensils"></i> Món khác
             </a>
           </li>
+
         </ul>
       </div>
       <button className="menu-toggle" id="menu-toggle" onClick={handleMenuToggle}>
