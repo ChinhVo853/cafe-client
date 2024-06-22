@@ -598,7 +598,7 @@ body {
   z-index: 1002;
   display: flex;
   align-items: center;
-  width: 60%;
+  width: 50%;
 }
 
 .search-container-custom input[type="text"] {
@@ -1592,7 +1592,23 @@ label {
   padding: 7px;
 
 }
-
+.home-button-menu {
+  top: 20px;
+  /* Điều chỉnh khoảng cách từ trên xuống */
+  left: 20px;
+  /* Điều chỉnh khoảng cách từ trái sang phải */
+  background-color: transparent;
+  color: #ffffff;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  border: #f4a261 solid 5px;
+  border-radius: 20px;
+  padding: 10px;
+  margin: auto;
+}
 .home-button i {}
 
 .feedback-content {
