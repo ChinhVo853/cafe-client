@@ -1,4 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');body {
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+body {
   font-family: "Arial", sans-serif;
   background-color: #f0f0f0;
   margin: 0;
@@ -21,20 +23,25 @@
   z-index: 1000;
   padding-top: 60px;
 }
+
 .menu.open {
   left: 0;
 }
+
 .menu ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
+
 .menu li {
   border-bottom: 1px solid #444;
 }
+
 .menu li:last-child {
   border-bottom: none;
 }
+
 .menu a {
   display: block;
   padding: 15px 20px;
@@ -42,10 +49,12 @@
   color: #fff;
   transition: background-color 0.3s, color 0.3s;
 }
+
 .menu a:hover {
   background-color: #f4a261;
   color: #333;
 }
+
 .menu-toggle {
   position: fixed;
   top: 20px;
@@ -60,6 +69,7 @@
   transition: background-color 0.3s;
   z-index: 1001;
 }
+
 .menu-toggle:hover {
   background-color: #e76f51;
 }
@@ -75,6 +85,7 @@
   align-items: center;
   width: 60%;
 }
+
 .search-container input[type="text"] {
   padding: 10px;
   width: 100%;
@@ -84,11 +95,13 @@
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   transition: border-color 0.3s, box-shadow 0.3s;
 }
+
 .search-container input[type="text"]:focus {
   border-color: #f4a261;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   outline: none;
 }
+
 .search-container button {
   padding: 10px 15px;
   border: none;
@@ -100,10 +113,12 @@
   transition: background 0.3s, box-shadow 0.3s;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
+
 .search-container button:hover {
   background: linear-gradient(45deg, #e76f51, #f4a261);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
+
 .search-container button:active {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   transform: translateY(1px);
@@ -111,23 +126,28 @@
 
 /*category*/
 .category-container {
-  margin: 80px 20px 20px 270px; /* Adjust margin-left to make space for the menu */
+  margin: 80px 20px 20px 270px;
+  /* Adjust margin-left to make space for the menu */
 }
 
 @media (max-width: 930px) {
   .category-container {
-    margin: 80px 20px 20px 140px; /* Adjust margin-left to make space for the menu */
+    margin: 80px 20px 20px 140px;
+    /* Adjust margin-left to make space for the menu */
   }
 }
 
 @media (max-width: 580px) {
   .category-container {
-    margin: 80px 20px 20px 80px; /* Adjust margin-left to make space for the menu */
+    margin: 80px 20px 20px 80px;
+    /* Adjust margin-left to make space for the menu */
   }
 }
+
 .category {
   margin-bottom: 40px;
 }
+
 .category-title {
   font-family: "Pacifico", cursive;
   font-size: 36px;
@@ -137,6 +157,7 @@
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
   position: relative;
 }
+
 .category-title:before,
 .category-title:after {
   content: "";
@@ -147,18 +168,22 @@
   top: 50%;
   transform: translateY(-50%);
 }
+
 .category-title:before {
   left: -70px;
 }
+
 .category-title:after {
   right: -70px;
 }
+
 /*product*/
 .product-container {
   padding-bottom: 10%;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 20px;
 }
+
 .product-card {
   background-color: #fff;
   border-radius: 8px;
@@ -167,23 +192,28 @@
   transition: transform 0.3s, box-shadow 0.3s;
   position: relative;
 }
+
 .product-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
+
 .product-image {
   width: 100%;
   height: 200px;
   object-fit: cover;
 }
+
 .product-info {
   padding: 15px;
   text-align: center;
 }
+
 .product-name {
   font-size: 18px;
   margin: 10px 0;
 }
+
 .product-price {
   font-size: 16px;
   color: #f4a261;
@@ -204,14 +234,17 @@
   transition: max-height 0.3s ease, padding 0.3s ease;
   overflow: hidden;
 }
+
 .product-options.open {
   display: block;
   max-height: 100%;
 }
+
 .product-options label {
   display: block;
   margin-bottom: 10px;
 }
+
 .product-options select,
 .product-options input[type="number"] {
   width: 100%;
@@ -221,6 +254,7 @@
   font-size: 16px;
   margin-bottom: 10px;
 }
+
 .product-options button {
   padding: 10px 20px;
   background-color: #f4a261;
@@ -230,6 +264,7 @@
   cursor: pointer;
   transition: background-color 0.3s;
 }
+
 .product-options button:hover {
   background-color: #e76f51;
 }
@@ -253,6 +288,7 @@
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   transition: background-color 0.3s, transform 0.3s;
 }
+
 .add-button:hover {
   background-color: #e76f51;
   transform: scale(1.1);
@@ -272,13 +308,17 @@
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   transition: background-color 0.3s, box-shadow 0.3s;
 }
+
 .cart-container:hover {
   background-color: #e76f51;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
+
 .cart-details {
-  max-height: 50vh; /* Giới hạn chiều cao của form giỏ hàng */
-  overflow-y: auto; /* Kích hoạt thanh cuộn khi nội dung vượt quá chiều cao */
+  max-height: 50vh;
+  /* Giới hạn chiều cao của form giỏ hàng */
+  overflow-y: auto;
+  /* Kích hoạt thanh cuộn khi nội dung vượt quá chiều cao */
   padding: 20px;
   border: 1px solid #ccc;
   background-color: #fff;
@@ -295,17 +335,21 @@
   width: 80%;
   max-width: 500px;
 }
+
 .cart-details.open {
   display: block;
 }
+
 .cart-details h3 {
   margin-top: 0;
 }
+
 .cart-details ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
+
 .cart-details li {
   border-bottom: 1px solid #ccc;
   padding: 10px 0;
@@ -322,6 +366,7 @@
   font-weight: bold;
   font-size: 20px;
 }
+
 /*Style height*/
 .h-450 {
   height: 450px;
@@ -365,6 +410,7 @@
   text-align: center;
   transform: translate(30%, 20%);
 }
+
 /*------------------------************Trangchuquanly***************----------------------------------*/
 .header {
   background: linear-gradient(45deg, #4b79a1, #283e51);
@@ -380,10 +426,12 @@
   position: relative;
   overflow: hidden;
 }
+
 .col.text-end {
   display: flex;
   justify-content: flex-end;
 }
+
 .card {
   margin-bottom: 20px;
 }
@@ -419,6 +467,7 @@
   background-color: #138496;
   border-color: #117a8b;
 }
+
 .header::before {
   content: '';
   position: absolute;
@@ -434,6 +483,7 @@
   0% {
     transform: translate(-100%, -100%) rotate(45deg);
   }
+
   100% {
     transform: translate(100%, 100%) rotate(45deg);
   }
@@ -443,7 +493,8 @@
 .delete-btn {
   display: inline-block;
   padding: 10px 15px;
-  background-color: #a72831; /* Green color */
+  background-color: #a72831;
+  /* Green color */
   color: white;
   text-decoration: none;
   transition: background-color 0.3s;
@@ -451,16 +502,20 @@
 }
 
 .delete-btn:hover {
-  background-color: #dc3545; /* Red color */
+  background-color: #dc3545;
+  /* Red color */
 }
 
 .card-body.occupied {
-  background-color: #e76f51; /* Background color when occupied */
+  background-color: #e76f51;
+  /* Background color when occupied */
 }
 
 .card-body.vacant {
-  background-color: #2a9d8f; /* Background color when vacant */
+  background-color: #2a9d8f;
+  /* Background color when vacant */
 }
+
 /*---------------------------------***********Trangthemmon**************---------------------------*/
 .them-mon-container {
   margin-top: 50px;
@@ -521,6 +576,7 @@
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   transform: translateY(1px);
 }
+
 /*--------------------------------------********TRANG QUAN LY MON*******-----------------------------------*/
 .header-custom {
   background-color: #333;
@@ -582,6 +638,7 @@
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   transform: translateY(1px);
 }
+
 /*-------------------------------------****Trang Yeu Cau Cua Khach Hang*****-------------------------*/
 .request-container {
   background-color: #fff;
@@ -640,6 +697,7 @@
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   transform: translateY(1px);
 }
+
 /*----------------------------------------******TrangQLnhanvien********------------------------------------*/
 .employee-container {
   background-color: #fff;
@@ -677,6 +735,7 @@
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   transform: translateY(1px);
 }
+
 /*--------------------------------------------********Trangthemnhanvien*********-------------------------------*/
 .add-employee-wrapper {
   max-width: 600px;
@@ -716,10 +775,11 @@
 
 @keyframes add-employee-shine {
   0% {
-      transform: translate(-100%, -100%) rotate(45deg);
+    transform: translate(-100%, -100%) rotate(45deg);
   }
+
   100% {
-      transform: translate(100%, 100%) rotate(45deg);
+    transform: translate(100%, 100%) rotate(45deg);
   }
 }
 
@@ -744,9 +804,11 @@
 .add-employee-form .add-employee-form-label {
   font-weight: bold;
 }
-.quaylai{
+
+.quaylai {
   margin-top: 10px;
-  width: 100%; /* Đảm bảo nút chiếm toàn bộ chiều rộng của phần tử chứa */
+  width: 100%;
+  /* Đảm bảo nút chiếm toàn bộ chiều rộng của phần tử chứa */
 }
 
 
@@ -838,10 +900,11 @@
 
 
 /*** Navbar ***/
-.navbar-brand{
+.navbar-brand {
   width: 100%;
-    text-align: center;
+  text-align: center;
 }
+
 .navbar-dark .navbar-nav .nav-link {
   position: relative;
   margin-left: 25px;
@@ -874,55 +937,58 @@
 
 @media (max-width: 991.98px) {
   .sticky-top.navbar-dark {
-      position: relative;
+    position: relative;
   }
 
   .navbar-dark .navbar-collapse {
-      margin-top: 15px;
-      border-top: 1px solid rgba(255, 255, 255, .1)
+    margin-top: 15px;
+    border-top: 1px solid rgba(255, 255, 255, .1)
   }
 
   .navbar-dark .navbar-nav .nav-link,
   .sticky-top.navbar-dark .navbar-nav .nav-link {
-      padding: 10px 0;
-      margin-left: 0;
+    padding: 10px 0;
+    margin-left: 0;
   }
 
   .navbar-dark .navbar-brand img {
-      max-height: 45px;
+    max-height: 45px;
   }
 }
 
 @media (min-width: 992px) {
   .navbar-dark {
-      position: absolute;
-      width: 100%;
-      top: 0;
-      left: 0;
-      z-index: 999;
-      background: transparent !important;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    background: transparent !important;
   }
-  
+
   .sticky-top.navbar-dark {
-      position: fixed;
-      background: var(--dark) !important;
+    position: fixed;
+    background: var(--dark) !important;
   }
 }
 
-h1{
+h1 {
   font-family: "Nunito", sans-serif;
   font-weight: bold !important;
   background: linear-gradient(to right, #f4a261 0%, #c9550c 100%);
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;}
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 /*** Hero Header ***/
 .hero-header {
-  background:linear-gradient(rgba(15, 23, 43, .7), rgba(15, 23, 43, .8)), url(../src/img/bg-hero1.jpg);
+  background: linear-gradient(rgba(15, 23, 43, .7), rgba(15, 23, 43, .7)), url(../src/img/bg-hero1.jpg);
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
 }
-.xoayxoay{
+
+.xoayxoay {
   background: url(../src/img/hero.png) center no-repeat;
   width: 500px;
   /* 90vw */
@@ -930,17 +996,18 @@ h1{
   background-size: 100%;
   animation: imgRotate 50s linear infinite;
 }
+
 .hero-header img {
   animation: imgRotate 50s linear infinite;
 }
 
-@keyframes imgRotate { 
-  100% { 
-      transform: rotate(360deg); 
-  } 
+@keyframes imgRotate {
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
-.breadcrumb-item + .breadcrumb-item::before {
+.breadcrumb-item+.breadcrumb-item::before {
   color: rgba(255, 255, 255, .5);
 }
 
@@ -983,7 +1050,7 @@ h1{
 .service-item {
   box-shadow: 0 0 45px rgba(0, 0, 0, .08);
   transition: .5s;
-  
+
 }
 
 .service-item:hover {
@@ -1085,13 +1152,13 @@ h1{
 
 @keyframes pulse-border {
   0% {
-      transform: translateX(-50%) translateY(-50%) translateZ(0) scale(1);
-      opacity: 1;
+    transform: translateX(-50%) translateY(-50%) translateZ(0) scale(1);
+    opacity: 1;
   }
 
   100% {
-      transform: translateX(-50%) translateY(-50%) translateZ(0) scale(1.5);
-      opacity: 0;
+    transform: translateX(-50%) translateY(-50%) translateZ(0) scale(1.5);
+    opacity: 0;
   }
 }
 
@@ -1254,10 +1321,9 @@ h1{
 }
 
 /*********************************************ICON************************************/
-.iconchucnangcha{
+.iconchucnangcha {}
 
-}
-.service-item .iconchucnang{
+.service-item .iconchucnang {
   color: #fff !important;
   display: block;
   width: 100px;
@@ -1269,49 +1335,58 @@ h1{
   border-radius: 100%;
 
 }
-h5{
+
+h5 {
   text-align: center;
   color: black !important;
 
 }
-.welcomeabouus{
+
+.welcomeabouus {
   width: 50%;
   display: block;
   margin: auto;
   text-align: center;
 }
+
 /***************************************TRANGNHAPMA**********************************************/
 .container-xxl {
   max-width: 100%;
   padding: 0 15px;
   margin: 0 auto;
 }
+
 .bg-dark {
   background-color: #343a40 !important;
 }
+
 .text-primary {
   color: #007bff !important;
 }
+
 .animated {
   animation-duration: 1s;
   animation-fill-mode: both;
 }
+
 .slideInLeft {
   animation-name: slideInLeft;
 }
+
 @keyframes slideInLeft {
   from {
     transform: translate3d(-100%, 0, 0);
     visibility: visible;
   }
+
   to {
     transform: translate3d(0, 0, 0);
   }
 }
 
-a{
+a {
   text-decoration: none !important;
-    
+
 }
 
 /* Fixed Notification Button Styles */
@@ -1340,6 +1415,7 @@ a{
 .fixed-button i {
   font-size: 24px;
 }
+
 /* Call Staff Form Styles */
 .call-staff-form {
   position: fixed;
@@ -1357,6 +1433,7 @@ a{
   from {
     transform: translateY(100%);
   }
+
   to {
     transform: translateY(0);
   }
@@ -1409,10 +1486,11 @@ a{
 .blur-background {
   filter: blur(5px);
 }
-label{
+
+label {
   margin: auto;
-    text-align: center;
-    padding-right:20px;
+  text-align: center;
+  padding-right: 20px;
 }
 
 /*************************************NÚT X****************************************/
@@ -1427,10 +1505,12 @@ label{
   margin-bottom: 20px;
 
 }
+
 #cart-items {
   list-style: none;
   padding: 0;
 }
+
 .cart-header h3 {
   margin: 0;
 }
@@ -1442,18 +1522,24 @@ label{
   font-size: 1.5rem;
   color: #333;
 }
+
 .quantity-controls {
   display: flex;
   align-items: center;
-  
+
 }
+
 .cart-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 10px;
+  border-bottom: 1px solid #ddd;
+  margin-top: 20px;
 }
-.decrease-button, .increase-button {
+
+.decrease-button,
+.increase-button {
   background: none;
   border: 1px solid #333;
   border-radius: 50%;
@@ -1465,15 +1551,85 @@ label{
   cursor: pointer;
   margin: 0 5px;
 }
+
 .quantity-value {
   min-width: 30px;
   text-align: center;
 }
-.decrease-button:hover, .increase-button:hover {
+
+.decrease-button:hover,
+.increase-button:hover {
   background-color: #f0f0f0;
 }
+
 .total-price {
   margin-top: 20px;
   font-weight: bold;
   text-align: right;
+}
+
+/**************************************TRANGPHANHOI*******************************************/
+.feedback-page {
+  padding: 20px;
+
+}
+
+.home-button {
+  position: absolute;
+  top: 20px;
+  /* Điều chỉnh khoảng cách từ trên xuống */
+  left: 20px;
+  /* Điều chỉnh khoảng cách từ trái sang phải */
+  background-color: transparent;
+  color: #333;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  border: #f4a261 solid 3px;
+  border-radius: 20px;
+  padding: 7px;
+
+}
+
+.home-button i {}
+
+.feedback-content {
+  margin-top: 60px;
+  text-align: center;
+  border-bottom: solid 2px blanchedalmond;
+
+}
+
+h3 {
+  font-family: "Nunito", sans-serif;
+  font-weight: bold !important;
+  background: linear-gradient(to right, #f4a261 0%, #c9550c 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.message-box {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.message {
+  max-width: 300px;
+  padding: 10px 15px;
+  background-color: #e4e6eb;
+  border-radius: 15px;
+  position: relative;
+}
+
+.message:before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: -10px;
+  border-width: 10px;
+  border-style: solid;
+  border-color: transparent #e4e6eb transparent transparent;
 }
