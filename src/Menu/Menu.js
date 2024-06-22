@@ -80,13 +80,52 @@ function Menu() {
     updateCartDetails();
   }, [cart, updateCartDetails]);
 
+  const handleCloseButtonClick = (productId) => {
+    setProductOptions((prevOptions) => ({
+      ...prevOptions,
+      [productId]: false,
+    }));
+  };
+
+  const handleCloseCartClick = () => {
+    setCartDetailsIsOpen(false);
+  };
+
+  const handleIncreaseQuantity = (productId) => {
+    const newCart = cart.map((item) => {
+      if (item.id === productId) {
+        return { ...item, quantity: item.quantity + 1 };
+      }
+      return item;
+    });
+    setCart(newCart);
+    setCartItemCount(cartItemCount + 1);
+  };
+
+  const handleDecreaseQuantity = (productId) => {
+    const newCart = cart.map((item) => {
+      if (item.id === productId && item.quantity > 1) {
+        return { ...item, quantity: item.quantity - 1 };
+      }
+      return item;
+    });
+    setCart(newCart);
+    setCartItemCount(cartItemCount - 1);
+  };
+
+  const addToCart = (product) => {
+    setCart([...cart, product]);
+    setCartItemCount(cartItemCount + 1);
+  };
+
+  
   return (
     <>
       <DanhSachMenuSection
         menuIsOpen={menuIsOpen}
         handleMenuToggle={handleMenuToggle}
       />
-      <div className="search-container">
+      <div className="search-container-custom">
         <input type="text" placeholder="Tìm kiếm..." />
         <button type="button">🔍</button>
       </div>
@@ -97,6 +136,8 @@ function Menu() {
           <SanPhamSection
             handleAddButtonClick={handleAddButtonClick}
             handleAddToCart={handleAddToCart}
+            handleCloseButtonClick={handleCloseButtonClick}
+
             productOptions={productOptions}
             productId={1}
             name="Trà sữa 1"
@@ -105,6 +146,8 @@ function Menu() {
           <SanPhamSection
             handleAddButtonClick={handleAddButtonClick}
             handleAddToCart={handleAddToCart}
+            handleCloseButtonClick={handleCloseButtonClick}
+
             productOptions={productOptions}
             productId={1}
             name="Trà sữa 1"
@@ -113,6 +156,8 @@ function Menu() {
           <SanPhamSection
             handleAddButtonClick={handleAddButtonClick}
             handleAddToCart={handleAddToCart}
+            handleCloseButtonClick={handleCloseButtonClick}
+
             productOptions={productOptions}
             productId={1}
             name="Trà sữa 1"
@@ -124,6 +169,8 @@ function Menu() {
           <SanPhamSection
             handleAddButtonClick={handleAddButtonClick}
             handleAddToCart={handleAddToCart}
+            handleCloseButtonClick={handleCloseButtonClick}
+
             productOptions={productOptions}
             productId={2}
             name="Trà trái cây 1"
@@ -136,6 +183,9 @@ function Menu() {
         cartItemCount={cartItemCount}
         cartDetailsIsOpen={cartDetailsIsOpen}
         handleCartContainerClick={handleCartContainerClick}
+        handleCloseCartClick={handleCloseCartClick}
+        handleIncreaseQuantity={handleIncreaseQuantity}
+        handleDecreaseQuantity={handleDecreaseQuantity}
       />
     </>
   );
