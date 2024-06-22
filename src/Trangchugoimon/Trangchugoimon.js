@@ -193,7 +193,7 @@ function Trangchugoimon() {
             <h2>Gọi Nhân Viên</h2>
             <textarea placeholder="Nhập yêu cầu của bạn..." rows="4"></textarea>
             <div className="request-items">
-              <label>
+              {/* <label>
                 <input
                   type="checkbox"
                   checked={requestItems.tương_ớt}
@@ -232,7 +232,7 @@ function Trangchugoimon() {
                   onChange={() => handleCheckboxChange('nước_tương')}
                 />
                 Nước tương
-              </label>
+              </label> */}
               {/* Thêm các mục yêu cầu khác ở đây */}
             </div>
             <button className="btn btn-primary mt-3" onClick={handleSubmitForm}>
