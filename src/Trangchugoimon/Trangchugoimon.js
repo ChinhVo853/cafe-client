@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-
+import Phanhoi from './components/Phanhoi';
 function Trangchugoimon() {
+    
     const [showCallStaffForm, setShowCallStaffForm] = useState(false);
     const [requestItems, setRequestItems] = useState({
         tương_ớt: false,
@@ -140,7 +141,7 @@ function Trangchugoimon() {
                         <div className="col-lg-4 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
                             <div className="service-item rounded pt-3">
                                 <div className="p-4">
-                                    <a href="/Trangchugoimon">
+                                    <a href="/Menu">
 
                                         <i className="iconchucnang fa fa-3x fa-utensils text-primary mb-4"></i>
                                         <h5>MENU</h5>
@@ -181,9 +182,9 @@ function Trangchugoimon() {
             </div>
             {/* <!-- About End --> */}
 
-            <button className="fixed-button">
+            <a href='/Phanhoi' className="fixed-button">
                 <i className="fa fa-bullhorn"></i>
-            </button>
+            </a>
 
         </div>
          {/* GỌI NHÂN VIÊN */}

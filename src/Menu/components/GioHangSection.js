@@ -30,6 +30,7 @@ const GioHangSection = ({
       behavior: "smooth",
     });
   };
+  
   return (
     <>
       <div
@@ -58,7 +59,8 @@ const GioHangSection = ({
         <ul id="cart-items">
           {cart.map((item, index) => (
             <li key={index} className="cart-item">
-              <span>{`${item.name} - Size: ${item.size} - Giá: ${item.price}`}</span>
+              <img src={item.image} alt={item.name} className="cart-item-image" />
+              <span>{`${item.name} - Size: ${item.size} - Giá: ${item.price.toLocaleString()}đ`}</span>
               <div className="quantity-controls">
                 <button
                   className="decrease-button"
