@@ -19,6 +19,8 @@ import Trangthemsize from "./QUANLY/Trangthemsize/Trangthemsize";
 import Trangcapnhatsize from "./QUANLY/Trangcapnhatsize/Trangcapnhatsize";
 import Trangchugoimon from "./Trangchugoimon/Trangchugoimon";
 import Trangnhapma from "./Trangnhapma/Trangnhapma";
+import Phanhoi from "./Trangchugoimon/components/Phanhoi";
+import Cacmondadat from "./Trangchugoimon/components/Cacmondadat";
 function App() {
   return (
     <Routes>
@@ -50,8 +52,12 @@ function App() {
       {/* ********************************************************************** */}
       {/* -----------------------*******TRANGCHUGOIMON*********----------------- */}
       {/* ********************************************************************** */}
-      <Route path="/Trangchugoimon" element={<Trangchugoimon />} />
-      <Route path="/Trangnhapma" element={<Trangnhapma />} />
+
+      <Route path="/Trangchugoimon" element={<Trangchugoimon/>} />
+      <Route path="/Trangnhapma" element={<Trangnhapma/>} />
+      <Route path="/Phanhoi" element={<Phanhoi/>} />
+      <Route path="/Cacmondadat" element={<Cacmondadat />} />
+
     </Routes>
   );
 }
