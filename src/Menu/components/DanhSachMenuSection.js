@@ -1,3 +1,5 @@
+import React from "react";
+
 const DanhSachMenuSection = ({ data, menuIsOpen, handleMenuToggle }) => {
   const handleMenuItemClick = (event) => {
     event.preventDefault();
@@ -7,6 +9,7 @@ const DanhSachMenuSection = ({ data, menuIsOpen, handleMenuToggle }) => {
       targetElement.scrollIntoView({ behavior: "smooth" });
     }
   };
+
   return (
     <>
       <div className={`menu ${menuIsOpen ? "open" : ""}`} id="menu">
@@ -22,6 +25,11 @@ const DanhSachMenuSection = ({ data, menuIsOpen, handleMenuToggle }) => {
             </div>
           ))}
         </ul>
+        <button className="home-button-menu">
+          <a href="/Trangchugoimon">
+            <i className="fas fa-home"></i>
+          </a>
+        </button>
       </div>
       <button
         className="menu-toggle"

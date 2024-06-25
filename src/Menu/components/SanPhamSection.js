@@ -32,9 +32,10 @@ const SanPhamSection = ({
             +
           </button>
           <div
-            className={`product-options ${
-              productOptions[productId] ? "open" : ""
-            }`}
+
+            className={`product-options ${productOptions[productId] ? "open" : ""
+              }`}
+
           >
             <div className="cart-header">
               <button

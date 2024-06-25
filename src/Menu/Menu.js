@@ -6,12 +6,14 @@ import { getSomeData } from "./getAPI.js/API";
 function Menu() {
   const [menuIsOpen, setMenuIsOpen] = useState(false);
   const [productOptions, setProductOptions] = useState({});
-  const [data, setData] = useState(null);
+  const [data, setData] = useState();
+
   const [cart, setCart] = useState(() => {
     // Khôi phục giỏ hàng từ localStorage nếu có
     const savedCart = localStorage.getItem("cart");
     return savedCart ? JSON.parse(savedCart) : [];
   });
+
   const LayDuLieu = useCallback(async () => {
     try {
       const result = await getSomeData();
@@ -30,10 +32,6 @@ function Menu() {
     const savedItemCount = localStorage.getItem("cartItemCount");
     return savedItemCount ? parseInt(savedItemCount, 10) : 0;
   });
-
-  const xoa = () => {
-    localStorage.removeItem("cartItemCount");
-  };
 
   const [cartDetailsIsOpen, setCartDetailsIsOpen] = useState(false);
 
