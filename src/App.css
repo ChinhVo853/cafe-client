@@ -1,4 +1,6 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
 
 body {
   font-family: "Arial", sans-serif;
@@ -469,13 +471,17 @@ body {
 }
 
 .header::before {
-  content: '';
+  content: "";
   position: absolute;
   top: -50%;
   left: -50%;
   width: 200%;
   height: 200%;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.2),
+    rgba(255, 255, 255, 0)
+  );
   animation: shine 5s infinite;
 }
 
@@ -488,7 +494,6 @@ body {
     transform: translate(100%, 100%) rotate(45deg);
   }
 }
-
 
 .delete-btn {
   display: inline-block;
@@ -525,12 +530,11 @@ body {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   max-width: 600px;
   position: relative;
-  font-family: 'Arial', sans-serif;
+  font-family: "Arial", sans-serif;
   background-color: #f0f0f0;
   margin-left: auto;
   margin-right: auto;
 }
-
 
 .form-title {
   font-size: 24px;
@@ -763,13 +767,17 @@ body {
 }
 
 .add-employee-header::before {
-  content: '';
+  content: "";
   position: absolute;
   top: -50%;
   left: -50%;
   width: 200%;
   height: 200%;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.2),
+    rgba(255, 255, 255, 0)
+  );
   animation: add-employee-shine 5s infinite;
 }
 
@@ -811,20 +819,18 @@ body {
   /* Đảm bảo nút chiếm toàn bộ chiều rộng của phần tử chứa */
 }
 
-
-
 /*********************************************************************************************/
 /*---------------------------------------TRANGCHUGOIMON--------------------------------------*/
 /*********************************************************************************************/
 /********** Template CSS **********/
 :root {
-  --primary: #FEA116;
-  --light: #F1F8FF;
-  --dark: #0F172B;
+  --primary: #fea116;
+  --light: #f1f8ff;
+  --dark: #0f172b;
 }
 
 .ff-secondary {
-  font-family: 'Pacifico', cursive;
+  font-family: "Pacifico", cursive;
 }
 
 .fw-medium {
@@ -843,33 +849,31 @@ body {
   z-index: 99;
 }
 
-
 /*** Spinner ***/
 #spinner {
   opacity: 0;
   visibility: hidden;
-  transition: opacity .5s ease-out, visibility 0s linear .5s;
+  transition: opacity 0.5s ease-out, visibility 0s linear 0.5s;
   z-index: 99999;
 }
 
 #spinner.show {
-  transition: opacity .5s ease-out, visibility 0s linear 0s;
+  transition: opacity 0.5s ease-out, visibility 0s linear 0s;
   visibility: visible;
   opacity: 1;
 }
 
-
 /*** Button ***/
 .btn {
-  font-family: 'Nunito', sans-serif;
+  font-family: "Nunito", sans-serif;
   font-weight: 500;
   text-transform: uppercase;
-  transition: .5s;
+  transition: 0.5s;
 }
 
 .btn.btn-primary,
 .btn.btn-secondary {
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .btn-square {
@@ -898,7 +902,6 @@ body {
   border-radius: 2px;
 }
 
-
 /*** Navbar ***/
 .navbar-brand {
   width: 100%;
@@ -914,7 +917,7 @@ body {
   text-transform: uppercase;
   font-weight: 500;
   outline: none;
-  transition: .5s;
+  transition: 0.5s;
 }
 
 .sticky-top.navbar-dark .navbar-nav .nav-link {
@@ -928,7 +931,7 @@ body {
 
 .navbar-dark .navbar-brand img {
   max-height: 60px;
-  transition: .5s;
+  transition: 0.5s;
 }
 
 .sticky-top.navbar-dark .navbar-brand img {
@@ -942,7 +945,9 @@ body {
 
   .navbar-dark .navbar-collapse {
     margin-top: 15px;
+
     border-top: 1px solid rgba(255, 255, 255, .1)
+
   }
 
   .navbar-dark .navbar-nav .nav-link,
@@ -980,9 +985,11 @@ h1 {
   -webkit-text-fill-color: transparent;
 }
 
+
 /*** Hero Header ***/
 .hero-header {
   background: linear-gradient(rgba(15, 23, 43, .7), rgba(15, 23, 43, .7)), url(../src/img/bg-hero1.jpg);
+
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -1007,10 +1014,11 @@ h1 {
   }
 }
 
+
 .breadcrumb-item+.breadcrumb-item::before {
   color: rgba(255, 255, 255, .5);
-}
 
+}
 
 /*** Section Title ***/
 .section-title {
@@ -1045,11 +1053,11 @@ h1 {
   display: none;
 }
 
-
 /*** Service ***/
 .service-item {
-  box-shadow: 0 0 45px rgba(0, 0, 0, .08);
-  transition: .5s;
+
+  box-shadow: 0 0 45px rgba(0, 0, 0, 0.08);
+  transition: 0.5s;
 
 }
 
@@ -1060,26 +1068,25 @@ h1 {
 }
 
 .service-item * {
-  transition: .5s;
+  transition: 0.5s;
 }
 
 .service-item:hover * {
   color: var(--light) !important;
 }
 
-
 /*** Food Menu ***/
 .nav-pills .nav-item .active {
   border-bottom: 2px solid var(--primary);
 }
-
 
 /*** Youtube Video ***/
 .video {
   position: relative;
   height: 100%;
   min-height: 500px;
-  background: linear-gradient(rgba(15, 23, 43, .1), rgba(15, 23, 43, .1)), url(./img/video.jpg);
+  background: linear-gradient(rgba(15, 23, 43, 0.1), rgba(15, 23, 43, 0.1)),
+    url(./img/video.jpg);
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -1186,21 +1193,20 @@ h1 {
   z-index: 999;
   font-size: 30px;
   font-weight: normal;
-  color: #FFFFFF;
+  color: #ffffff;
   background: #000000;
   opacity: 1;
 }
 
-
 /*** Team ***/
 .team-item {
-  box-shadow: 0 0 45px rgba(0, 0, 0, .08);
+  box-shadow: 0 0 45px rgba(0, 0, 0, 0.08);
   height: calc(100% - 38px);
-  transition: .5s;
+  transition: 0.5s;
 }
 
 .team-item img {
-  transition: .5s;
+  transition: 0.5s;
 }
 
 .team-item:hover img {
@@ -1215,11 +1221,10 @@ h1 {
   border-radius: 38px 38px 0 0;
 }
 
-
 /*** Testimonial ***/
 .testimonial-carousel .owl-item .testimonial-item,
 .testimonial-carousel .owl-item.center .testimonial-item * {
-  transition: .5s;
+  transition: 0.5s;
 }
 
 .testimonial-carousel .owl-item.center .testimonial-item {
@@ -1244,16 +1249,15 @@ h1 {
   margin: 0 5px;
   width: 15px;
   height: 15px;
-  border: 1px solid #CCCCCC;
+  border: 1px solid #cccccc;
   border-radius: 15px;
-  transition: .5s;
+  transition: 0.5s;
 }
 
 .testimonial-carousel .owl-dot.active {
   background: var(--primary);
   border-color: var(--primary);
 }
-
 
 /*** Footer ***/
 .footer .btn.btn-social {
@@ -1264,9 +1268,9 @@ h1 {
   align-items: center;
   justify-content: center;
   color: var(--light);
-  border: 1px solid #FFFFFF;
+  border: 1px solid #ffffff;
   border-radius: 35px;
-  transition: .3s;
+  transition: 0.3s;
 }
 
 .footer .btn.btn-social:hover {
@@ -1278,11 +1282,11 @@ h1 {
   margin-bottom: 5px;
   padding: 0;
   text-align: left;
-  color: #FFFFFF;
+  color: #ffffff;
   font-size: 15px;
   font-weight: normal;
   text-transform: capitalize;
-  transition: .3s;
+  transition: 0.3s;
 }
 
 .footer .btn.btn-link::before {
@@ -1301,7 +1305,7 @@ h1 {
 .footer .copyright {
   padding: 25px 0;
   font-size: 15px;
-  border-top: 1px solid rgba(256, 256, 256, .1);
+  border-top: 1px solid rgba(256, 256, 256, 0.1);
 }
 
 .footer .copyright a {
@@ -1311,7 +1315,7 @@ h1 {
 .footer .footer-menu a {
   margin-right: 15px;
   padding-right: 15px;
-  border-right: 1px solid rgba(255, 255, 255, .1);
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .footer .footer-menu a:last-child {
@@ -1321,7 +1325,9 @@ h1 {
 }
 
 /*********************************************ICON************************************/
+
 .iconchucnangcha {}
+
 
 .service-item .iconchucnang {
   color: #fff !important;
@@ -1333,13 +1339,11 @@ h1 {
   margin: auto;
   background: #f4a261;
   border-radius: 100%;
-
 }
 
 h5 {
   text-align: center;
   color: black !important;
-
 }
 
 .welcomeabouus {
@@ -1519,7 +1523,6 @@ label {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
-
 }
 
 #cart-items {
@@ -1583,6 +1586,7 @@ label {
   font-weight: bold;
   text-align: right;
 }
+
 
 /**************************************TRANGPHANHOI*******************************************/
 .feedback-page {
@@ -1665,3 +1669,4 @@ h3 {
   border-style: solid;
   border-color: transparent #e4e6eb transparent transparent;
 }
+
