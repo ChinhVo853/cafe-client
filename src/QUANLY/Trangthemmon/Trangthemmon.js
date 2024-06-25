@@ -13,6 +13,8 @@ function Trangthemmon() {
         foodStatus: 'Còn hàng'
     });
 
+    const [showNotification, setShowNotification] = useState(false);
+
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({
@@ -32,6 +34,14 @@ function Trangthemmon() {
         e.preventDefault();
         // Handle the form submission
         console.log(formData);
+
+        // Hiển thị thông báo
+        setShowNotification(true);
+
+        // Ẩn thông báo sau 3 giây
+        setTimeout(() => {
+            setShowNotification(false);
+        }, 3000);
     };
 
     return (
@@ -75,8 +85,13 @@ function Trangthemmon() {
                     </select>
                 </div>
                 <button type="submit" className="btn btn-custom w-100">Thêm món</button>
-                <a href='/Trangquanlymon' className="quaylai btn btn-secondary go-back-btn" >Hủy</a>
+                <a href='/Trangquanlymon' className="quaylai btn btn-secondary go-back-btn">Hủy</a>
             </form>
+            {showNotification && (
+                <div className="alert alert-success mt-3" role="alert">
+                    Thêm thành công!
+                </div>
+            )}
         </div>
     );
 }

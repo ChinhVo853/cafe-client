@@ -1417,6 +1417,21 @@ a {
 }
 
 /* Call Staff Form Styles */
+.success-notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  transition: opacity 0.5s ease;
+}
+
+.success-notification.show {
+  opacity: 1;
+}
+
+.success-notification.hide {
+  opacity: 0;
+}
 .call-staff-form {
   position: fixed;
   bottom: 0;
@@ -1427,6 +1442,7 @@ a {
   z-index: 1000;
   animation: slideUp 0.3s ease-out;
   padding: 20px;
+  
 }
 
 @keyframes slideUp {
