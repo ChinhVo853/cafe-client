@@ -8,20 +8,19 @@ const apiClient = axios.create({
   },
 });
 
-export const layData = async (id) => {
+export const SuaData = async (data) => {
   try {
-    const response = await apiClient.get("api/Size/Xem/" + id);
-    return response.data;
+    const response = await apiClient.post("api/Size/Sua", data);
+    return response;
   } catch (error) {
     console.error("Error fetching data:", error);
     throw error;
   }
 };
-
-export const Sua = async (data) => {
+export const LayData = async (id) => {
   try {
-    const response = await apiClient.post("api/Size/Sua", data);
-    return response;
+    const response = await apiClient.get("api/Size/Xem/" + id);
+    return response.data;
   } catch (error) {
     console.error("Error fetching data:", error);
     throw error;
