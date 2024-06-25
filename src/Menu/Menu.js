@@ -2,16 +2,30 @@ import React, { useState, useCallback, useEffect } from "react";
 import DanhSachMenuSection from "./components/DanhSachMenuSection";
 import SanPhamSection from "./components/SanPhamSection";
 import GioHangSection from "./components/GioHangSection";
-
+import { getSomeData } from "./getAPI.js/API";
 function Menu() {
   const [menuIsOpen, setMenuIsOpen] = useState(false);
   const [productOptions, setProductOptions] = useState({});
+  const [data, setData] = useState();
 
   const [cart, setCart] = useState(() => {
     // Khôi phục giỏ hàng từ localStorage nếu có
     const savedCart = localStorage.getItem("cart");
     return savedCart ? JSON.parse(savedCart) : [];
   });
+
+  const LayDuLieu = useCallback(async () => {
+    try {
+      const result = await getSomeData();
+
+      setData(result);
+    } catch (error) {
+      console.error("Failed to fetch data", error);
+    }
+  }, []);
+  useEffect(() => {
+    LayDuLieu();
+  }, [LayDuLieu]);
 
   const [cartItemCount, setCartItemCount] = useState(() => {
     // Khôi phục số lượng sản phẩm trong giỏ hàng từ localStorage nếu có
@@ -118,75 +132,55 @@ function Menu() {
     setCartItemCount(cartItemCount + 1);
   };
 
-  
   return (
     <>
-      <DanhSachMenuSection
-        menuIsOpen={menuIsOpen}
-        handleMenuToggle={handleMenuToggle}
-      />
-      <div className="search-container-custom">
-        <input type="text" placeholder="Tìm kiếm..." />
-        <button type="button">🔍</button>
-      </div>
-      <div className="category-container">
-        <div className="category row" id="milk-tea">
-          <div className="category-title ">Trà sữa</div>
-
-          <SanPhamSection
-            handleAddButtonClick={handleAddButtonClick}
-            handleAddToCart={handleAddToCart}
-            handleCloseButtonClick={handleCloseButtonClick}
-
-            productOptions={productOptions}
-            productId={1}
-            name="Trà sữa 1"
-            price={10000}
+      {data && (
+        <>
+          <DanhSachMenuSection
+            data={data}
+            menuIsOpen={menuIsOpen}
+            handleMenuToggle={handleMenuToggle}
           />
-          <SanPhamSection
-            handleAddButtonClick={handleAddButtonClick}
-            handleAddToCart={handleAddToCart}
-            handleCloseButtonClick={handleCloseButtonClick}
+          <div className="search-container-custom">
+            <input type="text" placeholder="Tìm kiếm..." />
+            <button type="button">🔍</button>
+          </div>
+          {Object.entries(data.data).map(([key, item]) => (
+            <div key={key}>
+              <div className="category-container">
+                <div className="category row" id={item.ten_loai}>
+                  <div className="category-title ">{item.ten_loai}</div>
+                  {Object.entries(item.mon).map(([monKey, monValue]) => (
+                    <SanPhamSection
+                      data={monValue}
+                      handleAddButtonClick={handleAddButtonClick}
+                      handleAddToCart={handleAddToCart}
+                      handleCloseButtonClick={handleCloseButtonClick}
+                      productOptions={productOptions}
+                      productId={monValue.ten_mon}
+                      name={monValue.ten_mon}
+                      price={monValue.gia}
+                      key={monKey}
+                    />
+                  ))}
+                </div>
+              </div>
 
-            productOptions={productOptions}
-            productId={1}
-            name="Trà sữa 1"
-            price={10000}
-          />
-          <SanPhamSection
-            handleAddButtonClick={handleAddButtonClick}
-            handleAddToCart={handleAddToCart}
-            handleCloseButtonClick={handleCloseButtonClick}
+              {/* <h2>{item.ten_loai}</h2> */}
+            </div>
+          ))}
 
-            productOptions={productOptions}
-            productId={1}
-            name="Trà sữa 1"
-            price={10000}
+          <GioHangSection
+            cart={cart}
+            cartItemCount={cartItemCount}
+            cartDetailsIsOpen={cartDetailsIsOpen}
+            handleCartContainerClick={handleCartContainerClick}
+            handleCloseCartClick={handleCloseCartClick}
+            handleIncreaseQuantity={handleIncreaseQuantity}
+            handleDecreaseQuantity={handleDecreaseQuantity}
           />
-        </div>
-        <div className="category" id="fruit-tea">
-          <div className="category-title">Trà trái cây</div>
-          <SanPhamSection
-            handleAddButtonClick={handleAddButtonClick}
-            handleAddToCart={handleAddToCart}
-            handleCloseButtonClick={handleCloseButtonClick}
-
-            productOptions={productOptions}
-            productId={2}
-            name="Trà trái cây 1"
-            price={8000}
-          />
-        </div>
-      </div>
-      <GioHangSection
-        cart={cart}
-        cartItemCount={cartItemCount}
-        cartDetailsIsOpen={cartDetailsIsOpen}
-        handleCartContainerClick={handleCartContainerClick}
-        handleCloseCartClick={handleCloseCartClick}
-        handleIncreaseQuantity={handleIncreaseQuantity}
-        handleDecreaseQuantity={handleDecreaseQuantity}
-      />
+        </>
+      )}
     </>
   );
 }

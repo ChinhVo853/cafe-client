@@ -39,7 +39,7 @@ function App() {
       {/* -----------------------*******QuanLySize*********----------------- */}
       <Route path="/Trangquanlysize" element={<Trangquanlysize />} />
       <Route path="/Trangthemsize" element={<Trangthemsize />} />
-      <Route path="/Trangcapnhatsize" element={<Trangcapnhatsize />} />
+      <Route path="/Trangcapnhatsize/:id" element={<Trangcapnhatsize />} />
       {/* -----------------------*******TrangQLyeucaucuakhachhang*********----------------- */}
       <Route
         path="/TrangQLyeucaucuakhachhang"
