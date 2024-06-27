@@ -10,7 +10,7 @@ const apiClient = axios.create({
 
 export const layData = async (id) => {
   try {
-    const response = await apiClient.get("api/Size/Xem/" + id);
+    const response = await apiClient.get("api/Loai/Xem/" + id);
     return response.data;
   } catch (error) {
     console.error("Error fetching data:", error);
@@ -20,7 +20,7 @@ export const layData = async (id) => {
 
 export const Sua = async (data) => {
   try {
-    const response = await apiClient.post("api/Size/Sua", data);
+    const response = await apiClient.post("api/Loai/Sua", data);
     return response;
   } catch (error) {
     console.error("Error fetching data:", error);
