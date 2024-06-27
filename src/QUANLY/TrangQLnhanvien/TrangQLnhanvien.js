@@ -39,11 +39,15 @@ const TrangQLnhanvien = () => {
     setMenuOpen(!menuOpen);
   };
   return (
-    <div className="request-container mt-5">
+
+    <div>
+
       <div className="search-container-custom">
         <input type="text" placeholder="Tìm kiếm..." />
         <button type="button">🔍</button>
       </div>
+      <div className="request-container mt-5">
+
       <div className="header">QUẢN LÝ NHÂN VIÊN</div>
       <div className="text-end mb-3">
         <a
@@ -89,12 +93,37 @@ const TrangQLnhanvien = () => {
                     </button>
                   </td>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {employees.map(employee => (
+                  <tr key={employee.id}>
+                    <td>{employee.id}</td>
+                    <td>{employee.name}</td>
+                    <td>{employee.phone}</td>
+                    <td>{employee.email}</td>
+                    <td>{employee.password}</td>
+                    <td>
+
+                      <button
+                        className="btn btn-outline-danger btn-sm"
+                        onClick={() => handleDelete(employee.id)}
+                      >
+                        Xóa
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
-      <Menuquanly toggleMenu={toggleMenu} menuOpen={menuOpen} />
+
+      <Menuquanly
+        toggleMenu={toggleMenu}
+        menuOpen={menuOpen}
+      />
+
     </div>
   );
 };

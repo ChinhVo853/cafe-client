@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useCallback } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useParams } from "react-router-dom";
@@ -26,6 +27,7 @@ function Trangcapnhatsize() {
     const data = {
       ten: sizeName,
       id: id,
+
     };
     // Handle the form submission
     try {
@@ -35,6 +37,7 @@ function Trangcapnhatsize() {
       console.error("Failed to submit data", error);
     }
   };
+
 
   return (
     <div className="them-mon-container">
@@ -52,6 +55,7 @@ function Trangcapnhatsize() {
             value={sizeName}
             onChange={handleNameChange}
           />
+
         </div>
         <button type="submit" className="btn btn-custom w-100">
           Cập nhật

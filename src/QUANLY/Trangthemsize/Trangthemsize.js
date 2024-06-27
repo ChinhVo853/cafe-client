@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { ThemData } from "./API/Api";
@@ -7,6 +8,7 @@ function Trangthemsize() {
   const handleNameChange = (e) => {
     setsizeName(e.target.value);
   };
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -37,6 +39,7 @@ function Trangthemsize() {
             value={sizeName}
             onChange={handleNameChange}
           />
+
         </div>
 
         <button type="submit" className="btn btn-custom w-100">

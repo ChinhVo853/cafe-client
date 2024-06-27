@@ -121,10 +121,12 @@ function Trangchuquanly() {
     <>
       {tables ? (
         <>
+
           <div>
             <div className="search-container-custom">
               <input type="text" placeholder="Tìm kiếm..." />
               <button type="button">🔍</button>
+
             </div>
 
             <Menuquanly toggleMenu={toggleMenu} menuOpen={menuOpen} />

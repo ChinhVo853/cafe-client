@@ -5,8 +5,8 @@ import '@fortawesome/fontawesome-free/css/all.css';
 function Trangquanlymon() {
     const [menuOpen, setMenuOpen] = useState(false);
     const [dishes, setDishes] = useState([
-        { id: 1, name: 'Bún chả', price: '50,000 VND', image: 'path_to_image', reviews: 100, category: 'Noodle', size: 'Large', status: 'Còn hàng' },
-        { id: 2, name: 'Phở bò', price: '40,000 VND', image: 'path_to_image', reviews: 150, category: 'Soup', size: 'Medium', status: 'Còn hàng' }
+        { id: 1, name: 'Bún chả',category: 'Noodle', size: 'Large', price: '50,000 VND', image: 'path_to_image', reviews: 100,  status: 'Còn hàng' },
+        { id: 2, name: 'Phở bò', category: 'Soup', size: 'Medium',price: '40,000 VND', image: 'path_to_image', reviews: 150,  status: 'Còn hàng' }
     ]);
 
     const toggleMenu = () => {
@@ -38,10 +38,11 @@ function Trangquanlymon() {
                                     <th scope="col">ID</th>
                                     <th scope="col">Hình ảnh</th>
                                     <th scope="col">Tên món</th>
-                                    <th scope="col">Giá</th>
-                                    <th scope="col">Số lượng đánh giá</th>
                                     <th scope="col">Loại</th>
                                     <th scope="col">Size</th>
+                                    <th scope="col">Giá</th>
+                                    <th scope="col">Số lượng đánh giá</th>
+                                    
                                     <th scope="col">Trạng thái</th>
                                     <th scope="col"></th>
                                 </tr>
@@ -52,10 +53,11 @@ function Trangquanlymon() {
                                         <td>{dish.id}</td>
                                         <td><img src={dish.image} alt="Hình ảnh món ăn" style={{ maxWidth: '100px' }} /></td>
                                         <td>{dish.name}</td>
-                                        <td>{dish.price}</td>
-                                        <td>{dish.reviews}</td>
                                         <td>{dish.category}</td>
                                         <td>{dish.size}</td>
+
+                                        <td>{dish.price}</td>
+                                        <td>{dish.reviews}</td>
                                         <td>
                                             <button onClick={() => toggleStatus(dish.id)} className="btn btn-outline-info btn-sm">{dish.status}</button>
                                         </td>

@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { ThemData } from "./getAPI/API";
@@ -17,6 +18,7 @@ function Trangthemloai() {
     const data = {
       ten: typeName,
       sizeDuyNhat: size,
+
     };
     try {
       await ThemData(data);
@@ -25,6 +27,7 @@ function Trangthemloai() {
       console.error("Failed to submit data", error);
     }
   };
+
 
   return (
     <div className="them-mon-container">
@@ -54,6 +57,7 @@ function Trangthemloai() {
           <label className="form-check-label" htmlFor="flexCheckDefault">
             Loại chỉ có 1 size
           </label>
+
         </div>
 
         <button type="submit" className="btn btn-custom w-100">
