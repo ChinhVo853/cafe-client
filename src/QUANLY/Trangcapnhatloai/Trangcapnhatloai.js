@@ -1,27 +1,42 @@
-import React, { useState } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-
+import React, { useState, useEffect, useCallback } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { layData, Sua } from "./API/Api";
+import { useParams } from "react-router-dom";
 function Trangcapnhatloai() {
-    const [typeName, settypeName] = useState('');
-    const [showNotification, setShowNotification] = useState(false);
+  const [typeName, settypeName] = useState("");
+  const { id } = useParams();
+  const LayDuLieu = useCallback(async () => {
+    try {
+      const result = await layData(id);
+      settypeName(result.data.ten);
+    } catch (error) {
+      console.error("Failed to fetch data", error);
+    }
+  }, []);
+  useEffect(() => {
+    LayDuLieu();
+  }, [LayDuLieu]);
 
-    const handleNameChange = (e) => {
-        settypeName(e.target.value);
+  const handleNameChange = (e) => {
+    settypeName(e.target.value);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const data = {
+      ten: typeName,
+      id: id,
+
     };
+    // Handle the form submission
+    try {
+      await Sua(data);
+      window.location.href = "/Trangquanlyloai";
+    } catch (error) {
+      console.error("Failed to submit data", error);
+    }
+  };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        // Handle the form submission
-        console.log({ typeName });
-
-        // Hiển thị thông báo
-        setShowNotification(true);
-
-        // Ẩn thông báo sau 3 giây
-        setTimeout(() => {
-            setShowNotification(false);
-        }, 3000);
-    };
 
     return (
         <div className="them-mon-container">
@@ -46,8 +61,20 @@ function Trangcapnhatloai() {
                     Cập nhật thành công!
                 </div>
             )}
+
         </div>
-    );
+        <button type="submit" className="btn btn-custom w-100">
+          Cập nhật
+        </button>
+        <a
+          href="/Trangquanlyloai"
+          className="quaylai btn btn-secondary go-back-btn"
+        >
+          Hủy
+        </a>
+      </form>
+    </div>
+  );
 }
 
 export default Trangcapnhatloai;
