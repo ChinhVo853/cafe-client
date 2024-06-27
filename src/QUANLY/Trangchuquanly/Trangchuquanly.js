@@ -139,7 +139,7 @@ function Trangchuquanly() {
             />
           </div>
           <ModalQR
-            maQR={maQR + "/QR/1"}
+            maQR={maQR + "/Trangnhapma/QR/1"}
             modalIsOpen={modalIsOpen}
             afterOpenModal={afterOpenModal}
             closeModal={closeModal}
