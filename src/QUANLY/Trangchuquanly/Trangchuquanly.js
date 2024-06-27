@@ -1,18 +1,26 @@
 import Menuquanly from "../Menuquanly";
 import ModalQR from "./ModalQR";
 import Quanlyban from "./components/Quanlyban";
-import React, { useState } from "react";
+import React, { useState, useEffect, useCallback } from "react";
+import { XemData, XoaData } from "./API/Api";
 function Trangchuquanly() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [maQR, setMaQR] = useState(
     window.location.href.split("/").slice(0, -1).join("/")
   );
-  const [tables, setTables] = useState([
-    { id: 1, code: "T001", status: "occupied" },
-    { id: 2, code: "T002", status: "vacant" },
-    { id: 3, code: "T003", status: "occupied" },
-  ]);
+  const [tables, setTables] = useState();
+  const LayData = useCallback(async () => {
+    try {
+      const result = await XemData();
+      setTables(result.data);
+    } catch (error) {
+      console.error("Failed to fetch data", error);
+    }
+  }, []);
 
+  useEffect(() => {
+    LayData();
+  }, [LayData]);
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
@@ -79,7 +87,6 @@ function Trangchuquanly() {
     localStorage.setItem(`table-${tableId}-order`, orderData);
     window.location.href = `Thanhtoan?table=${tableId}`;
   };
-  console.log(maQR);
   const handleQRCode = (code) => {
     console.log(`QR Code for table: ${code}`);
     // Logic để hiển thị hoặc xử lý mã QR
@@ -103,30 +110,44 @@ function Trangchuquanly() {
     setIsOpen(false);
   }
 
+  const XoaDuLieu = async (id) => {
+    const data = {
+      id: id,
+    };
+    await XoaData(data);
+    LayData();
+  };
   return (
     <>
-      <div>
-        <div className="search-container-custom">
-          <input type="text" placeholder="Tìm kiếm..." />
-          <button type="button">🔍</button>
-        </div>
+      {tables ? (
+        <>
+          <div>
+            <div className="search-container-custom">
+              <input type="text" placeholder="Tìm kiếm..." />
+              <button type="button">🔍</button>
+            </div>
 
-        <Menuquanly toggleMenu={toggleMenu} menuOpen={menuOpen} />
+            <Menuquanly toggleMenu={toggleMenu} menuOpen={menuOpen} />
 
-        <Quanlyban
-          tables={tables}
-          changeStatus={changeStatus}
-          handlePayment={handlePayment}
-          handleQRCode={handleQRCode}
-          openModal={openModal}
-        />
-      </div>
-      <ModalQR
-        maQR={maQR + "/QR/1"}
-        modalIsOpen={modalIsOpen}
-        afterOpenModal={afterOpenModal}
-        closeModal={closeModal}
-      />
+            <Quanlyban
+              tables={tables}
+              changeStatus={changeStatus}
+              handlePayment={handlePayment}
+              handleQRCode={handleQRCode}
+              openModal={openModal}
+              XoaDuLieu={XoaDuLieu}
+            />
+          </div>
+          <ModalQR
+            maQR={maQR + "/QR/1"}
+            modalIsOpen={modalIsOpen}
+            afterOpenModal={afterOpenModal}
+            closeModal={closeModal}
+          />
+        </>
+      ) : (
+        <>load</>
+      )}
     </>
   );
 }

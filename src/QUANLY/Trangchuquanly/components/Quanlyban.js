@@ -7,7 +7,9 @@ function Quanlyban({
   handlePayment,
   handleQRCode,
   openModal,
+  XoaDuLieu,
 }) {
+  console.log(tables);
   return (
     <div className="request-container mt-5">
       <div className="header">THỐNG KÊ</div>
@@ -24,38 +26,34 @@ function Quanlyban({
       <div className="container">
         <div className="row">
           {tables.map((table) => (
-            <div className="col-md-4" key={table.id}>
+            <div className="col-md-4" key={table.ban_id}>
               <div className="card mb-3">
                 <div
-                  className={`card-body ${table.status}`}
+                  className={`card-body ${table.ten_trang_thai}`}
                   id={`table-${table.id}`}
                 >
-                  <h5 className="card-title">Bàn {table.id}</h5>
-                  <p className="card-text">Mã bàn: {table.code}</p>
+                  <h5 className="card-title">Bàn {table.ten_ban}</h5>
+                  <p className="card-text">Mã bàn: {table.dat_mon_id}</p>
                   <p className="card-text">
-                    Trạng thái:{" "}
-                    {table.status === "occupied" ? "Đang sử dụng" : "Trống"}
+                    Trạng thái: {table.ten_trang_thai}
                   </p>
-                  <button
-                    className="btn btn-primary"
-                    onClick={() => changeStatus(table.id)}
-                  >
-                    {table.status === "occupied"
-                      ? "Đổi sang trống"
-                      : "Đổi sang đang sử dụng"}
-                  </button>
+
                   <button className="btn btn-info qr-btn" onClick={openModal}>
                     QR
                   </button>
                   <button
                     className="btn btn-warning payment-btn"
-                    onClick={() => handlePayment(table.id)}
+                    onClick={() => handlePayment(table.ban_id)}
                   >
-                    Thanh toán
+                    Yêu cầu
                   </button>
-                  <a href="#" className="btn btn-danger delete-btn">
+                  <button
+                    href="#"
+                    className="btn btn-danger delete-btn"
+                    onClick={() => XoaDuLieu(table.ban_id)}
+                  >
                     Xóa
-                  </a>
+                  </button>
                 </div>
               </div>
             </div>
