@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import Menuquanly from '../Menuquanly';
-const TrangQLnhanvien = () => {
+const Trangnhanvien = () => {
   const [employees, setEmployees] = useState([
     { id: 1, name: 'Nguyễn Văn A', phone: '0123456789', email: 'a@example.com', password: '******' },
-    { id: 2, name: 'Trần Thị B', phone: '0987654321', email: 'b@example.com', password: '******' },
-    { id: 3, name: 'Lê Văn C', phone: '0912345678', email: 'c@example.com', password: '******' },
+
   ]);
 
   const handleDelete = (id) => {
@@ -26,14 +25,18 @@ const TrangQLnhanvien = () => {
   };
   return (
     <div>
+      
       <div className="search-container-custom">
         <input type="text" placeholder="Tìm kiếm..." />
         <button type="button">🔍</button>
       </div>
+      
       <div className="request-container mt-5">
-        <div className="header">QUẢN LÝ NHÂN VIÊN</div>
+      <a href="/Trangchuquanly"><button className="btn-quayve" type="button"><i class="fa-solid fa-circle-chevron-left"></i>TRỞ VỀ</button></a>
+
+        <div className="header">THÔNG TIN NHÂN VIÊN</div>
+
         <div className="text-end mb-3">
-          <a href='/Trangthemnhanvien' className="btn btn-primary btn-add-employee" >Thêm nhân viên</a>
         </div>
         <div className="row">
           <div className="col">
@@ -57,13 +60,13 @@ const TrangQLnhanvien = () => {
                     <td>{employee.email}</td>
                     <td>{employee.password}</td>
                     <td>
-
                       <button
-                        className="btn btn-outline-danger btn-sm"
-                        onClick={() => handleDelete(employee.id)}
+                        className="btn btn-outline-primary btn-sm me-2"
+                        onClick={() => handleUpdate(employee.id)}
                       >
-                        Xóa
+                        Cập nhật
                       </button>
+
                     </td>
                   </tr>
                 ))}
@@ -72,12 +75,8 @@ const TrangQLnhanvien = () => {
           </div>
         </div>
       </div>
-      <Menuquanly
-        toggleMenu={toggleMenu}
-        menuOpen={menuOpen}
-      />
     </div>
   );
 };
 
-export default TrangQLnhanvien;
+export default Trangnhanvien;

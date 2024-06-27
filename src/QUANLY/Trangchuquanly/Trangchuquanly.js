@@ -57,13 +57,13 @@ function Trangchuquanly() {
                     <input type="text" placeholder="Tìm kiếm..." />
                     <button type="button">🔍</button>
                 </div>
-                
+                <a href="/Trangnhanvien"><button className="btn-trangnhanvien" type="button"><i class="fa-solid fa-user"></i></button></a>
                 <Menuquanly
                     toggleMenu={toggleMenu}
                     menuOpen={menuOpen}
                 />
-                
-                <Quanlyban 
+
+                <Quanlyban
                     tables={tables}
                     changeStatus={changeStatus}
                     handlePayment={handlePayment}
