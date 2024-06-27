@@ -43,7 +43,10 @@ function Trangcapnhatmon() {
             setShowNotification(false);
         }, 3000);
     };
-
+    const [size, setSize] = useState(false);
+    const handleSize = (e) => {
+        setSize(e.target.checked);
+    };
     return (
         <div className="them-mon-container">
             <div className="header">CẬP NHẬT MÓN</div>
@@ -70,54 +73,38 @@ function Trangcapnhatmon() {
                         onChange={handleChange}
                     />
                 </div>
-                <div className="mb-3">
-                    <label htmlFor="foodPrice" className="form-label">Giá</label>
-                    <input
-                        type="number"
-                        className="form-control"
-                        id="foodPrice"
-                        name="foodPrice"
-                        placeholder="Nhập giá món ăn"
-                        value={formData.foodPrice}
-                        onChange={handleChange}
-                    />
-                </div>
-                <div className="mb-3">
-                    <label htmlFor="foodReviews" className="form-label">Số lượng đánh giá</label>
-                    <input
-                        type="number"
-                        className="form-control"
-                        id="foodReviews"
-                        name="foodReviews"
-                        placeholder="Nhập số lượng đánh giá"
-                        value={formData.foodReviews}
-                        onChange={handleChange}
-                    />
-                </div>
+
+
                 <div className="mb-3">
                     <label htmlFor="foodCategory" className="form-label">Loại</label>
-                    <input
-                        type="text"
-                        className="form-control"
-                        id="foodCategory"
-                        name="foodCategory"
-                        placeholder="Nhập loại món ăn"
-                        value={formData.foodCategory}
-                        onChange={handleChange}
-                    />
+                    <select type="text" className="form-control" id="foodCategory" name="foodCategory" value={formData.foodCategory} onChange={handleChange} />
                 </div>
-                <div className="mb-3">
-                    <label htmlFor="foodSize" className="form-label">Size</label>
-                    <input
-                        type="text"
-                        className="form-control"
-                        id="foodSize"
-                        name="foodSize"
-                        placeholder="Nhập size món ăn"
-                        value={formData.foodSize}
-                        onChange={handleChange}
-                    />
+                <div className="form-row mb-3">
+                    <div className="form-group">
+                        <label htmlFor="foodCategory" className="form-label">Size</label>
+                        <select type="text" className="form-control" id="foodCategory" name="foodCategory" onChange={handleChange}>
+                            {/* Thêm các tùy chọn cho select */}
+                            <option value="">Chọn size</option>
+                            <option value="small">Nhỏ</option>
+                            <option value="medium">Vừa</option>
+                            <option value="large">Lớn</option>
+                        </select>
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="foodPrice" className="form-label">Giá</label>
+                        <input
+                            type="number"
+                            className="form-control"
+                            id="foodPrice"
+                            name="foodPrice"
+                            placeholder="Nhập giá món ăn"
+                            value={formData.foodPrice}
+                            onChange={handleChange}
+                        />
+                    </div>
                 </div>
+
+                
                 <div className="mb-3">
                     <label htmlFor="foodStatus" className="form-label">Trạng thái</label>
                     <select

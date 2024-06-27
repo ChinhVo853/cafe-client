@@ -1798,4 +1798,17 @@ h3 {
   text-align: center;
   margin: auto;
 }
-/**/
+/*****************************TRANGCAPNHATMON*******************************/
+.form-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.form-row .form-group {
+  flex: 1;
+  margin-right: 10px;
+}
+
+.form-row .form-group:last-child {
+  margin-right: 0;
+}
