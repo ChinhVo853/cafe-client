@@ -33,15 +33,12 @@ function Trangthemmon() {
         // Handle the form submission
         console.log(formData);
     };
-    const [size, setSize] = useState(false);
-    const handleSize = (e) => {
-        setSize(e.target.checked);
-    };
+
     return (
         <div className="them-mon-container">
             <a href="/Trangquanlymon" className="btn-back">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-arrow-left" viewBox="0 0 16 16">
-                    <path fillRule="evenodd" d="M5.854 3.646a.5.5 0 0 1 0 .708L2.707 7.5H14.5a.5.5 0 0 1 0 1H2.707l3.147 3.146a.5.5 0 0 1-.708.708l-4-4a.5.5 0 0 1 0-.708l4-4a.5.5 0 0 1 .708 0z" />
+                    <path fillRule="evenodd" d="M5.854 3.646a.5.5 0 0 1 0 .708L2.707 7.5H14.5a.5.5 0 0 1 0 1H2.707l3.147 3.146a.5.5 0 0 1-.708.708l-4-4a.5.5 0 0 1 0-.708l4-4a.5.5 0 0 1 .708 0z"/>
                 </svg>
             </a>
             <div className="header">THÊM MÓN</div>
@@ -54,70 +51,21 @@ function Trangthemmon() {
                     <label htmlFor="foodName" className="form-label">Tên món</label>
                     <input type="text" className="form-control" id="foodName" name="foodName" placeholder="Nhập tên món ăn" value={formData.foodName} onChange={handleChange} />
                 </div>
-                {/* <div className="mb-3">
+                <div className="mb-3">
                     <label htmlFor="foodPrice" className="form-label">Giá</label>
                     <input type="number" className="form-control" id="foodPrice" name="foodPrice" placeholder="Nhập giá món ăn" value={formData.foodPrice} onChange={handleChange} />
-                </div> */}
-
+                </div>
+                <div className="mb-3">
+                    <label htmlFor="foodReviews" className="form-label">Số lượng đánh giá</label>
+                    <input type="number" className="form-control" id="foodReviews" name="foodReviews" placeholder="Nhập số lượng đánh giá" value={formData.foodReviews} onChange={handleChange} />
+                </div>
                 <div className="mb-3">
                     <label htmlFor="foodCategory" className="form-label">Loại</label>
-                    <select type="text" className="form-control" id="foodCategory" name="foodCategory" placeholder="Nhập loại món ăn" value={formData.foodCategory} onChange={handleChange} />
+                    <input type="text" className="form-control" id="foodCategory" name="foodCategory" placeholder="Nhập loại món ăn" value={formData.foodCategory} onChange={handleChange} />
                 </div>
                 <div className="mb-3">
                     <label htmlFor="foodSize" className="form-label">Size</label>
-                    <div className="form-check">
-                    <input
-                            className="form-check-input"
-                            type="checkbox"
-                            value={size}
-                            id="flexCheckDefault"
-                            onClick={handleSize}
-                        />
-                        <label className="form-check-label" htmlFor="flexCheckDefault">
-                            S
-                        </label>
-                        
-                    </div>
-                    <div className="form-check">
-                    <input
-                            className="form-check-input"
-                            type="checkbox"
-                            value={size}
-                            id="flexCheckDefault"
-                            onClick={handleSize}
-                        />
-                        <label className="form-check-label" htmlFor="flexCheckDefault">
-                            M
-                        </label>
-                        
-                    </div>
-                    <div className="form-check">
-                    <input
-                            className="form-check-input"
-                            type="checkbox"
-                            value={size}
-                            id="flexCheckDefault"
-                            onClick={handleSize}
-                        />
-                        <label className="form-check-label" htmlFor="flexCheckDefault">
-                            L
-                        </label>
-                        
-                    </div>
-                    <div className="form-check">
-                    <input
-                            className="form-check-input"
-                            type="checkbox"
-                            value={size}
-                            id="flexCheckDefault"
-                            onClick={handleSize}
-                        />
-                        <label className="form-check-label" htmlFor="flexCheckDefault">
-                            Mặc định
-                        </label>
-                        
-                    </div>
-                    {/* <input type="text" className="form-control" id="foodSize" name="foodSize" placeholder="Nhập size món ăn" value={formData.foodSize} onChange={handleChange} /> */}
+                    <input type="text" className="form-control" id="foodSize" name="foodSize" placeholder="Nhập size món ăn" value={formData.foodSize} onChange={handleChange} />
                 </div>
                 <div className="mb-3">
                     <label htmlFor="foodStatus" className="form-label">Trạng thái</label>
