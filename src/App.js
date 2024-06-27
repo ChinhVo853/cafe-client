@@ -21,6 +21,7 @@ import Trangchugoimon from "./Trangchugoimon/Trangchugoimon";
 import Trangnhapma from "./Trangnhapma/Trangnhapma";
 import Phanhoi from "./Trangchugoimon/components/Phanhoi";
 import Cacmondadat from "./Trangchugoimon/components/Cacmondadat";
+import TrangQR from "./Trangnhapma/TrangQR";
 function App() {
   return (
     <Routes>
@@ -53,11 +54,11 @@ function App() {
       {/* -----------------------*******TRANGCHUGOIMON*********----------------- */}
       {/* ********************************************************************** */}
 
-      <Route path="/Trangchugoimon" element={<Trangchugoimon/>} />
-      <Route path="/Trangnhapma" element={<Trangnhapma/>} />
-      <Route path="/Phanhoi" element={<Phanhoi/>} />
+      <Route path="/Trangchugoimon/:ban" element={<Trangchugoimon />} />
+      <Route path="/Trangnhapma/:ban" element={<Trangnhapma />} />
+      <Route path="/Trangnhapma/QR/:ban" element={<TrangQR />} />
+      <Route path="/Phanhoi" element={<Phanhoi />} />
       <Route path="/Cacmondadat" element={<Cacmondadat />} />
-
     </Routes>
   );
 }
