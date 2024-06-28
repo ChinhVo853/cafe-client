@@ -121,12 +121,10 @@ function Trangchuquanly() {
     <>
       {tables ? (
         <>
-
           <div>
             <div className="search-container-custom">
               <input type="text" placeholder="Tìm kiếm..." />
               <button type="button">🔍</button>
-
             </div>
 
             <Menuquanly toggleMenu={toggleMenu} menuOpen={menuOpen} />
@@ -138,14 +136,12 @@ function Trangchuquanly() {
               handleQRCode={handleQRCode}
               openModal={openModal}
               XoaDuLieu={XoaDuLieu}
+              maQR={maQR + "/Trangnhapma/QR/"}
+              modalIsOpen={modalIsOpen}
+              afterOpenModal={afterOpenModal}
+              closeModal={closeModal}
             />
           </div>
-          <ModalQR
-            maQR={maQR + "/Trangnhapma/QR/1"}
-            modalIsOpen={modalIsOpen}
-            afterOpenModal={afterOpenModal}
-            closeModal={closeModal}
-          />
         </>
       ) : (
         <>load</>

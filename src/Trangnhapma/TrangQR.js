@@ -29,7 +29,7 @@ function TrangQR() {
     } catch (error) {
       console.error("Failed to fetch data", error);
     }
-  }, []);
+  }, [ban]);
   useEffect(() => {
     KiemTraMa();
   }, [KiemTraMa]);

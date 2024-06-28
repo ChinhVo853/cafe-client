@@ -1,5 +1,6 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import ModalQR from "../ModalQR";
 
 function Quanlyban({
   tables,
@@ -8,6 +9,10 @@ function Quanlyban({
   handleQRCode,
   openModal,
   XoaDuLieu,
+  maQR,
+  modalIsOpen,
+  afterOpenModal,
+  closeModal,
 }) {
   console.log(tables);
   return (
@@ -56,6 +61,12 @@ function Quanlyban({
                   </button>
                 </div>
               </div>
+              <ModalQR
+                maQR={maQR + table.ban_id}
+                modalIsOpen={modalIsOpen}
+                afterOpenModal={afterOpenModal}
+                closeModal={closeModal}
+              />
             </div>
           ))}
         </div>

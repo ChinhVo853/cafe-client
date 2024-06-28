@@ -21,11 +21,11 @@ function Trangnhapma() {
     } catch (error) {
       console.error("Failed to fetch data", error);
     }
-  }, []);
+  }, [ban]);
 
   useEffect(() => {
     KiemTra();
-  }, []);
+  }, [KiemTra]);
 
   const handleChange = (e) => {
     setMa(e.target.value);
