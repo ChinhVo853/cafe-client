@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 
 const GioHangSection = ({
-  cart,
-  cartItemCount,
+  data,
   cartDetailsIsOpen,
   handleCartContainerClick,
   handleCloseCartClick,
@@ -10,10 +9,13 @@ const GioHangSection = ({
   handleDecreaseQuantity,
 }) => {
   const calculateTotalPrice = () => {
-    return cart.reduce((total, item) => total + item.price * item.quantity, 0);
+    return data.reduce(
+      (tongtien, item) => tongtien + item.so_luong * item.gia,
+      0
+    );
   };
   const [showScroll, setShowScroll] = useState(false);
-
+  console.log(data);
   const handleScroll = () => {
     if (window.pageYOffset > 300) {
       setShowScroll(true);
@@ -24,13 +26,6 @@ const GioHangSection = ({
 
   window.addEventListener("scroll", handleScroll);
 
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  };
-  
   return (
     <>
       <div
@@ -40,7 +35,10 @@ const GioHangSection = ({
       >
         <span>Giỏ hàng:</span>
         <span className="cart-count" id="cart-count">
-          {cartItemCount}
+          {
+            data.length
+            //-                      ---------------------                         ---------------so_luong
+          }
         </span>
       </div>
       <div
@@ -49,29 +47,36 @@ const GioHangSection = ({
       >
         <div className="cart-header">
           <h3>Giỏ hàng của bạn</h3>
-          <button
-            className="close-cart-button"
-            onClick={handleCloseCartClick}
-          >
+          <button className="close-cart-button" onClick={handleCloseCartClick}>
             <i className="fas fa-times"></i>
           </button>
         </div>
         <ul id="cart-items">
-          {cart.map((item, index) => (
+          {data.map((item, index) => (
             <li key={index} className="cart-item">
-              <img src={item.image} alt={item.name} className="cart-item-image" />
-              <span>{`${item.name} - Size: ${item.size} - Giá: ${item.price.toLocaleString()}đ`}</span>
+              <img
+                src={item.image}
+                alt={item.name}
+                className="cart-item-image"
+              />
+              <span>{`${item.ten_mon} - Size: ${
+                item.ten_size
+              } - Giá: ${item.gia.toLocaleString()}đ`}</span>
               <div className="quantity-controls">
                 <button
                   className="decrease-button"
-                  onClick={() => handleDecreaseQuantity(item.id)}
+                  onClick={() =>
+                    handleDecreaseQuantity(item.ten_size, item.ten_mon)
+                  }
                 >
                   -
                 </button>
-                <span className="quantity-value">{item.quantity}</span>
+                <span className="quantity-value">{item.so_luong}</span>
                 <button
                   className="increase-button"
-                  onClick={() => handleIncreaseQuantity(item.id)}
+                  onClick={() =>
+                    handleIncreaseQuantity(item.ten_size, item.ten_mon)
+                  }
                 >
                   +
                 </button>
