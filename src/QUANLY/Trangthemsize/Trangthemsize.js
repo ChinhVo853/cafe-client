@@ -9,6 +9,7 @@ function Trangthemsize() {
     setsizeName(e.target.value);
   };
 
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const data = {
@@ -39,6 +40,7 @@ function Trangthemsize() {
             value={sizeName}
             onChange={handleNameChange}
           />
+
         </div>
 
         <button type="submit" className="btn btn-custom w-100">

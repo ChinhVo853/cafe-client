@@ -21,12 +21,10 @@ import Trangchugoimon from "./Trangchugoimon/Trangchugoimon";
 import Trangnhapma from "./Trangnhapma/Trangnhapma";
 import Phanhoi from "./Trangchugoimon/components/Phanhoi";
 import Cacmondadat from "./Trangchugoimon/components/Cacmondadat";
-<<<<<<< HEAD
 import Trangnhanvien from "./QUANLY/Trangnhanvien/Trangnhanvien";
 import Trangdangnhap from "./QUANLY/Trangdangnhap/Trangdangnhap";
-=======
 import TrangQR from "./Trangnhapma/TrangQR";
->>>>>>> master
+
 function App() {
   return (
     <Routes>
@@ -52,10 +50,12 @@ function App() {
         element={<TrangQLyeucaucuakhachhang />}
       />
       {/* -----------------------*******TrangQLnhanvien*********----------------- */}
+
       <Route path="/TrangQLnhanvien" element={<TrangQLnhanvien/>} />
       <Route path="/Trangthemnhanvien" element={<Trangthemnhanvien/>} />
       <Route path="/Trangnhanvien" element={<Trangnhanvien/>} />
       <Route path="/Trangdangnhap" element={<Trangdangnhap/>} />
+
 
 
 

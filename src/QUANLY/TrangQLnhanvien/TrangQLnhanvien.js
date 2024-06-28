@@ -47,7 +47,12 @@ const TrangQLnhanvien = () => {
       <div className="request-container mt-5">
         <div className="header">QUẢN LÝ NHÂN VIÊN</div>
         <div className="text-end mb-3">
-          <a href='/Trangthemnhanvien' className="btn btn-primary btn-add-employee" >Thêm nhân viên</a>
+          <a
+            href="/Trangthemnhanvien"
+            className="btn btn-primary btn-add-employee"
+          >
+            Thêm nhân viên
+          </a>
         </div>
         <div className="row">
           <div className="col">
@@ -58,7 +63,7 @@ const TrangQLnhanvien = () => {
                   <th scope="col">Họ tên</th>
                   <th scope="col">SĐT</th>
                   <th scope="col">Email</th>
-                  <th scope="col">Mật khẩu</th>
+                  <th scope="col">Quyền</th>
                   <th scope="col"></th>
                 </tr>
               </thead>

@@ -27,6 +27,7 @@ function Trangcapnhatsize() {
     const data = {
       ten: sizeName,
       id: id,
+
     };
     // Handle the form submission
     try {
@@ -54,6 +55,7 @@ function Trangcapnhatsize() {
             value={sizeName}
             onChange={handleNameChange}
           />
+
         </div>
         <button type="submit" className="btn btn-custom w-100">
           Cập nhật

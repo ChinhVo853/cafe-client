@@ -18,6 +18,7 @@ function Trangthemloai() {
     const data = {
       ten: typeName,
       sizeDuyNhat: size,
+
     };
     try {
       await ThemData(data);
@@ -56,6 +57,7 @@ function Trangthemloai() {
           <label className="form-check-label" htmlFor="flexCheckDefault">
             Loại chỉ có 1 size
           </label>
+
         </div>
 
         <button type="submit" className="btn btn-custom w-100">
