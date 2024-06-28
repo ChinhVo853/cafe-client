@@ -13,8 +13,7 @@ function Trangnhapma() {
           ma: maQR,
         };
         const result = await KiemTraMa(data);
-
-        if (result.data) {
+        if (result.data.data) {
           window.location.href = "/Trangchugoimon/" + ban;
         }
       }
@@ -22,7 +21,6 @@ function Trangnhapma() {
       console.error("Failed to fetch data", error);
     }
   }, [ban]);
-
   useEffect(() => {
     KiemTra();
   }, [KiemTra]);
@@ -38,8 +36,8 @@ function Trangnhapma() {
     };
     const result = await KiemTraMa(data);
 
-    if (result.data.id) {
-      localStorage.setItem("QR", result.data.id);
+    if (result.data.data.id) {
+      localStorage.setItem("QR", result.data.data.id);
       window.location.href = "/Trangchugoimon/" + ban;
     }
   };

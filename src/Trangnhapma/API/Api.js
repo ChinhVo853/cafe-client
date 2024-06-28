@@ -20,7 +20,7 @@ export const TaoDatMon = async (id) => {
 export const KiemTraMa = async (data) => {
   try {
     const response = await apiClient.post("api/Dat-Mon/Kiem-Tra-Ban", data);
-    return response.data;
+    return response;
   } catch (error) {
     console.error("Error fetching data:", error);
     throw error;

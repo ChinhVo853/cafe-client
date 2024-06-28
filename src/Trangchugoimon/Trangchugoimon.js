@@ -13,7 +13,7 @@ function Trangchugoimon() {
     nước_tương: false,
     // Thêm các mục yêu cầu khác ở đây
   });
-
+  console.log(localStorage.getItem("QR"));
   const toggleCallStaffForm = () => {
     setShowCallStaffForm(!showCallStaffForm);
   };

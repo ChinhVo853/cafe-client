@@ -82,7 +82,11 @@ function Trangchuquanly() {
 
   const [ma, setMa] = useState();
   function openModal(ban) {
-    setMaQR((prevMa) => prevMa + "/Trangnhapma/QR/" + ban);
+    setMaQR(
+      window.location.href.split("/").slice(0, -1).join("/") +
+        "/Trangnhapma/QR/" +
+        ban
+    );
     setIsOpen(true);
   }
 
