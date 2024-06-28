@@ -1,58 +1,52 @@
 import Menuquanly from "../Menuquanly";
-import React,{useState} from "react";
+import React, { useState, useCallback, useEffect } from "react";
+import HeadLoaiSection from "./components/HeadLoaiSection";
+import TimKiemSection from "./components/TimKiemSection";
+import ThongTinSection from "./components/ThongTinSection";
+import { layData, XoaData } from "./getAPI/GetApi";
 function Trangquanlyloai() {
-    const [menuOpen, setMenuOpen] = useState(false);
-    const toggleMenu = () => {
-        setMenuOpen(!menuOpen);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [data, setData] = useState();
+
+  const LayDuLieu = useCallback(async () => {
+    try {
+      const result = await layData();
+      setData(result);
+    } catch (error) {
+      console.error("Failed to fetch data", error);
+    }
+  }, []);
+  const Xoa = async (id) => {
+    const data = {
+      id: id,
     };
+    try {
+      await XoaData(data);
+      LayDuLieu();
+    } catch (error) {
+      console.error("Failed to fetch data", error);
+    }
+  };
+
+  useEffect(() => {
+    LayDuLieu();
+  }, [LayDuLieu]);
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
   return (
-    <div>
-      <div className="search-container-custom">
-        <input type="text" placeholder="Tìm kiếm..." />
-        <button type="button">🔍</button>
-      </div>
-      <div className="request-container mt-5">
-        <div className="header">QUẢN LÝ LOẠI</div>
-        <div className="col text-end">
-          <a href='/Trangthemloai' className="btn btn-primary">Thêm loại</a>
-        </div>
-        <div className="row">
-          <div className="col">
-            <table className="table">
-              <thead>
-                <tr>
-                  
-                  <th scope="col">Tên loại</th>
-                  <th scope="col"></th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Bún chả</td>
-                  <td>
-                    <a href="/Trangcapnhatloai" className="btn btn-outline-primary btn-sm">Cập nhật</a>
-                    <button className="btn btn-outline-danger btn-sm">Xóa</button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Phở bò</td>
-                  <td>
-                    <button className="btn btn-outline-primary btn-sm">Cập nhật</button>
-                    <button className="btn btn-outline-danger btn-sm">Xóa</button>
-                  </td>
-                </tr>
-                {/* Add more rows for other dishes */}
-              </tbody>
-            </table>
+    <>
+      {data && (
+        <div>
+          <TimKiemSection />
+          <div className="request-container mt-5">
+            <HeadLoaiSection />
+            <ThongTinSection data={data.data} Xoa={Xoa} />
           </div>
+          <Menuquanly toggleMenu={toggleMenu} menuOpen={menuOpen} />
         </div>
-      </div>
-      <Menuquanly
-    toggleMenu={toggleMenu}
-    menuOpen={menuOpen}
-    />
-    </div>
-    
+      )}
+    </>
   );
 }
 

@@ -1,24 +1,38 @@
-import React, { useState } from 'react';
-import Menuquanly from '../Menuquanly';
+import React, { useState, useEffect, useCallback } from "react";
+import Menuquanly from "../Menuquanly";
+import { layData, XoaData } from "./API/Api";
 const TrangQLnhanvien = () => {
-  const [employees, setEmployees] = useState([
-    { id: 1, name: 'Nguyễn Văn A', phone: '0123456789', email: 'a@example.com', password: '******' },
-    { id: 2, name: 'Trần Thị B', phone: '0987654321', email: 'b@example.com', password: '******' },
-    { id: 3, name: 'Lê Văn C', phone: '0912345678', email: 'c@example.com', password: '******' },
-  ]);
+  const [employees, setEmployees] = useState([]);
 
-  const handleDelete = (id) => {
-    setEmployees(employees.filter(employee => employee.id !== id));
+  const LayData = useCallback(async () => {
+    try {
+      const result = await layData();
+      setEmployees(result.data);
+    } catch (error) {
+      console.error("Failed to fetch data", error);
+    }
+  }, []);
+
+  useEffect(() => {
+    LayData();
+  }, [LayData]);
+
+  const handleDelete = async (id) => {
+    const data = {
+      id: id,
+    };
+    const result = await XoaData(data);
+    LayData();
   };
 
   const handleUpdate = (id) => {
     // Thêm logic cập nhật tại đây
-    alert('Chức năng cập nhật chưa được triển khai');
+    alert("Chức năng cập nhật chưa được triển khai");
   };
 
   const handleAdd = () => {
     // Thêm logic thêm nhân viên mới tại đây
-    alert('Chức năng thêm nhân viên chưa được triển khai');
+    alert("Chức năng thêm nhân viên chưa được triển khai");
   };
   const [menuOpen, setMenuOpen] = useState(false);
   const toggleMenu = () => {
@@ -72,10 +86,12 @@ const TrangQLnhanvien = () => {
           </div>
         </div>
       </div>
+
       <Menuquanly
         toggleMenu={toggleMenu}
         menuOpen={menuOpen}
       />
+
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import logo from "./logo.svg";
 import "./App.css";
-import '@fortawesome/fontawesome-free/css/all.css';
+import "@fortawesome/fontawesome-free/css/all.css";
 import { Route, Routes } from "react-router-dom";
 import TrangChu from "./TrangChu/TrangChu";
 import Menu from "./Menu/Menu";
@@ -21,8 +21,12 @@ import Trangchugoimon from "./Trangchugoimon/Trangchugoimon";
 import Trangnhapma from "./Trangnhapma/Trangnhapma";
 import Phanhoi from "./Trangchugoimon/components/Phanhoi";
 import Cacmondadat from "./Trangchugoimon/components/Cacmondadat";
+<<<<<<< HEAD
 import Trangnhanvien from "./QUANLY/Trangnhanvien/Trangnhanvien";
 import Trangdangnhap from "./QUANLY/Trangdangnhap/Trangdangnhap";
+=======
+import TrangQR from "./Trangnhapma/TrangQR";
+>>>>>>> master
 function App() {
   return (
     <Routes>
@@ -32,18 +36,21 @@ function App() {
       <Route path="/Trangchuquanly" element={<Trangchuquanly />} />
       {/* -----------------------*******QuanLyMon*********----------------- */}
       <Route path="/Trangquanlymon" element={<Trangquanlymon />} />
-      <Route path="/Trangthemmon" element={<Trangthemmon/>} />
-      <Route path="/Trangcapnhatmon" element={<Trangcapnhatmon/>} />
+      <Route path="/Trangthemmon" element={<Trangthemmon />} />
+      <Route path="/Trangcapnhatmon" element={<Trangcapnhatmon />} />
       {/* -----------------------*******QuanLyLoai*********----------------- */}
-      <Route path="/Trangquanlyloai" element={<Trangquanlyloai/>} />
-      <Route path="/Trangthemloai" element={<Trangthemloai/>} />
-      <Route path="/Trangcapnhatloai" element={<Trangcapnhatloai/>} />
+      <Route path="/Trangquanlyloai" element={<Trangquanlyloai />} />
+      <Route path="/Trangthemloai" element={<Trangthemloai />} />
+      <Route path="/Trangcapnhatloai/:id" element={<Trangcapnhatloai />} />
       {/* -----------------------*******QuanLySize*********----------------- */}
-      <Route path="/Trangquanlysize" element={<Trangquanlysize/>} />
-      <Route path="/Trangthemsize" element={<Trangthemsize/>} />
-      <Route path="/Trangcapnhatsize" element={<Trangcapnhatsize/>} />
+      <Route path="/Trangquanlysize" element={<Trangquanlysize />} />
+      <Route path="/Trangthemsize" element={<Trangthemsize />} />
+      <Route path="/Trangcapnhatsize/:id" element={<Trangcapnhatsize />} />
       {/* -----------------------*******TrangQLyeucaucuakhachhang*********----------------- */}
-      <Route path="/TrangQLyeucaucuakhachhang" element={<TrangQLyeucaucuakhachhang/>} />
+      <Route
+        path="/TrangQLyeucaucuakhachhang"
+        element={<TrangQLyeucaucuakhachhang />}
+      />
       {/* -----------------------*******TrangQLnhanvien*********----------------- */}
       <Route path="/TrangQLnhanvien" element={<TrangQLnhanvien/>} />
       <Route path="/Trangthemnhanvien" element={<Trangthemnhanvien/>} />
@@ -57,9 +64,11 @@ function App() {
       {/* ********************************************************************** */}
       {/* -----------------------*******TRANGCHUGOIMON*********----------------- */}
       {/* ********************************************************************** */}
-      <Route path="/Trangchugoimon" element={<Trangchugoimon/>} />
-      <Route path="/Trangnhapma" element={<Trangnhapma/>} />
-      <Route path="/Phanhoi" element={<Phanhoi/>} />
+
+      <Route path="/Trangchugoimon/:ban" element={<Trangchugoimon />} />
+      <Route path="/Trangnhapma/:ban" element={<Trangnhapma />} />
+      <Route path="/Trangnhapma/QR/:ban" element={<TrangQR />} />
+      <Route path="/Phanhoi" element={<Phanhoi />} />
       <Route path="/Cacmondadat" element={<Cacmondadat />} />
     </Routes>
   );

@@ -1,6 +1,7 @@
 import React from "react";
 
 const SanPhamSection = ({
+  data,
   handleAddButtonClick,
   handleAddToCart,
   handleCloseButtonClick,
@@ -19,7 +20,11 @@ const SanPhamSection = ({
         />
         <div className="product-info">
           <div className="product-name">{name}</div>
-          <div className="product-price">{price.toLocaleString()}đ</div>
+          <div className="product-price">
+            {price.map((item, key) => (
+              <p key={key}>{item.toLocaleString()}đ</p>
+            ))}
+          </div>
           <button
             className="add-button"
             onClick={() => handleAddButtonClick(productId)}
@@ -42,9 +47,11 @@ const SanPhamSection = ({
             </div>
             <label htmlFor={`size-${productId}`}>Size:</label>
             <select id={`size-${productId}`}>
-              <option value="S">S</option>
-              <option value="M">M</option>
-              <option value="L">L</option>
+              {data.sizes.map((item, index) => (
+                <option key={index} value={item}>
+                  {item}
+                </option>
+              ))}
             </select>
             <label htmlFor={`quantity-${productId}`}>Số lượng:</label>
             <input
@@ -62,7 +69,7 @@ const SanPhamSection = ({
                   parseInt(
                     document.getElementById(`quantity-${productId}`).value
                   ),
-                  price,
+                  10000,
                   name
                 )
               }
