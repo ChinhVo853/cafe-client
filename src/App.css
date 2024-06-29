@@ -1485,7 +1485,7 @@ label {
   font-weight: bold;
   text-align: right;
   margin-bottom: 15px;
-
+}
 
 /**************************************TRANGPHANHOI*******************************************/
 .feedback-page {
@@ -1709,7 +1709,6 @@ h3 {
 .form-row .form-group:last-child {
   margin-right: 0;
 }
-
 /*********************************NútGoiMon*************************************/
 .order-button {
   background-color: #f4a261;
@@ -1721,7 +1720,6 @@ h3 {
   cursor: pointer;
   transition: background-color 0.3s ease;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    
 }
 
 .order-button:hover {
@@ -1738,46 +1736,44 @@ h3 {
 }
 /********************************************LOGOUT****************************************/
 
-
 .form-control:focus {
   box-shadow: none;
-  border-color: #BA68C8
-  
+  border-color: #ba68c8;
 }
 
 .profile-button {
   background: rgb(99, 39, 120);
   box-shadow: none;
-  border: none
+  border: none;
 }
 
 .profile-button:hover {
-  background: #682773
+  background: #682773;
 }
 
 .profile-button:focus {
   background: #682773;
-  box-shadow: none
+  box-shadow: none;
 }
 
 .profile-button:active {
   background: #682773;
-  box-shadow: none
+  box-shadow: none;
 }
 
 .back:hover {
   color: #682773;
-  cursor: pointer
+  cursor: pointer;
 }
 
 .labels {
-  font-size: 11px
+  font-size: 11px;
 }
 
 .add-experience:hover {
-  background: #BA68C8;
+  background: #ba68c8;
   color: #fff;
   cursor: pointer;
-  border: solid 1px #BA68C8
+  border: solid 1px #ba68c8;
 }
 /**/
