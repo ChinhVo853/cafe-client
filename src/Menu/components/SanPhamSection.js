@@ -32,10 +32,9 @@ const SanPhamSection = ({
             +
           </button>
           <div
-
-            className={`product-options ${productOptions[productId] ? "open" : ""
-              }`}
-
+            className={`product-options ${
+              productOptions[productId] ? "open" : ""
+            }`}
           >
             <div className="cart-header">
               <button
@@ -64,12 +63,10 @@ const SanPhamSection = ({
               className="add-to-cart-button"
               onClick={() =>
                 handleAddToCart(
-                  productId,
                   document.getElementById(`size-${productId}`).value,
                   parseInt(
                     document.getElementById(`quantity-${productId}`).value
                   ),
-                  10000,
                   name
                 )
               }

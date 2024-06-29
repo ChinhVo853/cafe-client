@@ -1,6 +1,9 @@
 import React from "react";
+import { useParams } from "react-router-dom";
 
 const DanhSachMenuSection = ({ data, menuIsOpen, handleMenuToggle }) => {
+  const { ban } = useParams();
+
   const handleMenuItemClick = (event) => {
     event.preventDefault();
     const targetId = event.target.getAttribute("href").substring(1); // Lấy ID của phần tử đích (bỏ qua ký tự #)
@@ -26,7 +29,7 @@ const DanhSachMenuSection = ({ data, menuIsOpen, handleMenuToggle }) => {
           ))}
         </ul>
         <button className="home-button-menu">
-          <a href="/Trangchugoimon">
+          <a href={`/Trangchugoimon/${ban}`}>
             <i className="fas fa-home"></i>
           </a>
         </button>

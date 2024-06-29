@@ -25,19 +25,6 @@ function Trangchuquanly() {
     setMenuOpen(!menuOpen);
   };
 
-  const changeStatus = (tableId) => {
-    setTables((prevTables) =>
-      prevTables.map((table) =>
-        table.id === tableId
-          ? {
-              ...table,
-              status: table.status === "occupied" ? "vacant" : "occupied",
-            }
-          : table
-      )
-    );
-  };
-
   const handlePayment = (tableId) => {
     const orders = {
       1: [
@@ -87,17 +74,19 @@ function Trangchuquanly() {
     localStorage.setItem(`table-${tableId}-order`, orderData);
     window.location.href = `Thanhtoan?table=${tableId}`;
   };
-  const handleQRCode = (code) => {
-    console.log(`QR Code for table: ${code}`);
-    // Logic để hiển thị hoặc xử lý mã QR
-  };
 
   //--------------------------------------------
 
   let subtitle;
   const [modalIsOpen, setIsOpen] = React.useState(false);
 
-  function openModal() {
+  const [ma, setMa] = useState();
+  function openModal(ban) {
+    setMaQR(
+      window.location.href.split("/").slice(0, -1).join("/") +
+        "/Trangnhapma/QR/" +
+        ban
+    );
     setIsOpen(true);
   }
 
@@ -125,7 +114,6 @@ function Trangchuquanly() {
     <>
       {tables ? (
         <>
-
           <div>
             
             <div className="search-container-custom">
@@ -138,20 +126,17 @@ function Trangchuquanly() {
 
             <Quanlyban
               tables={tables}
-              changeStatus={changeStatus}
               handlePayment={handlePayment}
-              handleQRCode={handleQRCode}
               openModal={openModal}
               XoaDuLieu={XoaDuLieu}
-              viewOrderHistory={viewOrderHistory}
+
+              maQR={maQR}
+              modalIsOpen={modalIsOpen}
+              afterOpenModal={afterOpenModal}
+              closeModal={closeModal}
+
             />
           </div>
-          <ModalQR
-            maQR={maQR + "/Trangnhapma/QR/1"}
-            modalIsOpen={modalIsOpen}
-            afterOpenModal={afterOpenModal}
-            closeModal={closeModal}
-          />
         </>
       ) : (
         <>load</>
