@@ -8,6 +8,7 @@ const GioHangSection = ({
   handleCloseCartClick,
   handleIncreaseQuantity,
   handleDecreaseQuantity,
+  handleOrderSubmit,
 }) => {
   const calculateTotalPrice = () => {
     return cart.reduce((total, item) => total + item.price * item.quantity, 0);
@@ -82,6 +83,12 @@ const GioHangSection = ({
         <div className="total-price">
           Tổng tiền: {calculateTotalPrice().toLocaleString()}đ
         </div>
+        <button
+          className="order-button"
+          onClick={handleOrderSubmit}
+        >
+          Gọi món
+        </button>
       </div>
     </>
   );

@@ -117,17 +117,22 @@ function Trangchuquanly() {
     await XoaData(data);
     LayData();
   };
+  const viewOrderHistory = (tableId) => {
+    // Logic để hiển thị lịch sử hóa đơn
+    console.log(`Xem lịch sử hóa đơn cho bàn ${tableId}`);
+  };
   return (
     <>
       {tables ? (
         <>
 
           <div>
+            
             <div className="search-container-custom">
               <input type="text" placeholder="Tìm kiếm..." />
               <button type="button">🔍</button>
-
             </div>
+            <a href="/Trangnhanvien" className="btn-trangnhanvien" type="button"><i class="fa-solid fa-user"></i></a>
 
             <Menuquanly toggleMenu={toggleMenu} menuOpen={menuOpen} />
 
@@ -138,6 +143,7 @@ function Trangchuquanly() {
               handleQRCode={handleQRCode}
               openModal={openModal}
               XoaDuLieu={XoaDuLieu}
+              viewOrderHistory={viewOrderHistory}
             />
           </div>
           <ModalQR

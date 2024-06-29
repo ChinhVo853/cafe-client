@@ -24,6 +24,7 @@ import Cacmondadat from "./Trangchugoimon/components/Cacmondadat";
 import Trangnhanvien from "./QUANLY/Trangnhanvien/Trangnhanvien";
 import Trangdangnhap from "./QUANLY/Trangdangnhap/Trangdangnhap";
 import TrangQR from "./Trangnhapma/TrangQR";
+import Logout from "./QUANLY/Logout";
 
 function App() {
   return (
@@ -55,9 +56,7 @@ function App() {
       <Route path="/Trangthemnhanvien" element={<Trangthemnhanvien/>} />
       <Route path="/Trangnhanvien" element={<Trangnhanvien/>} />
       <Route path="/Trangdangnhap" element={<Trangdangnhap/>} />
-
-
-
+      <Route path="/Logout" element={<Logout/>} />
 
 
 

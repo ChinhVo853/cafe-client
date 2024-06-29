@@ -16,55 +16,57 @@ const TrangQLyeucaucuakhachhang = () => {
   };
   const [menuOpen, setMenuOpen] = useState(false);
   const toggleMenu = () => {
-      setMenuOpen(!menuOpen);
+    setMenuOpen(!menuOpen);
   };
   return (
-    
-    <div className="request-container mt-5">
-      <div className="search-container-custom">
-        <input type="text" placeholder="Tìm kiếm..." />
-        <button type="button">🔍</button>
-      </div>
-      <div className="header">QUẢN LÝ YÊU CẦU KHÁCH HÀNG</div>
-      <div className="row">
-        <div className="col">
-          <table className="table table-striped">
-            <thead>
-              <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Số bàn</th>
-                <th scope="col">Loại yêu cầu</th>
-                <th scope="col">Thời gian yêu cầu</th>
-                <th scope="col">Trạng thái</th>
-                <th scope="col"></th>
-              </tr>
-            </thead>
-            <tbody>
-              {requests.map(request => (
-                <tr key={request.id}>
-                  <td>{request.id}</td>
-                  <td>{request.table}</td>
-                  <td>{request.type}</td>
-                  <td>{request.time}</td>
-                  <td>{request.status}</td>
-                  <td>
-                    <button
-                      className={`btn btn-sm ${request.status === 'Đang chờ xác nhận' ? 'btn-request-confirm' : 'btn-request-undo'}`}
-                      onClick={() => handleStatusChange(request.id)}
-                    >
-                      {request.status === 'Đang chờ xác nhận' ? 'Xác nhận' : 'Hoàn tác'}
-                    </button>
-                  </td>
+    <div>
+      
+        <div className="search-container-custom">
+          <input type="text" placeholder="Tìm kiếm..." />
+          <button type="button">🔍</button>
+        </div>
+        <div className="request-container mt-5">
+        <div className="header">QUẢN LÝ YÊU CẦU KHÁCH HÀNG</div>
+        <div className="row">
+          <div className="col">
+            <table className="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">ID</th>
+                  <th scope="col">Số bàn</th>
+                  <th scope="col">Loại yêu cầu</th>
+                  <th scope="col">Thời gian yêu cầu</th>
+                  <th scope="col">Trạng thái</th>
+                  <th scope="col"></th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {requests.map(request => (
+                  <tr key={request.id}>
+                    <td>{request.id}</td>
+                    <td>{request.table}</td>
+                    <td>{request.type}</td>
+                    <td>{request.time}</td>
+                    <td>{request.status}</td>
+                    <td>
+                      <button
+                        className={`btn btn-sm ${request.status === 'Đang chờ xác nhận' ? 'btn-request-confirm' : 'btn-request-undo'}`}
+                        onClick={() => handleStatusChange(request.id)}
+                      >
+                        {request.status === 'Đang chờ xác nhận' ? 'Xác nhận' : 'Hoàn tác'}
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
       <Menuquanly
-    toggleMenu={toggleMenu}
-    menuOpen={menuOpen}
-    />
+        toggleMenu={toggleMenu}
+        menuOpen={menuOpen}
+      />
     </div>
   );
 };

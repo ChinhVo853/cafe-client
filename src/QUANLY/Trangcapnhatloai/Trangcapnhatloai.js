@@ -58,11 +58,7 @@ function Trangcapnhatloai() {
         <button type="submit" className="btn btn-custom w-100">Cập nhật</button>
         <a href='/Trangquanlyloai' className="quaylai btn btn-secondary go-back-btn">Hủy</a>
       </form>
-      {showNotification && (
-        <div className="alert alert-success mt-3" role="alert">
-          Cập nhật thành công!
-        </div>
-      )}
+      
 
 
     </div>

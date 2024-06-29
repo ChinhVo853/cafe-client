@@ -1485,6 +1485,8 @@ label {
   margin-top: 20px;
   font-weight: bold;
   text-align: right;
+  margin-bottom: 15px;
+
 }
 
 
@@ -1619,7 +1621,7 @@ h3 {
   cursor: pointer;
   font-size: 20px;
 }
-/***********************************btn-trangnhanvien********************************************/
+/***********************************btn-quayve********************************************/
 .btn-quayve {
   position: absolute;
   top: 10px;
@@ -1712,3 +1714,74 @@ h3 {
 .form-row .form-group:last-child {
   margin-right: 0;
 }
+/*********************************NútGoiMon*************************************/
+.order-button {
+  background-color: #f4a261;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    
+}
+
+.order-button:hover {
+  background-color: #cd782e;
+}
+
+.order-button:active {
+  background-color: #cd782e;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.order-button i {
+  margin-right: 5px;
+}
+/********************************************LOGOUT****************************************/
+
+
+.form-control:focus {
+  box-shadow: none;
+  border-color: #BA68C8
+  
+}
+
+.profile-button {
+  background: rgb(99, 39, 120);
+  box-shadow: none;
+  border: none
+}
+
+.profile-button:hover {
+  background: #682773
+}
+
+.profile-button:focus {
+  background: #682773;
+  box-shadow: none
+}
+
+.profile-button:active {
+  background: #682773;
+  box-shadow: none
+}
+
+.back:hover {
+  color: #682773;
+  cursor: pointer
+}
+
+.labels {
+  font-size: 11px
+}
+
+.add-experience:hover {
+  background: #BA68C8;
+  color: #fff;
+  cursor: pointer;
+  border: solid 1px #BA68C8
+}
+/**/
