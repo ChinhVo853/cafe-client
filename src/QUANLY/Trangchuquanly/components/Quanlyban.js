@@ -7,12 +7,11 @@ function Quanlyban({
   handlePayment,
   openModal,
   XoaDuLieu,
-
+  viewOrderHistory,
   maQR,
   modalIsOpen,
   afterOpenModal,
   closeModal,
-
 }) {
   return (
     <div className="request-container mt-5">
