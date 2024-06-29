@@ -31,11 +31,6 @@ function Trangchugoimon() {
   };
 
   const [showGoiThanhToan, setShowGoiThanhToan] = useState(false);
-  const [requestItemsthanhtoan, setRequestItemsthanhtoan] = useState({
-    tien_mat: false,
-    chuyen_khoang: false,
-    the: false,
-  });
 
   const toggleGoiThanhToan = () => {
     setShowGoiThanhToan(!showGoiThanhToan);
@@ -61,7 +56,7 @@ function Trangchugoimon() {
   };
 
   const YeuCauThanhToan = async () => {
-    const data = {};
+    let data = {};
     if (yeuCau === 1) {
       data = {
         yeuCau: "Thanh toán",
@@ -83,11 +78,13 @@ function Trangchugoimon() {
     }
 
     const result = await TaoYeuCau(data);
+    console.log(result);
   };
-  console.log(noiDung);
+
   const handleNameChange = (e) => {
     setNoiDung(e.target.value);
   };
+
   return (
     <>
       <div
