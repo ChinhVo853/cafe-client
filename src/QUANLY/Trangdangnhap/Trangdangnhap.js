@@ -14,7 +14,7 @@ function Trangdangnhap() {
         <div className="login-container">
             <div className="login-form">
                 <h2>Đăng Nhập</h2>
-                <input 
+                <input  
                     type="text" 
                     name="username" 
                     placeholder="Tên đăng nhập" 

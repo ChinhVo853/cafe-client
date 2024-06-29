@@ -7,10 +7,12 @@ function Quanlyban({
   handlePayment,
   openModal,
   XoaDuLieu,
+
   maQR,
   modalIsOpen,
   afterOpenModal,
   closeModal,
+
 }) {
   return (
     <div className="request-container mt-5">
@@ -58,6 +60,12 @@ function Quanlyban({
                     onClick={() => XoaDuLieu(table.ban_id)}
                   >
                     Xóa
+                  </button>
+                  <button
+                    className="btn btn-secondary history-btn"
+                    onClick={() => viewOrderHistory(table.ban_id)}
+                  >
+                    Lịch sử hóa đơn
                   </button>
                 </div>
               </div>

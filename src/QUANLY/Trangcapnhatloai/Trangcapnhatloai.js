@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useCallback } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { layData, Sua } from "./API/Api";
@@ -36,12 +37,30 @@ function Trangcapnhatloai() {
     }
   };
 
+
+
   return (
-    <div>
-      <div className="them-mon-container">
-        <div className="header">CẬP NHẬT LOẠI</div>
-        <form onSubmit={handleSubmit}>
-          <div className="mb-3">
+    <div className="them-mon-container">
+      <div className="header">CẬP NHẬT LOẠI</div>
+      <form onSubmit={handleSubmit}>
+        <div className="mb-3">
+          <label htmlFor="typeName" className="form-label">Tên loại</label>
+          <input
+            type="text"
+            className="form-control"
+            id="typeName"
+            placeholder="Nhập tên loại"
+            value={typeName}
+            onChange={handleNameChange}
+          />
+        </div>
+        <button type="submit" className="btn btn-custom w-100">Cập nhật</button>
+        <a href='/Trangquanlyloai' className="quaylai btn btn-secondary go-back-btn">Hủy</a>
+      </form>
+      
+
+
+   <div className="mb-3">
             <label htmlFor="typeName" className="form-label">
               Tên loại
             </label>
@@ -65,6 +84,7 @@ function Trangcapnhatloai() {
           </a>
         </form>
       </div>
+
     </div>
   );
 }
