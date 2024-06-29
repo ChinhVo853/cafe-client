@@ -96,7 +96,10 @@ function Menu() {
     await GiamSL(data);
     await LayDuLieu();
   };
-
+  const handleOrderSubmit = () => {
+    // Xử lý logic khi gọi món
+    console.log("Order submitted!");
+  };
   return (
     <>
       {data && (
@@ -142,6 +145,7 @@ function Menu() {
             handleCloseCartClick={handleCloseCartClick}
             handleIncreaseQuantity={handleIncreaseQuantity}
             handleDecreaseQuantity={handleDecreaseQuantity}
+            handleOrderSubmit={handleOrderSubmit}
           />
         </>
       )}
