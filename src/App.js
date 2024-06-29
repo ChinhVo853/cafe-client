@@ -69,7 +69,7 @@ function App() {
       <Route path="/Trangchugoimon/:ban" element={<Trangchugoimon />} />
       <Route path="/Trangnhapma/:ban" element={<Trangnhapma />} />
       <Route path="/Trangnhapma/QR/:ban" element={<TrangQR />} />
-      <Route path="/Phanhoi" element={<Phanhoi />} />
+      <Route path="/Phanhoi/:ban" element={<Phanhoi />} />
       <Route path="/Cacmondadat" element={<Cacmondadat />} />
     </Routes>
   );
