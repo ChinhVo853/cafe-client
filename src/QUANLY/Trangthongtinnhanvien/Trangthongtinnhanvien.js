@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import Logout from "../Logout";
 
-function ThongTinNhanVien() {
+function TrangthongTinNhanVien() {
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
     email: "",
-    account: "",
     password: ""
   });
 
@@ -80,19 +79,7 @@ function ThongTinNhanVien() {
                   />
                 </div>
               </div>
-              <div className="row mt-2">
-                <div className="col-md-6">
-                  <label className="labels">TÀI KHOẢN</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="..."
-                    name="account"
-                    value={formData.account}
-                    onChange={handleChange}
-                  />
-                </div>
-              </div>
+              
               <div className="row mt-2">
                 <div className="col-md-6">
                   <label className="labels">MẬT KHẨU</label>
@@ -118,4 +105,4 @@ function ThongTinNhanVien() {
   );
 }
 
-export default ThongTinNhanVien;
+export default TrangthongTinNhanVien;

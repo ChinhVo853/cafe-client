@@ -119,13 +119,8 @@ function Trangchuquanly() {
               <input type="text" placeholder="Tìm kiếm..." />
               <button type="button">🔍</button>
             </div>
-            <a
-              href="/Trangnhanvien"
-              className="btn-trangnhanvien"
-              type="button"
-            >
-              <i class="fa-solid fa-user"></i>
-            </a>
+            <a href="/Trangthongtinnhanvien" className="btn-trangnhanvien" type="button"><i className="fa-solid fa-user"></i></a>
+
 
             <Menuquanly toggleMenu={toggleMenu} menuOpen={menuOpen} />
 
