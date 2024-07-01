@@ -21,10 +21,11 @@ import Trangchugoimon from "./Trangchugoimon/Trangchugoimon";
 import Trangnhapma from "./Trangnhapma/Trangnhapma";
 import Phanhoi from "./Trangchugoimon/components/Phanhoi";
 import Cacmondadat from "./Trangchugoimon/components/Cacmondadat";
-import Trangnhanvien from "./QUANLY/Trangnhanvien/Trangnhanvien";
 import Trangdangnhap from "./QUANLY/Trangdangnhap/Trangdangnhap";
 import TrangQR from "./Trangnhapma/TrangQR";
 import Logout from "./QUANLY/Logout";
+import TrangthongTinNhanVien from "./QUANLY/Trangthongtinnhanvien/Trangthongtinnhanvien";
+import TrangcapnhatthongTinNhanVien from "./QUANLY/Trangcapnhatthongtinnhanvien/Trangcapnhatthongtinnhanvien";
 
 function App() {
   return (
@@ -54,9 +55,10 @@ function App() {
 
       <Route path="/TrangQLnhanvien" element={<TrangQLnhanvien/>} />
       <Route path="/Trangthemnhanvien" element={<Trangthemnhanvien/>} />
-      <Route path="/Trangnhanvien" element={<Trangnhanvien/>} />
+      <Route path="/Trangthongtinnhanvien" element={<TrangthongTinNhanVien/>} />
       <Route path="/Trangdangnhap" element={<Trangdangnhap/>} />
       <Route path="/Logout" element={<Logout/>} />
+      <Route path="/Trangcapnhatthongtinnhanvien" element={<TrangcapnhatthongTinNhanVien/>} />
 
 
 

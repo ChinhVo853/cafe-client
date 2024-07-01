@@ -55,7 +55,6 @@ function Trangcapnhatsize() {
             value={sizeName}
             onChange={handleNameChange}
           />
-
         </div>
         <button type="submit" className="btn btn-custom w-100">
           Cập nhật
