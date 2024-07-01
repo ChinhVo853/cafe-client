@@ -75,20 +75,7 @@ function Trangthemnhanvien() {
               required
             />
           </div>
-          <div className="mb-3">
-            <label htmlFor="username" className="add-employee-form-label">
-              Tài khoản
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              id="username"
-              name="username"
-              value={formData.username}
-              onChange={handleChange}
-              required
-            />
-          </div>
+          
           <div className="mb-3">
             <label htmlFor="password" className="add-employee-form-label">
               Mật khẩu

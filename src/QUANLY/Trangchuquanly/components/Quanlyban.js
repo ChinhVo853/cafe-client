@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+
 import "bootstrap/dist/css/bootstrap.min.css";
 import ModalQR from "../ModalQR";
 
@@ -7,12 +8,31 @@ function Quanlyban({
   handlePayment,
   openModal,
   XoaDuLieu,
+
+
   viewOrderHistory,
+
   maQR,
   modalIsOpen,
   afterOpenModal,
   closeModal,
+
 }) {
+  const [filter, setFilter] = useState("all");
+
+  const handleFilterChange = (newFilter) => {
+    setFilter(newFilter);
+  };
+
+  const filteredTables = tables.filter((table) => {
+    if (filter === "all") return true;
+    return table.ten_trang_thai === filter;
+  });
+  console.log(tables);
+
+
+
+
   return (
     <div className="request-container mt-5">
       <div className="header">THỐNG KÊ</div>
@@ -24,6 +44,32 @@ function Quanlyban({
           }}
         >
           Thêm bàn
+        </button>
+      </div>
+      <div>
+        <button
+          className="btn btn-outline-secondary me-2"
+          onClick={() => handleFilterChange("Trống")}
+        >
+          Trống
+        </button>
+        <button
+          className="btn btn-outline-secondary me-2"
+          onClick={() => handleFilterChange("Đang sử dụng")}
+        >
+          Đang sử dụng
+        </button>
+        <button
+          className="btn btn-outline-secondary me-2"
+          onClick={() => handleFilterChange("Đang chờ thanh toán")}
+        >
+          Đang chờ thanh toán
+        </button>
+        <button
+          className="btn btn-outline-secondary"
+          onClick={() => handleFilterChange("Đang dọn bàn")}
+        >
+          Đang dọn bàn
         </button>
       </div>
       <div className="container">
@@ -65,6 +111,18 @@ function Quanlyban({
                     onClick={() => viewOrderHistory(table.ban_id)}
                   >
                     Lịch sử hóa đơn
+                  </button>
+                  <button
+                    className="btn btn-primary history-btn"
+                    onClick={() => viewOrderHistory(table.ban_id)}
+                  >
+                    Cập nhật
+                  </button>
+                  <button
+                    className="btn btn-info history-btn"
+                    onClick={() => viewOrderHistory(table.ban_id)}
+                  >
+                    Trạng thái
                   </button>
                 </div>
               </div>
