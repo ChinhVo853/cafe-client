@@ -13,8 +13,12 @@ export const layData = async () => {
     const response = await apiClient.get("api/Size/Xem");
     return response.data;
   } catch (error) {
-    console.error("Error fetching data:", error);
-    throw error;
+    if (error.response.status == 401) {
+      window.location.href = "/Trangdangnhap";
+    } else {
+      console.error("Error fetching data:", error);
+      throw error;
+    }
   }
 };
 
@@ -23,7 +27,11 @@ export const XoaData = async (data) => {
     const response = await apiClient.post("api/Size/Xoa", data);
     return response;
   } catch (error) {
-    console.error("Error fetching data:", error);
-    throw error;
+    if (error.response.status == 401) {
+      window.location.href = "/Trangdangnhap";
+    } else {
+      console.error("Error fetching data:", error);
+      throw error;
+    }
   }
 };
