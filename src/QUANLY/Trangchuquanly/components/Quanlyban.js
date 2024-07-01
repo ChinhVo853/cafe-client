@@ -1,14 +1,17 @@
 import React,{useState} from "react";
 
 import "bootstrap/dist/css/bootstrap.min.css";
+import ModalQR from "../ModalQR";
 
 function Quanlyban({
   tables,
-  changeStatus,
   handlePayment,
-  handleQRCode,
   openModal,
   XoaDuLieu,
+  maQR,
+  modalIsOpen,
+  afterOpenModal,
+  closeModal,
   viewOrderHistory,
 }) {
   const [filter, setFilter] = useState("all");
@@ -22,6 +25,10 @@ function Quanlyban({
     return table.ten_trang_thai === filter;
   });
   console.log(tables);
+
+ 
+
+
   return (
     <div className="request-container mt-5">
       <div className="header">THỐNG KÊ</div>
@@ -76,7 +83,10 @@ function Quanlyban({
                     Trạng thái: {table.ten_trang_thai}
                   </p>
 
-                  <button className="btn btn-info qr-btn" onClick={openModal}>
+                  <button
+                    className="btn btn-info qr-btn"
+                    onClick={() => openModal(table.ban_id)}
+                  >
                     QR
                   </button>
                   <button
@@ -112,6 +122,12 @@ function Quanlyban({
                   </button>
                 </div>
               </div>
+              <ModalQR
+                maQR={maQR}
+                modalIsOpen={modalIsOpen}
+                afterOpenModal={afterOpenModal}
+                closeModal={closeModal}
+              />
             </div>
           ))}
         </div>

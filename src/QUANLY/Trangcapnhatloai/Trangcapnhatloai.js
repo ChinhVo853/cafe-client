@@ -27,7 +27,6 @@ function Trangcapnhatloai() {
     const data = {
       ten: typeName,
       id: id,
-
     };
     // Handle the form submission
     try {
@@ -60,6 +59,31 @@ function Trangcapnhatloai() {
       </form>
       
 
+
+   <div className="mb-3">
+            <label htmlFor="typeName" className="form-label">
+              Tên loại
+            </label>
+            <input
+              type="text"
+              className="form-control"
+              id="typeName"
+              placeholder="Nhập tên loại"
+              value={typeName}
+              onChange={handleNameChange}
+            />
+          </div>
+          <button type="submit" className="btn btn-custom w-100">
+            Cập nhật
+          </button>
+          <a
+            href="/Trangquanlyloai"
+            className="quaylai btn btn-secondary go-back-btn"
+          >
+            Hủy
+          </a>
+        </form>
+      </div>
 
     </div>
   );

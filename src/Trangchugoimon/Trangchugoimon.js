@@ -1,8 +1,9 @@
-
 import React, { useState } from "react";
 import Phanhoi from "./components/Phanhoi";
+import { useParams } from "react-router-dom";
+
 function Trangchugoimon() {
-  console.log(localStorage.getItem("QR"));
+  const { ban } = useParams();
   const [showCallStaffForm, setShowCallStaffForm] = useState(false);
   const [requestItems, setRequestItems] = useState({
     tương_ớt: false,
@@ -12,7 +13,7 @@ function Trangchugoimon() {
     nước_tương: false,
     // Thêm các mục yêu cầu khác ở đây
   });
-
+  console.log(localStorage.getItem("QR"));
   const toggleCallStaffForm = () => {
     setShowCallStaffForm(!showCallStaffForm);
   };
@@ -156,7 +157,7 @@ function Trangchugoimon() {
               >
                 <div className="service-item rounded pt-3">
                   <div className="p-4">
-                    <a href="/Menu">
+                    <a href={`/Menu/${ban}`}>
                       <i className="iconchucnang fa fa-3x fa-utensils text-primary mb-4"></i>
                       <h5>MENU</h5>
                     </a>

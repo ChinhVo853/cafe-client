@@ -68,15 +68,20 @@ const TrangQLnhanvien = () => {
                 </tr>
               </thead>
               <tbody>
-                {employees.map(employee => (
+                {employees.map((employee) => (
                   <tr key={employee.id}>
                     <td>{employee.id}</td>
-                    <td>{employee.name}</td>
-                    <td>{employee.phone}</td>
+                    <td>{employee.ho_ten}</td>
+                    <td>{employee.so_dien_thoai}</td>
                     <td>{employee.email}</td>
-                    <td>{employee.password}</td>
+                    <td>{employee.ten_quyen}</td>
                     <td>
-
+                      <button
+                        className="btn btn-outline-primary btn-sm me-2"
+                        onClick={() => handleUpdate(employee.id)}
+                      >
+                        Cập nhật
+                      </button>
                       <button
                         className="btn btn-outline-danger btn-sm"
                         onClick={() => handleDelete(employee.id)}
@@ -92,11 +97,7 @@ const TrangQLnhanvien = () => {
         </div>
       </div>
 
-      <Menuquanly
-        toggleMenu={toggleMenu}
-        menuOpen={menuOpen}
-      />
-
+      <Menuquanly toggleMenu={toggleMenu} menuOpen={menuOpen} />
     </div>
   );
 };

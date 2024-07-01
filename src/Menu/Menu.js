@@ -2,12 +2,14 @@ import React, { useState, useCallback, useEffect } from "react";
 import DanhSachMenuSection from "./components/DanhSachMenuSection";
 import SanPhamSection from "./components/SanPhamSection";
 import GioHangSection from "./components/GioHangSection";
-import { getSomeData } from "./getAPI.js/API";
+import { getSomeData, ThemData, ThemSL, GiamSL } from "./getAPI.js/API";
+import { useParams } from "react-router-dom";
+
 function Menu() {
   const [menuIsOpen, setMenuIsOpen] = useState(false);
   const [productOptions, setProductOptions] = useState({});
   const [data, setData] = useState();
-
+  const { ban } = useParams();
   const [cart, setCart] = useState(() => {
     // Khôi phục giỏ hàng từ localStorage nếu có
     const savedCart = localStorage.getItem("cart");
@@ -16,22 +18,16 @@ function Menu() {
 
   const LayDuLieu = useCallback(async () => {
     try {
-      const result = await getSomeData();
-
+      const result = await getSomeData(ban);
       setData(result);
     } catch (error) {
       console.error("Failed to fetch data", error);
     }
   }, []);
+
   useEffect(() => {
     LayDuLieu();
   }, [LayDuLieu]);
-
-  const [cartItemCount, setCartItemCount] = useState(() => {
-    // Khôi phục số lượng sản phẩm trong giỏ hàng từ localStorage nếu có
-    const savedItemCount = localStorage.getItem("cartItemCount");
-    return savedItemCount ? parseInt(savedItemCount, 10) : 0;
-  });
 
   const [cartDetailsIsOpen, setCartDetailsIsOpen] = useState(false);
 
@@ -46,40 +42,15 @@ function Menu() {
     }));
   };
 
-  const handleAddToCart = (productId, size, quantity, price, name) => {
-    // Kiểm tra xem sản phẩm đã tồn tại trong giỏ hàng chưa
-    const existingProductIndex = cart.findIndex(
-      (item) => item.id === productId && item.size === size
-    );
-
-    let newCart;
-    if (existingProductIndex !== -1) {
-      // Nếu sản phẩm đã tồn tại, tăng số lượng của sản phẩm đó
-      newCart = cart.map((item, index) => {
-        if (index === existingProductIndex) {
-          return { ...item, quantity: item.quantity + quantity };
-        }
-        return item;
-      });
-    } else {
-      // Nếu sản phẩm chưa tồn tại, thêm sản phẩm mới vào giỏ hàng
-      newCart = [...cart, { id: productId, size, quantity, price, name }];
-    }
-
-    // Cập nhật giỏ hàng và lưu vào localStorage
-    setCart(newCart);
-    localStorage.setItem("cart", JSON.stringify(newCart));
-
-    // Tăng số lượng sản phẩm trong giỏ hàng và lưu vào localStorage
-    const newCartItemCount = cartItemCount + quantity;
-    setCartItemCount(newCartItemCount);
-    localStorage.setItem("cartItemCount", newCartItemCount.toString());
-
-    // Đóng product options sau khi thêm vào giỏ hàng
-    setProductOptions((prev) => ({
-      ...prev,
-      [productId]: false,
-    }));
+  const handleAddToCart = async (size, quantity, name) => {
+    const data = {
+      tenMon: name,
+      tenSize: size,
+      soLuong: quantity,
+      id: ban,
+    };
+    await ThemData(data);
+    await LayDuLieu();
   };
 
   const handleCartContainerClick = () => {
@@ -105,31 +76,25 @@ function Menu() {
     setCartDetailsIsOpen(false);
   };
 
-  const handleIncreaseQuantity = (productId) => {
-    const newCart = cart.map((item) => {
-      if (item.id === productId) {
-        return { ...item, quantity: item.quantity + 1 };
-      }
-      return item;
-    });
-    setCart(newCart);
-    setCartItemCount(cartItemCount + 1);
+  const handleIncreaseQuantity = async (size, name) => {
+    const data = {
+      tenMon: name,
+      tenSize: size,
+      id: ban,
+    };
+    await ThemSL(data);
+    await LayDuLieu();
   };
 
-  const handleDecreaseQuantity = (productId) => {
-    const newCart = cart.map((item) => {
-      if (item.id === productId && item.quantity > 1) {
-        return { ...item, quantity: item.quantity - 1 };
-      }
-      return item;
-    });
-    setCart(newCart);
-    setCartItemCount(cartItemCount - 1);
-  };
-
-  const addToCart = (product) => {
-    setCart([...cart, product]);
-    setCartItemCount(cartItemCount + 1);
+  const handleDecreaseQuantity = async (size, name) => {
+    const data = {
+      tenMon: name,
+      tenSize: size,
+      id: ban,
+    };
+    console.log(1);
+    await GiamSL(data);
+    await LayDuLieu();
   };
   const handleOrderSubmit = () => {
     // Xử lý logic khi gọi món
@@ -174,8 +139,7 @@ function Menu() {
           ))}
 
           <GioHangSection
-            cart={cart}
-            cartItemCount={cartItemCount}
+            data={data.dat_mon}
             cartDetailsIsOpen={cartDetailsIsOpen}
             handleCartContainerClick={handleCartContainerClick}
             handleCloseCartClick={handleCloseCartClick}

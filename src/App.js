@@ -31,7 +31,7 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<TrangChu />} />
-      <Route path="/Menu" element={<Menu />} />
+      <Route path="/Menu/:ban" element={<Menu />} />
       {/* -----------------------*******QuanLy*********----------------- */}
       <Route path="/Trangchuquanly" element={<Trangchuquanly />} />
       {/* -----------------------*******QuanLyMon*********----------------- */}
@@ -53,12 +53,14 @@ function App() {
       />
       {/* -----------------------*******TrangQLnhanvien*********----------------- */}
 
+
       <Route path="/TrangQLnhanvien" element={<TrangQLnhanvien/>} />
       <Route path="/Trangthemnhanvien" element={<Trangthemnhanvien/>} />
       <Route path="/Trangthongtinnhanvien" element={<TrangthongTinNhanVien/>} />
       <Route path="/Trangdangnhap" element={<Trangdangnhap/>} />
       <Route path="/Logout" element={<Logout/>} />
       <Route path="/Trangcapnhatthongtinnhanvien" element={<TrangcapnhatthongTinNhanVien/>} />
+
 
 
 

@@ -1359,7 +1359,6 @@ a {
   z-index: 1000;
   animation: slideUp 0.3s ease-out;
   padding: 20px;
-  
 }
 
 @keyframes slideUp {
@@ -1487,13 +1486,10 @@ label {
   text-align: right;
   margin-bottom: 15px;
 
-}
-
 
 /**************************************TRANGPHANHOI*******************************************/
 .feedback-page {
   padding: 20px;
-
 }
 
 .home-button {
@@ -1512,7 +1508,6 @@ label {
   border: #f4a261 solid 3px;
   border-radius: 20px;
   padding: 7px;
-
 }
 .home-button-menu {
   top: 20px;
@@ -1531,13 +1526,13 @@ label {
   padding: 10px;
   margin: auto;
 }
-.home-button i {}
+.home-button i {
+}
 
 .feedback-content {
   margin-top: 60px;
   text-align: center;
   border-bottom: solid 2px blanchedalmond;
-
 }
 
 h3 {
@@ -1563,7 +1558,7 @@ h3 {
 }
 
 .message:before {
-  content: '';
+  content: "";
   position: absolute;
   top: 10px;
   left: -10px;
@@ -1714,6 +1709,7 @@ h3 {
 .form-row .form-group:last-child {
   margin-right: 0;
 }
+
 /*********************************NútGoiMon*************************************/
 .order-button {
   background-color: #f4a261;
