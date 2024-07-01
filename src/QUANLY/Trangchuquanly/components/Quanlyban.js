@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import ModalQR from "../ModalQR";
@@ -8,11 +8,15 @@ function Quanlyban({
   handlePayment,
   openModal,
   XoaDuLieu,
+
+
+  viewOrderHistory,
+
   maQR,
   modalIsOpen,
   afterOpenModal,
   closeModal,
-  viewOrderHistory,
+
 }) {
   const [filter, setFilter] = useState("all");
 
@@ -26,7 +30,7 @@ function Quanlyban({
   });
   console.log(tables);
 
- 
+
 
 
   return (
@@ -43,31 +47,31 @@ function Quanlyban({
         </button>
       </div>
       <div>
-          <button
-            className="btn btn-outline-secondary me-2"
-            onClick={() => handleFilterChange("Trống")}
-          >
-            Trống
-          </button>
-          <button
-            className="btn btn-outline-secondary me-2"
-            onClick={() => handleFilterChange("Đang sử dụng")}
-          >
-            Đang sử dụng
-          </button>
-          <button
-            className="btn btn-outline-secondary me-2"
-            onClick={() => handleFilterChange("Đang chờ thanh toán")}
-          >
-            Đang chờ thanh toán
-          </button>
-          <button
-            className="btn btn-outline-secondary"
-            onClick={() => handleFilterChange("Đang dọn bàn")}
-          >
-            Đang dọn bàn
-          </button>
-        </div>
+        <button
+          className="btn btn-outline-secondary me-2"
+          onClick={() => handleFilterChange("Trống")}
+        >
+          Trống
+        </button>
+        <button
+          className="btn btn-outline-secondary me-2"
+          onClick={() => handleFilterChange("Đang sử dụng")}
+        >
+          Đang sử dụng
+        </button>
+        <button
+          className="btn btn-outline-secondary me-2"
+          onClick={() => handleFilterChange("Đang chờ thanh toán")}
+        >
+          Đang chờ thanh toán
+        </button>
+        <button
+          className="btn btn-outline-secondary"
+          onClick={() => handleFilterChange("Đang dọn bàn")}
+        >
+          Đang dọn bàn
+        </button>
+      </div>
       <div className="container">
         <div className="row">
           {tables.map((table) => (

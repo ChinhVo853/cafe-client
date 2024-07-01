@@ -115,12 +115,12 @@ function Trangchuquanly() {
       {tables ? (
         <>
           <div>
-            
             <div className="search-container-custom">
               <input type="text" placeholder="Tìm kiếm..." />
               <button type="button">🔍</button>
             </div>
-            <a href="/Trangthongtinnhanvien" className="btn-trangnhanvien" type="button"><i class="fa-solid fa-user"></i></a>
+            <a href="/Trangthongtinnhanvien" className="btn-trangnhanvien" type="button"><i className="fa-solid fa-user"></i></a>
+
 
             <Menuquanly toggleMenu={toggleMenu} menuOpen={menuOpen} />
 
@@ -129,12 +129,11 @@ function Trangchuquanly() {
               handlePayment={handlePayment}
               openModal={openModal}
               XoaDuLieu={XoaDuLieu}
-
+              viewOrderHistory={viewOrderHistory}
               maQR={maQR}
               modalIsOpen={modalIsOpen}
               afterOpenModal={afterOpenModal}
               closeModal={closeModal}
-
             />
           </div>
         </>
