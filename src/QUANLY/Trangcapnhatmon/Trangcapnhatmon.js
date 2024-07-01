@@ -1,133 +1,196 @@
-import React, { useState } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import '@fortawesome/fontawesome-free/css/all.css';
+import React, { useState, useEffect, useCallback } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "@fortawesome/fontawesome-free/css/all.css";
+import { XemData } from "./API/Api";
+import { useParams } from "react-router-dom";
+import config from "../../config";
+import axios from "axios";
+import Cookies from "js-cookie";
 
 function Trangcapnhatmon() {
-    const [formData, setFormData] = useState({
-        foodImage: null,
-        foodName: '',
-        foodPrice: '',
-        foodReviews: '',
-        foodCategory: '',
-        foodSize: '',
-        foodStatus: 'Còn hàng'
-    });
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [data, setData] = useState();
+  const [tenMon, setTenMon] = useState();
+  const [gia, setGia] = useState();
+  const [trangThai, setTrangThai] = useState();
 
-    const [showNotification, setShowNotification] = useState(false);
+  const { id } = useParams();
+  const handleImageChange = (event) => {
+    setSelectedImage(event.target.files[0]);
+  };
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({
-            ...formData,
-            [name]: value
-        });
-    };
+  const LayDuLieu = useCallback(async () => {
+    try {
+      const result = await XemData(id);
+      setData(result.data.data);
+      setGia(result.data.data.gia);
+      setTrangThai(result.data.data.trang_thai);
+      setTenMon(result.data.data.tenMon);
+    } catch (error) {
+      console.error("Failed to fetch data", error);
+    }
+  }, []);
+  useEffect(() => {
+    LayDuLieu();
+  }, [LayDuLieu]);
+  const handleUpload = async (event) => {
+    event.preventDefault();
+    console.log(selectedImage);
+    const formData = new FormData();
+    formData.append("image", selectedImage);
+    formData.append("MonID", id);
+    formData.append("tenMon", tenMon);
+    formData.append("gia", gia);
+    formData.append("trangThai", trangThai);
 
-    const handleImageChange = (e) => {
-        setFormData({
-            ...formData,
-            foodImage: e.target.files[0]
-        });
-    };
+    try {
+      const response = await axios.post(
+        config.apiBaseUrl + "/api/San-Pham/Them-Anh",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+            Authorization: `Bearer ${Cookies.get("token")}`,
+          },
+        }
+      );
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        // Handle the form submission
-        console.log(formData);
-
-        // Hiển thị thông báo
-        setShowNotification(true);
-
-        // Ẩn thông báo sau 3 giây
-        setTimeout(() => {
-            setShowNotification(false);
-        }, 3000);
-    };
-    const [size, setSize] = useState(false);
-    const handleSize = (e) => {
-        setSize(e.target.checked);
-    };
-    return (
+      if (response.data.success) {
+        alert("Thành công");
+        // Thực hiện các thao tác cần thiết sau khi tải lên thành công
+      } else {
+        alert("Thất bại: " + response.data.message);
+        // Xử lý lỗi nếu cần
+      }
+    } catch (error) {
+      console.error("Error uploading image", error);
+      alert("Lỗi khi tải lên ảnh");
+    }
+  };
+  const handleChangeGia = (e) => {
+    setGia(e.target.value); // Cập nhật giá trị mới vào state khi người dùng nhập
+  };
+  const handleChangeTenMon = (e) => {
+    setTenMon(e.target.value); // Cập nhật giá trị mới vào state khi người dùng nhập
+  };
+  const handleChangeTrangThai = (e) => {
+    setTrangThai(e.target.value); // Cập nhật giá trị mới vào state khi người dùng nhập
+  };
+  return (
+    <>
+      {data && (
         <div className="them-mon-container">
-            <div className="header">CẬP NHẬT MÓN</div>
-            <form onSubmit={handleSubmit}>
-                <div className="mb-3">
-                    <label htmlFor="foodImage" className="form-label">Hình ảnh</label>
-                    <input
-                        type="file"
-                        className="form-control"
-                        id="foodImage"
-                        accept="image/*"
-                        onChange={handleImageChange}
-                    />
-                </div>
-                <div className="mb-3">
-                    <label htmlFor="foodName" className="form-label">Tên món</label>
-                    <input
-                        type="text"
-                        className="form-control"
-                        id="foodName"
-                        name="foodName"
-                        placeholder="Nhập tên món ăn"
-                        value={formData.foodName}
-                        onChange={handleChange}
-                    />
-                </div>
+          <div className="header">CẬP NHẬT MÓN</div>
 
+          <div className="mb-3">
+            <label htmlFor="foodImage" className="form-label">
+              Hình ảnh
+            </label>
+            <input
+              type="file"
+              className="form-control"
+              id="foodImage"
+              accept="image/*"
+              onChange={handleImageChange}
+            />
+          </div>
+          <div className="mb-3">
+            <label htmlFor="foodName" className="form-label">
+              Tên món
+            </label>
+            <input
+              type="text"
+              className="form-control"
+              id="foodName"
+              name="foodName"
+              placeholder="Nhập tên món ăn"
+              value={tenMon}
+              onChange={handleChangeTenMon}
+            />
+          </div>
 
-                <div className="mb-3">
-                    <label htmlFor="foodCategory" className="form-label">Loại</label>
-                    <select type="text" className="form-control" id="foodCategory" name="foodCategory" value={formData.foodCategory} onChange={handleChange} />
-                </div>
-                <div className="form-row mb-3">
-                    <div className="form-group">
-                        <label htmlFor="foodCategory" className="form-label">Size</label>
-                        <select type="text" className="form-control" id="foodCategory" name="foodCategory" onChange={handleChange}>
-                            {/* Thêm các tùy chọn cho select */}
-                            <option value="">Chọn size</option>
-                            <option value="small">Nhỏ</option>
-                            <option value="medium">Vừa</option>
-                            <option value="large">Lớn</option>
-                        </select>
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="foodPrice" className="form-label">Giá</label>
-                        <input
-                            type="number"
-                            className="form-control"
-                            id="foodPrice"
-                            name="foodPrice"
-                            placeholder="Nhập giá món ăn"
-                            value={formData.foodPrice}
-                            onChange={handleChange}
-                        />
-                    </div>
-                </div>
+          <div className="mb-3">
+            <label htmlFor="foodCategory" className="form-label">
+              Loại
+            </label>
+            <input
+              type="text"
+              className="form-control"
+              id="foodCategory"
+              name="foodCategory"
+              value={data.tenLoai}
+              readOnly
+            />
+          </div>
+          <div className="form-row mb-3">
+            <div className="form-group">
+              <label htmlFor="foodCategory" className="form-label">
+                Size
+              </label>
+              <input
+                type="text"
+                className="form-control"
+                id="foodCategory"
+                name="foodCategory"
+                readOnly
+                value={data.tenSize}
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="foodPrice" className="form-label">
+                Giá
+              </label>
+              <input
+                type="number"
+                className="form-control"
+                id="foodPrice"
+                name="foodPrice"
+                placeholder="Nhập giá món ăn"
+                value={gia}
+                onChange={handleChangeGia}
+              />
+            </div>
+          </div>
 
-                
-                <div className="mb-3">
-                    <label htmlFor="foodStatus" className="form-label">Trạng thái</label>
-                    <select
-                        className="form-control"
-                        id="foodStatus"
-                        name="foodStatus"
-                        value={formData.foodStatus}
-                        onChange={handleChange}
-                    >
-                        <option value="Còn hàng">Còn hàng</option>
-                        <option value="Hết hàng">Hết hàng</option>
-                    </select>
-                </div>
-                <button type="submit" className="btn btn-custom w-100">Cập nhật</button>
-                <a href='/Trangquanlymon' className="quaylai btn btn-secondary go-back-btn">Hủy</a>
-            </form>
-            {showNotification && (
-                <div className="alert alert-success mt-3" role="alert">
-                    Cập nhật thành công!
-                </div>
+          <div className="mb-3">
+            <label htmlFor="foodStatus" className="form-label">
+              Trạng thái
+            </label>
+            {trangThai == 0 ? (
+              <select
+                className="form-control"
+                id="foodStatus"
+                name="foodStatus"
+                onChange={handleChangeTrangThai}
+              >
+                <option value="0">Hết hàng</option>
+                <option value="1">Còn hàng</option>
+              </select>
+            ) : (
+              <select
+                className="form-control"
+                id="foodStatus"
+                onChange={handleChangeTrangThai}
+                name="foodStatus"
+              >
+                <option value="1">Còn hàng</option>
+                <option value="0">Hết hàng</option>
+              </select>
             )}
+          </div>
+          <button onClick={handleUpload} className="btn btn-custom w-100">
+            Cập nhật
+          </button>
+          <a
+            href="/Trangquanlymon"
+            className="quaylai btn btn-secondary go-back-btn"
+          >
+            Hủy
+          </a>
         </div>
-    );
+      )}
+    </>
+  );
 }
 
 export default Trangcapnhatmon;

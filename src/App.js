@@ -37,7 +37,7 @@ function App() {
       {/* -----------------------*******QuanLyMon*********----------------- */}
       <Route path="/Trangquanlymon" element={<Trangquanlymon />} />
       <Route path="/Trangthemmon" element={<Trangthemmon />} />
-      <Route path="/Trangcapnhatmon" element={<Trangcapnhatmon />} />
+      <Route path="/Trangcapnhatmon/:id" element={<Trangcapnhatmon />} />
       {/* -----------------------*******QuanLyLoai*********----------------- */}
       <Route path="/Trangquanlyloai" element={<Trangquanlyloai />} />
       <Route path="/Trangthemloai" element={<Trangthemloai />} />
@@ -53,16 +53,18 @@ function App() {
       />
       {/* -----------------------*******TrangQLnhanvien*********----------------- */}
 
-
-      <Route path="/TrangQLnhanvien" element={<TrangQLnhanvien/>} />
-      <Route path="/Trangthemnhanvien" element={<Trangthemnhanvien/>} />
-      <Route path="/Trangthongtinnhanvien" element={<TrangthongTinNhanVien/>} />
-      <Route path="/Trangdangnhap" element={<Trangdangnhap/>} />
-      <Route path="/Logout" element={<Logout/>} />
-      <Route path="/Trangcapnhatthongtinnhanvien" element={<TrangcapnhatthongTinNhanVien/>} />
-
-
-
+      <Route path="/TrangQLnhanvien" element={<TrangQLnhanvien />} />
+      <Route path="/Trangthemnhanvien" element={<Trangthemnhanvien />} />
+      <Route
+        path="/Trangthongtinnhanvien"
+        element={<TrangthongTinNhanVien />}
+      />
+      <Route path="/Trangdangnhap" element={<Trangdangnhap />} />
+      <Route path="/Logout" element={<Logout />} />
+      <Route
+        path="/Trangcapnhatthongtinnhanvien"
+        element={<TrangcapnhatthongTinNhanVien />}
+      />
 
       {/* ********************************************************************** */}
       {/* -----------------------*******TRANGCHUGOIMON*********----------------- */}

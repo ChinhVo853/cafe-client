@@ -58,7 +58,7 @@ const Phanhoi = () => {
                       <p>{item.noi_dung}</p>
                     </div>
                   </div>
-                  {item.trang_thai == 1 ? (
+                  {item.trang_thai === 1 ? (
                     <div className="message-box">
                       <div className="message">
                         <p>Chúng tôi đã nhận được yêu cầu của bạn</p>
