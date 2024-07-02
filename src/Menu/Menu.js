@@ -2,20 +2,13 @@ import React, { useState, useCallback, useEffect } from "react";
 import DanhSachMenuSection from "./components/DanhSachMenuSection";
 import SanPhamSection from "./components/SanPhamSection";
 import GioHangSection from "./components/GioHangSection";
-import { getSomeData, ThemData, ThemSL, GiamSL } from "./getAPI.js/API";
+import { getSomeData, ThemData, ThemSL, GiamSL, GoiMon } from "./getAPI.js/API";
 import { useParams } from "react-router-dom";
-
 function Menu() {
   const [menuIsOpen, setMenuIsOpen] = useState(false);
   const [productOptions, setProductOptions] = useState({});
   const [data, setData] = useState();
   const { ban } = useParams();
-  const [cart, setCart] = useState(() => {
-    // Khôi phục giỏ hàng từ localStorage nếu có
-    const savedCart = localStorage.getItem("cart");
-    return savedCart ? JSON.parse(savedCart) : [];
-  });
-
   const LayDuLieu = useCallback(async () => {
     try {
       const result = await getSomeData(ban);
@@ -57,14 +50,6 @@ function Menu() {
     setCartDetailsIsOpen((prev) => !prev);
   };
 
-  const updateCartDetails = useCallback(() => {
-    // Function logic to update cart details can go here if needed
-  }, [cart]);
-
-  useEffect(() => {
-    updateCartDetails();
-  }, [cart, updateCartDetails]);
-
   const handleCloseButtonClick = (productId) => {
     setProductOptions((prevOptions) => ({
       ...prevOptions,
@@ -92,14 +77,14 @@ function Menu() {
       tenSize: size,
       id: ban,
     };
-    console.log(1);
     await GiamSL(data);
     await LayDuLieu();
   };
-  const handleOrderSubmit = () => {
-    // Xử lý logic khi gọi món
-    console.log("Order submitted!");
+  const handleOrderSubmit = async () => {
+    await GoiMon(ban);
+    LayDuLieu();
   };
+  console.log(data);
   return (
     <>
       {data && (
