@@ -16,7 +16,6 @@ const GioHangSection = ({
     );
   };
   const [showScroll, setShowScroll] = useState(false);
-  console.log(data);
   const handleScroll = () => {
     if (window.pageYOffset > 300) {
       setShowScroll(true);
@@ -88,10 +87,7 @@ const GioHangSection = ({
         <div className="total-price">
           Tổng tiền: {calculateTotalPrice().toLocaleString()}đ
         </div>
-        <button
-          className="order-button"
-          onClick={handleOrderSubmit}
-        >
+        <button className="order-button" onClick={handleOrderSubmit}>
           Gọi món
         </button>
       </div>
