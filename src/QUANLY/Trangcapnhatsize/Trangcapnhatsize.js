@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useCallback } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useParams } from "react-router-dom";
@@ -27,17 +26,14 @@ function Trangcapnhatsize() {
     const data = {
       ten: sizeName,
       id: id,
-
     };
     // Handle the form submission
     try {
       await SuaData(data);
-      window.location.href = "/Trangquanlysize";
     } catch (error) {
       console.error("Failed to submit data", error);
     }
   };
-
 
   return (
     <div className="them-mon-container">

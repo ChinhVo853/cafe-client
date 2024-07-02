@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Phanhoi from "./components/Phanhoi";
 import { useParams } from "react-router-dom";
 import { TaoYeuCau } from "./API/Api"; // Ensure this import is correct
 

@@ -5,28 +5,14 @@ import Swal from "sweetalert2";
 const apiClient = axios.create({
   baseURL: config.apiBaseUrl,
   headers: {
-    "Content-Type": "application/json",
+    "Content-Type": "multipart/form-data",
     Authorization: `Bearer ${Cookies.get("token")}`,
   },
 });
 
-export const layData = async () => {
+export const XemData = async (id) => {
   try {
-    const response = await apiClient.get("api/Loai/Xem");
-    return response.data;
-  } catch (error) {
-    if (error.response.status == 401) {
-      window.location.href = "/Trangdangnhap";
-    } else {
-      console.error("Error fetching data:", error);
-      throw error;
-    }
-  }
-};
-
-export const XoaData = async (data) => {
-  try {
-    const response = await apiClient.post("api/Loai/Xoa", data);
+    const response = await apiClient.get("api/San-Pham/Xem/" + id);
     return response;
   } catch (error) {
     if (error.response.status == 401) {

@@ -9,32 +9,27 @@ const apiClient = axios.create({
   },
 });
 
-export const XemData = async () => {
+export const DangNhap = async (data) => {
   try {
-    const response = await apiClient.get("api/Ban/Xem");
-    console.log(response);
-    return response.data;
+    const response = await apiClient.post("api/Login", data);
+    Cookies.set("token", response.data.access_token, { expires: 7 });
+    return response;
   } catch (error) {
-    if (error.response.status == 401) {
-      window.location.href = "/Trangdangnhap";
-    } else {
-      console.error("Error fetching data:", error);
-      throw error;
-    }
+    console.error("Error fetching data:", error);
+    throw error;
   }
 };
 
-export const XoaData = async (data) => {
+export const Me = async () => {
   try {
-    const response = await apiClient.post("api/Ban/Xoa", data);
+    const response = await apiClient.get("api/me");
     return response;
   } catch (error) {
     if (error.response.status == 401) {
-      window.location.href = "/Trangdangnhap";
+      console.log(1);
     } else {
       console.error("Error fetching data:", error);
       throw error;
     }
   }
 };
-
