@@ -5,15 +5,22 @@ import Swal from "sweetalert2";
 const apiClient = axios.create({
   baseURL: config.apiBaseUrl,
   headers: {
-    "Content-Type": "application/json",
+    "Content-Type": "multipart/form-data",
     Authorization: `Bearer ${Cookies.get("token")}`,
   },
 });
 
-export const layData = async () => {
+const apiClient1 = axios.create({
+  baseURL: config.apiBaseUrl,
+  headers: {
+    "Content-Type": "application/json",
+    Authorization: `Bearer ${Cookies.get("token")}`,
+  },
+});
+export const XemLoai = async () => {
   try {
     const response = await apiClient.get("api/Loai/Xem");
-    return response.data;
+    return response;
   } catch (error) {
     if (error.response.status == 401) {
       window.location.href = "/Trangdangnhap";
@@ -24,9 +31,24 @@ export const layData = async () => {
   }
 };
 
-export const XoaData = async (data) => {
+export const XemSize = async () => {
   try {
-    const response = await apiClient.post("api/Loai/Xoa", data);
+    const response = await apiClient.get("api/Size/Xem");
+    return response;
+  } catch (error) {
+    if (error.response.status == 401) {
+      window.location.href = "/Trangdangnhap";
+    } else {
+      console.error("Error fetching data:", error);
+      throw error;
+    }
+  }
+};
+
+export const ThemMon = async (data) => {
+  try {
+    const response = await apiClient1.post("api/San-Pham/Them/", data);
+    window.location.href = "/Trangquanlymon";
     return response;
   } catch (error) {
     if (error.response.status == 401) {

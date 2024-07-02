@@ -18,13 +18,10 @@ function Trangthemnhanvien() {
     });
   };
 
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     // Logic to handle form submission
     const result = await ThemData(formData);
-    console.log(result.message);
-    window.location.href = "/TrangQLnhanvien";
   };
 
   return (
@@ -75,7 +72,7 @@ function Trangthemnhanvien() {
               required
             />
           </div>
-          
+
           <div className="mb-3">
             <label htmlFor="password" className="add-employee-form-label">
               Mật khẩu
@@ -103,7 +100,6 @@ function Trangthemnhanvien() {
       </div>
     </>
   );
-
 }
 
 export default Trangthemnhanvien;

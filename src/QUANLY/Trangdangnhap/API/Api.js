@@ -20,12 +20,16 @@ export const DangNhap = async (data) => {
   }
 };
 
-export const Me = async (data) => {
+export const Me = async () => {
   try {
     const response = await apiClient.get("api/me");
     return response;
   } catch (error) {
-    console.error("Error fetching data:", error);
-    throw error;
+    if (error.response.status == 401) {
+      console.log(1);
+    } else {
+      console.error("Error fetching data:", error);
+      throw error;
+    }
   }
 };

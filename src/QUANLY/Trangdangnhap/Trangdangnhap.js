@@ -11,7 +11,7 @@ function Trangdangnhap() {
   };
   const KiemTra = async () => {
     const result = await Me();
-    if (result.data.id) {
+    if (result?.data.id) {
       window.location.href = "/Trangchuquanly";
     }
   };
