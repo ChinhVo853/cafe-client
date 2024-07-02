@@ -8,31 +8,20 @@ function Quanlyban({
   handlePayment,
   openModal,
   XoaDuLieu,
-
-
   viewOrderHistory,
-
   maQR,
   modalIsOpen,
   afterOpenModal,
   closeModal,
-
 }) {
   const [filter, setFilter] = useState("all");
-
   const handleFilterChange = (newFilter) => {
     setFilter(newFilter);
   };
-
   const filteredTables = tables.filter((table) => {
     if (filter === "all") return true;
     return table.ten_trang_thai === filter;
   });
-  console.log(tables);
-
-
-
-
   return (
     <div className="request-container mt-5">
       <div className="header">THỐNG KÊ</div>
@@ -86,19 +75,18 @@ function Quanlyban({
                   <p className="card-text">
                     Trạng thái: {table.ten_trang_thai}
                   </p>
-
                   <button
                     className="btn btn-info qr-btn"
                     onClick={() => openModal(table.ban_id)}
                   >
                     QR
                   </button>
-                  <button
+                  <a href="/Trangyeucaucuaban"
                     className="btn btn-warning payment-btn"
                     onClick={() => handlePayment(table.ban_id)}
                   >
                     Yêu cầu
-                  </button>
+                  </a>
                   <button
                     href="#"
                     className="btn btn-danger delete-btn"
@@ -106,12 +94,12 @@ function Quanlyban({
                   >
                     Xóa
                   </button>
-                  <button
+                  <a href="/Lichsuhoadon"
                     className="btn btn-secondary history-btn"
                     onClick={() => viewOrderHistory(table.ban_id)}
                   >
                     Lịch sử hóa đơn
-                  </button>
+                  </a>
                   <button
                     className="btn btn-primary history-btn"
                     onClick={() => viewOrderHistory(table.ban_id)}
@@ -123,6 +111,12 @@ function Quanlyban({
                     onClick={() => viewOrderHistory(table.ban_id)}
                   >
                     Trạng thái
+                  </button>
+                  <button
+                    className="btn btn-outline-secondary"
+                    
+                  >
+                    Khách order
                   </button>
                 </div>
               </div>
@@ -139,5 +133,4 @@ function Quanlyban({
     </div>
   );
 }
-
 export default Quanlyban;

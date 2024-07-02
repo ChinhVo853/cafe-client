@@ -27,3 +27,4 @@ export const XoaData = async (data) => {
     throw error;
   }
 };
+

@@ -26,6 +26,10 @@ import TrangQR from "./Trangnhapma/TrangQR";
 import Logout from "./QUANLY/Logout";
 import TrangthongTinNhanVien from "./QUANLY/Trangthongtinnhanvien/Trangthongtinnhanvien";
 import TrangcapnhatthongTinNhanVien from "./QUANLY/Trangcapnhatthongtinnhanvien/Trangcapnhatthongtinnhanvien";
+import Trangcapnhatban from "./QUANLY/Trangchuquanly/components/Trangcapnhatban";
+import Trangyeucaucuaban from "./QUANLY/Trangchuquanly/components/Trangyeucaucuaban";
+import Lichsuhoadon from "./QUANLY/Trangchuquanly/components/LichSuHoaDon";
+import Chitiethoadon from "./QUANLY/Trangchuquanly/components/Chitiethoadon";
 
 function App() {
   return (
@@ -34,6 +38,11 @@ function App() {
       <Route path="/Menu/:ban" element={<Menu />} />
       {/* -----------------------*******QuanLy*********----------------- */}
       <Route path="/Trangchuquanly" element={<Trangchuquanly />} />
+      <Route path="/Trangcapnhatban" element={<Trangcapnhatban />} />
+      <Route path="/Trangyeucaucuaban" element={<Trangyeucaucuaban />} />
+      <Route path="/Lichsuhoadon" element={<Lichsuhoadon />} />
+      <Route path="/Chitiethoadon" element={<Chitiethoadon />} />
+
       {/* -----------------------*******QuanLyMon*********----------------- */}
       <Route path="/Trangquanlymon" element={<Trangquanlymon />} />
       <Route path="/Trangthemmon" element={<Trangthemmon />} />
@@ -47,10 +56,7 @@ function App() {
       <Route path="/Trangthemsize" element={<Trangthemsize />} />
       <Route path="/Trangcapnhatsize/:id" element={<Trangcapnhatsize />} />
       {/* -----------------------*******TrangQLyeucaucuakhachhang*********----------------- */}
-      <Route
-        path="/TrangQLyeucaucuakhachhang"
-        element={<TrangQLyeucaucuakhachhang />}
-      />
+      <Route path="/TrangQLyeucaucuakhachhang"element={<TrangQLyeucaucuakhachhang />}/>
       {/* -----------------------*******TrangQLnhanvien*********----------------- */}
 
 
