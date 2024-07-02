@@ -28,7 +28,6 @@ function Trangquanlysize() {
     // Handle the form submission
     try {
       await XoaData(data);
-      window.location.href = "/Trangquanlysize";
     } catch (error) {
       console.error("Failed to submit data", error);
     }

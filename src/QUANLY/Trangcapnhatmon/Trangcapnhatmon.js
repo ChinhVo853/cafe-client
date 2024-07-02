@@ -6,12 +6,14 @@ import { useParams } from "react-router-dom";
 import config from "../../config";
 import axios from "axios";
 import Cookies from "js-cookie";
-
+import Swal from "sweetalert2";
 function Trangcapnhatmon() {
   const [selectedImage, setSelectedImage] = useState(null);
   const [data, setData] = useState();
   const [tenMon, setTenMon] = useState();
   const [gia, setGia] = useState();
+  const [sizeID, setSizeID] = useState();
+  const [loaiID, setLoaiID] = useState();
   const [trangThai, setTrangThai] = useState();
 
   const { id } = useParams();
@@ -26,23 +28,28 @@ function Trangcapnhatmon() {
       setGia(result.data.data.gia);
       setTrangThai(result.data.data.trang_thai);
       setTenMon(result.data.data.tenMon);
+      setLoaiID(result.data.data.LoaiID);
+      setSizeID(result.data.data.sizeID);
     } catch (error) {
       console.error("Failed to fetch data", error);
     }
   }, []);
+  //console.log(sizeID);
   useEffect(() => {
     LayDuLieu();
   }, [LayDuLieu]);
   const handleUpload = async (event) => {
     event.preventDefault();
-    console.log(selectedImage);
+    // console.log(selectedImage);
     const formData = new FormData();
     formData.append("image", selectedImage);
     formData.append("MonID", id);
     formData.append("tenMon", tenMon);
     formData.append("gia", gia);
     formData.append("trangThai", trangThai);
-
+    formData.append("sizeID", sizeID);
+    formData.append("loaiID", loaiID);
+    //console.log(formData);
     try {
       const response = await axios.post(
         config.apiBaseUrl + "/api/San-Pham/Them-Anh",
@@ -54,17 +61,39 @@ function Trangcapnhatmon() {
           },
         }
       );
-
-      if (response.data.success) {
-        alert("Thành công");
-        // Thực hiện các thao tác cần thiết sau khi tải lên thành công
-      } else {
-        alert("Thất bại: " + response.data.message);
-        // Xử lý lỗi nếu cần
-      }
+      window.location.href = "/Trangquanlymon";
     } catch (error) {
-      console.error("Error uploading image", error);
-      alert("Lỗi khi tải lên ảnh");
+      if (error.response.status == 401) {
+        window.location.href = "/Trangdangnhap";
+      } else if (error.response.status == 422) {
+        const errors = error.response.data.errors;
+        if (typeof errors === "string") {
+          Swal.fire({
+            title: "Thất bại",
+            text: errors,
+            icon: "error",
+          });
+        } else {
+          const errorMessages = [];
+
+          // Duyệt qua các trường trong errors và gom thông báo lỗi thành một chuỗi HTML
+          for (const field in errors) {
+            if (errors.hasOwnProperty(field)) {
+              errors[field].forEach((message) => {
+                errorMessages.push(`<p>${message}</p>`);
+              });
+            }
+          }
+          Swal.fire({
+            title: "Thất bại",
+            html: `<div>${errorMessages.join("")}</div>`,
+            icon: "error",
+          });
+        }
+      } else {
+        console.error("Error fetching data:", error);
+        throw error;
+      }
     }
   };
   const handleChangeGia = (e) => {

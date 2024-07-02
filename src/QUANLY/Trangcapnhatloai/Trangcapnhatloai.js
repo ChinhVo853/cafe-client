@@ -30,7 +30,7 @@ function Trangcapnhatloai() {
     // Handle the form submission
     try {
       await Sua(data);
-      window.location.href = "/Trangquanlyloai";
+      //window.location.href = "/Trangquanlyloai";
     } catch (error) {
       console.error("Failed to submit data", error);
     }
@@ -63,29 +63,6 @@ function Trangcapnhatloai() {
           Hủy
         </a>
       </form>
-
-      <div className="mb-3">
-        <label htmlFor="typeName" className="form-label">
-          Tên loại
-        </label>
-        <input
-          type="text"
-          className="form-control"
-          id="typeName"
-          placeholder="Nhập tên loại"
-          value={typeName}
-          onChange={handleNameChange}
-        />
-      </div>
-      <button type="submit" className="btn btn-custom w-100">
-        Cập nhật
-      </button>
-      <a
-        href="/Trangquanlyloai"
-        className="quaylai btn btn-secondary go-back-btn"
-      >
-        Hủy
-      </a>
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import Menuquanly from "../Menuquanly";
 import React, { useState, useEffect, useCallback } from "react";
 import "@fortawesome/fontawesome-free/css/all.css";
-import { LayData as LayDuLieu } from "./API/Api";
+import { LayData as LayDuLieu, SuaTT, Xoa } from "./API/Api";
 import config from "../../config";
 function Trangquanlymon() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -20,6 +20,22 @@ function Trangquanlymon() {
   }, [LayData]);
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
+  };
+
+  const SuaTrangThai = async (tt, id) => {
+    const data = {
+      id: id,
+      trangThai: tt,
+    };
+    await SuaTT(data);
+    LayData();
+  };
+  const XoaMon = async (id) => {
+    const data = {
+      id: id,
+    };
+    await Xoa(data);
+    LayData();
   };
 
   return (
@@ -71,9 +87,21 @@ function Trangquanlymon() {
                         <td>{dish.gia.toLocaleString("vi-VN")}</td>
                         <td>{dish.so_luong_danh_gia}</td>
                         <td>
-                          <button className="btn btn-outline-info btn-sm">
-                            {dish.trang_thai == 0 ? "Còn hàng" : "Hết hàng"}
-                          </button>
+                          {dish.trang_thai == 0 ? (
+                            <button
+                              className="btn btn-outline-info btn-sm"
+                              onClick={() => SuaTrangThai(1, dish.id)}
+                            >
+                              Còn hàng
+                            </button>
+                          ) : (
+                            <button
+                              className="btn btn-outline-info btn-sm"
+                              onClick={() => SuaTrangThai(0, dish.id)}
+                            >
+                              Hết hàng
+                            </button>
+                          )}
                         </td>
                         <td>
                           <a
@@ -82,7 +110,10 @@ function Trangquanlymon() {
                           >
                             Cập nhật
                           </a>
-                          <button className="btn btn-outline-danger btn-sm">
+                          <button
+                            className="btn btn-outline-danger btn-sm"
+                            onClick={() => XoaMon(dish.id)}
+                          >
                             Xóa
                           </button>
                         </td>

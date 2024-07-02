@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { ThemData } from "./API/Api";
@@ -9,7 +8,6 @@ function Trangthemsize() {
     setsizeName(e.target.value);
   };
 
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     const data = {
@@ -17,12 +15,10 @@ function Trangthemsize() {
     };
     try {
       await ThemData(data);
-      window.location.href = "/Trangquanlysize";
     } catch (error) {
       console.error("Failed to submit data", error);
     }
   };
-
 
   return (
     <div className="them-mon-container">
@@ -40,7 +36,6 @@ function Trangthemsize() {
             value={sizeName}
             onChange={handleNameChange}
           />
-
         </div>
 
         <button type="submit" className="btn btn-custom w-100">

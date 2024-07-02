@@ -1,6 +1,7 @@
 import axios from "axios";
 import config from "../../../config";
 import Cookies from "js-cookie";
+import Swal from "sweetalert2";
 const apiClient = axios.create({
   baseURL: config.apiBaseUrl,
   headers: {
@@ -12,10 +13,37 @@ const apiClient = axios.create({
 export const SuaData = async (data) => {
   try {
     const response = await apiClient.post("api/Size/Sua", data);
+    window.location.href = "/Trangquanlysize";
+
     return response;
   } catch (error) {
     if (error.response.status == 401) {
       window.location.href = "/Trangdangnhap";
+    } else if (error.response.status == 422) {
+      const errors = error.response.data.errors;
+      if (typeof errors === "string") {
+        Swal.fire({
+          title: "Thất bại",
+          text: errors,
+          icon: "error",
+        });
+      } else {
+        const errorMessages = [];
+
+        // Duyệt qua các trường trong errors và gom thông báo lỗi thành một chuỗi HTML
+        for (const field in errors) {
+          if (errors.hasOwnProperty(field)) {
+            errors[field].forEach((message) => {
+              errorMessages.push(`<p>${message}</p>`);
+            });
+          }
+        }
+        Swal.fire({
+          title: "Thất bại",
+          html: `<div>${errorMessages.join("")}</div>`,
+          icon: "error",
+        });
+      }
     } else {
       console.error("Error fetching data:", error);
       throw error;
