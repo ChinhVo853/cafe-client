@@ -30,6 +30,7 @@ import Trangcapnhatban from "./QUANLY/Trangchuquanly/components/Trangcapnhatban"
 import Trangyeucaucuaban from "./QUANLY/Trangchuquanly/components/Trangyeucaucuaban";
 import Lichsuhoadon from "./QUANLY/Trangchuquanly/components/LichSuHoaDon";
 import Chitiethoadon from "./QUANLY/Trangchuquanly/components/Chitiethoadon";
+import QLcacmondadat from "./QUANLY/Trangchuquanly/components/QLcacmondadat";
 
 function App() {
   return (
@@ -42,6 +43,7 @@ function App() {
       <Route path="/Trangyeucaucuaban" element={<Trangyeucaucuaban />} />
       <Route path="/Lichsuhoadon" element={<Lichsuhoadon />} />
       <Route path="/Chitiethoadon" element={<Chitiethoadon />} />
+      <Route path="/QLcacmondadat" element={<QLcacmondadat />} />
 
       {/* -----------------------*******QuanLyMon*********----------------- */}
       <Route path="/Trangquanlymon" element={<Trangquanlymon />} />

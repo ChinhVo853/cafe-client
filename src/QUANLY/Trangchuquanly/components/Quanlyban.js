@@ -116,7 +116,7 @@ function Quanlyban({
                     className="btn btn-outline-secondary"
                     
                   >
-                    Khách order
+                    Các món được order
                   </button>
                 </div>
               </div>

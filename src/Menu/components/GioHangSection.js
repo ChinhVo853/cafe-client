@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const GioHangSection = ({
   data,
@@ -15,7 +15,9 @@ const GioHangSection = ({
       0
     );
   };
+
   const [showScroll, setShowScroll] = useState(false);
+
   const handleScroll = () => {
     if (window.pageYOffset > 300) {
       setShowScroll(true);
@@ -24,7 +26,12 @@ const GioHangSection = ({
     }
   };
 
-  window.addEventListener("scroll", handleScroll);
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
     <>
@@ -35,10 +42,7 @@ const GioHangSection = ({
       >
         <span>Giỏ hàng:</span>
         <span className="cart-count" id="cart-count">
-          {
-            data.length
-            //-                      ---------------------                         ---------------so_luong
-          }
+          {data.length}
         </span>
       </div>
       <div
@@ -56,30 +60,32 @@ const GioHangSection = ({
             <li key={index} className="cart-item">
               <img
                 src={item.image}
-                alt={item.name}
+                alt={item.ten_mon}
                 className="cart-item-image"
               />
-              <span>{`${item.ten_mon} - Size: ${
-                item.ten_size
-              } - Giá: ${item.gia.toLocaleString()}đ`}</span>
-              <div className="quantity-controls">
-                <button
-                  className="decrease-button"
-                  onClick={() =>
-                    handleDecreaseQuantity(item.ten_size, item.ten_mon)
-                  }
-                >
-                  -
-                </button>
-                <span className="quantity-value">{item.so_luong}</span>
-                <button
-                  className="increase-button"
-                  onClick={() =>
-                    handleIncreaseQuantity(item.ten_size, item.ten_mon)
-                  }
-                >
-                  +
-                </button>
+              <div className="cart-item-info">
+                <span>{`${item.ten_mon} - Size: ${
+                  item.ten_size
+                } - Giá: ${item.gia.toLocaleString()}đ`}</span>
+                <div className="quantity-controls">
+                  <button
+                    className="decrease-button"
+                    onClick={() =>
+                      handleDecreaseQuantity(item.ten_size, item.ten_mon)
+                    }
+                  >
+                    -
+                  </button>
+                  <span className="quantity-value">{item.so_luong}</span>
+                  <button
+                    className="increase-button"
+                    onClick={() =>
+                      handleIncreaseQuantity(item.ten_size, item.ten_mon)
+                    }
+                  >
+                    +
+                  </button>
+                </div>
               </div>
             </li>
           ))}

@@ -1435,7 +1435,7 @@ label {
   margin-bottom: 20px;
 }
 #cart-items {
-  list-style: none;
+  list-style-type: none;
   padding: 0;
 }
 .cart-header h3 {
@@ -1455,9 +1455,26 @@ label {
 }
 .cart-item {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+}
+.cart-item-image {
+  max-width: 100%;
+  height: auto;
   margin-bottom: 10px;
+}
+.cart-item-details {
+  display: flex;
+  flex-direction: column;
+}
+.cart-item-name,
+.cart-item-size,
+.cart-item-price,
+.cart-item-quantity {
+  margin-bottom: 5px;
 }
 .decrease-button,
 .increase-button {
@@ -1486,28 +1503,42 @@ label {
   text-align: right;
   margin-bottom: 15px;
 }
+@media (min-width: 768px) {
+  .cart-item {
+    flex-direction: row;
+  }
 
+  .cart-item-image {
+    max-width: 150px;
+    margin-right: 20px;
+  }
+
+  .cart-item-details {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    flex: 1;
+  }
+
+  .cart-item-name,
+  .cart-item-size,
+  .cart-item-price,
+  .cart-item-quantity {
+    margin-bottom: 0;
+  }
+}
 /**************************************TRANGPHANHOI*******************************************/
 .feedback-page {
   padding: 20px;
 }
 
 .home-button {
-  position: absolute;
-  top: 20px;
-  /* Điều chỉnh khoảng cách từ trên xuống */
-  left: 20px;
-  /* Điều chỉnh khoảng cách từ trái sang phải */
-  background-color: transparent;
-  color: #333;
+  background-color: #007bff;
+  color: white;
   border: none;
+  padding: 10px;
   font-size: 16px;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  border: #f4a261 solid 3px;
-  border-radius: 20px;
-  padding: 7px;
 }
 .home-button-menu {
   top: 20px;
@@ -1530,9 +1561,8 @@ label {
 }
 
 .feedback-content {
-  margin-top: 60px;
   text-align: center;
-  border-bottom: solid 2px blanchedalmond;
+  margin-bottom: 20px;
 }
 
 h3 {
