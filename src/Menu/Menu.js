@@ -4,6 +4,7 @@ import SanPhamSection from "./components/SanPhamSection";
 import GioHangSection from "./components/GioHangSection";
 import { getSomeData, ThemData, ThemSL, GiamSL, GoiMon } from "./getAPI.js/API";
 import { useParams } from "react-router-dom";
+import Load from "../Load/Load";
 function Menu() {
   const [menuIsOpen, setMenuIsOpen] = useState(false);
   const [productOptions, setProductOptions] = useState({});
@@ -87,7 +88,7 @@ function Menu() {
   console.log(data);
   return (
     <>
-      {data && (
+      {data ? (
         <>
           <DanhSachMenuSection
             data={data}
@@ -133,6 +134,8 @@ function Menu() {
             handleOrderSubmit={handleOrderSubmit}
           />
         </>
+      ) : (
+        <Load />
       )}
     </>
   );

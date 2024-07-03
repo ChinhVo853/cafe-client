@@ -1,6 +1,7 @@
 import React, { useEffect, useCallback } from "react";
 import { useParams } from "react-router-dom";
 import { TaoDatMon, KiemTraMa as kiemTraMaAPI } from "./API/Api";
+import Load from "../Load/Load";
 
 function TrangQR() {
   const { ban } = useParams();
@@ -55,7 +56,11 @@ function TrangQR() {
     KiemTraMa();
   }, [KiemTraMa]);
 
-  return <>load</>;
+  return (
+    <>
+      <Load />
+    </>
+  );
 }
 
 export default TrangQR;

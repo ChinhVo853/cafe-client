@@ -23,7 +23,9 @@ function Trangthemnhanvien() {
     // Logic to handle form submission
     const result = await ThemData(formData);
   };
-
+  if (localStorage.getItem("quyen") == 2) {
+    window.location.href = "/Trangchuquanly";
+  }
   return (
     <>
       <div className="add-employee-wrapper">

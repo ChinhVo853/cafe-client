@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { LayYeuCau } from "../API/Api";
 import { useParams } from "react-router-dom";
+import Load from "../../Load/Load";
 const Phanhoi = () => {
   const { ban } = useParams();
   const [data, setData] = useState();
@@ -30,7 +31,7 @@ const Phanhoi = () => {
 
   return (
     <>
-      {data && (
+      {data ? (
         <div className="feedback-page">
           <button className="home-button" onClick={handleGoBack}>
             <i className="fas fa-home"></i>
@@ -39,7 +40,7 @@ const Phanhoi = () => {
             <h3>Phản hồi từ nhà hàng</h3>
             <a
               className="form-datmon"
-              href="/Cacmondadat"
+              href={`/Cacmondadat/${ban}`}
               onClick={handleViewOrders}
             >
               Các món đã đặt...
@@ -71,6 +72,8 @@ const Phanhoi = () => {
               ))}
           </div>
         </div>
+      ) : (
+        <Load />
       )}
     </>
   );

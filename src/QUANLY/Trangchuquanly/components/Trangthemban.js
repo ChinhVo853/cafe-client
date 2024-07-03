@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useCallback } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useParams } from "react-router-dom";
@@ -13,7 +12,7 @@ function Trangthemban() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const data = {
-      ten: sizeName,
+      ten_ban: sizeName,
     };
     try {
       await ThemBanData(data);

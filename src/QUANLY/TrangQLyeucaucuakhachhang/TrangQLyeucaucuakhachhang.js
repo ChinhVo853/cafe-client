@@ -1,7 +1,10 @@
 import React, { useState, useCallback, useEffect } from "react";
 import Menuquanly from "../Menuquanly";
 import { LayYeuCau, XacNhanYeuCau } from "./API/Api";
+import Load from "../../Load/Load";
+import Menunhanvien from "../Menunhanvien";
 const TrangQLyeucaucuakhachhang = () => {
+  const [quyen, setQuyen] = useState();
   const [requests, setRequests] = useState();
   useEffect(() => {
     LayData();
@@ -11,6 +14,7 @@ const TrangQLyeucaucuakhachhang = () => {
     try {
       const result = await LayYeuCau();
       setRequests(result);
+      setQuyen(localStorage.getItem("quyen"));
     } catch (error) {
       console.error("Failed to fetch data", error);
     }
@@ -26,7 +30,7 @@ const TrangQLyeucaucuakhachhang = () => {
   };
   return (
     <>
-      {requests && (
+      {requests ? (
         <div>
           <div className="search-container-custom">
             <input type="text" placeholder="Tìm kiếm..." />
@@ -87,8 +91,14 @@ const TrangQLyeucaucuakhachhang = () => {
               </div>
             </div>
           </div>
-          <Menuquanly toggleMenu={toggleMenu} menuOpen={menuOpen} />
+          {quyen == 1 ? (
+            <Menuquanly toggleMenu={toggleMenu} menuOpen={menuOpen} />
+          ) : (
+            <Menunhanvien toggleMenu={toggleMenu} menuOpen={menuOpen} />
+          )}
         </div>
+      ) : (
+        <Load />
       )}
     </>
   );
