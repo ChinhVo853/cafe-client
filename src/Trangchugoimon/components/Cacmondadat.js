@@ -2,6 +2,7 @@ import React, { useEffect, useState, useCallback } from "react";
 import { DanhSachChiTietHoaDon } from "../API/Api";
 import { useParams } from "react-router-dom";
 import config from "../../config";
+
 const Cacmondadat = () => {
   const { ban } = useParams();
   const [data, setData] = useState();
@@ -38,16 +39,14 @@ const Cacmondadat = () => {
               <li key={index} className="cart-item">
                 <img
                   src={config.imageBaseUrl + "/" + item.anh}
-                  alt={item.tenMon}
+                  
                   className="cart-item-image"
                 />
-                <span>{`${item.tenMon} - Size: ${
-                  item.tenSize
-                } - Giá: ${item.gia.toLocaleString()}đ`}</span>
-                <div className="quantity-controls">
-                  <span className="quantity-value">
-                    Số lượng: {item.so_luong}
-                  </span>
+                <div className="cart-item-details">
+                  <span className="cart-item-name">Tên: {item.tenMon}</span>
+                  <span className="cart-item-size">Size: {item.tenSize}</span>
+                  <span className="cart-item-price">Giá: {item.gia.toLocaleString()}đ</span>
+                  <span className="cart-item-quantity">Số lượng: {item.so_luong}</span>
                 </div>
               </li>
             ))}
