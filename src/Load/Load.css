@@ -49,11 +49,9 @@
   }
 }
 
-html,
-body {
-  height: 100%;
-  margin: 0;
+.Loadder {
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100vh; /* Full viewport height */
 }

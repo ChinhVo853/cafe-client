@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import Menuquanly from "../Menuquanly";
 import { layData, XoaData } from "./API/Api";
+import Load from "../../Load/Load";
 const TrangQLnhanvien = () => {
   const [employees, setEmployees] = useState([]);
 
@@ -14,6 +15,9 @@ const TrangQLnhanvien = () => {
   }, []);
 
   useEffect(() => {
+    if (localStorage.getItem("quyen") == 2) {
+      window.location.href = "/Trangchuquanly";
+    }
     LayData();
   }, [LayData]);
 
@@ -39,66 +43,72 @@ const TrangQLnhanvien = () => {
     setMenuOpen(!menuOpen);
   };
   return (
-    <div>
-      <div className="search-container-custom">
-        <input type="text" placeholder="Tìm kiếm..." />
-        <button type="button">🔍</button>
-      </div>
-      <div className="request-container mt-5">
-        <div className="header">QUẢN LÝ NHÂN VIÊN</div>
-        <div className="text-end mb-3">
-          <a
-            href="/Trangthemnhanvien"
-            className="btn btn-primary btn-add-employee"
-          >
-            Thêm nhân viên
-          </a>
-        </div>
-        <div className="row">
-          <div className="col">
-            <table className="table table-striped">
-              <thead>
-                <tr>
-                  <th scope="col">ID</th>
-                  <th scope="col">Họ tên</th>
-                  <th scope="col">SĐT</th>
-                  <th scope="col">Email</th>
-                  <th scope="col">Quyền</th>
-                  <th scope="col"></th>
-                </tr>
-              </thead>
-              <tbody>
-                {employees.map((employee) => (
-                  <tr key={employee.id}>
-                    <td>{employee.id}</td>
-                    <td>{employee.ho_ten}</td>
-                    <td>{employee.so_dien_thoai}</td>
-                    <td>{employee.email}</td>
-                    <td>{employee.ten_quyen}</td>
-                    <td>
-                      <button
-                        className="btn btn-outline-primary btn-sm me-2"
-                        onClick={() => handleUpdate(employee.id)}
-                      >
-                        Cập nhật
-                      </button>
-                      <button
-                        className="btn btn-outline-danger btn-sm"
-                        onClick={() => handleDelete(employee.id)}
-                      >
-                        Xóa
-                      </button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+    <>
+      {employees ? (
+        <div>
+          <div className="search-container-custom">
+            <input type="text" placeholder="Tìm kiếm..." />
+            <button type="button">🔍</button>
           </div>
-        </div>
-      </div>
+          <div className="request-container mt-5">
+            <div className="header">QUẢN LÝ NHÂN VIÊN</div>
+            <div className="text-end mb-3">
+              <a
+                href="/Trangthemnhanvien"
+                className="btn btn-primary btn-add-employee"
+              >
+                Thêm nhân viên
+              </a>
+            </div>
+            <div className="row">
+              <div className="col">
+                <table className="table table-striped">
+                  <thead>
+                    <tr>
+                      <th scope="col">ID</th>
+                      <th scope="col">Họ tên</th>
+                      <th scope="col">SĐT</th>
+                      <th scope="col">Email</th>
+                      <th scope="col">Quyền</th>
+                      <th scope="col"></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {employees.map((employee) => (
+                      <tr key={employee.id}>
+                        <td>{employee.id}</td>
+                        <td>{employee.ho_ten}</td>
+                        <td>{employee.so_dien_thoai}</td>
+                        <td>{employee.email}</td>
+                        <td>{employee.ten_quyen}</td>
+                        <td>
+                          <button
+                            className="btn btn-outline-primary btn-sm me-2"
+                            onClick={() => handleUpdate(employee.id)}
+                          >
+                            Cập nhật
+                          </button>
+                          <button
+                            className="btn btn-outline-danger btn-sm"
+                            onClick={() => handleDelete(employee.id)}
+                          >
+                            Xóa
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
 
-      <Menuquanly toggleMenu={toggleMenu} menuOpen={menuOpen} />
-    </div>
+          <Menuquanly toggleMenu={toggleMenu} menuOpen={menuOpen} />
+        </div>
+      ) : (
+        <Load />
+      )}
+    </>
   );
 };
 

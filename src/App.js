@@ -65,6 +65,7 @@ function App() {
         path="/TrangQLyeucaucuakhachhang"
         element={<TrangQLyeucaucuakhachhang />}
       />
+      <Route path="/QLcacmondadat/:ban" element={<QLcacmondadat />} />
       {/* -----------------------*******TrangQLnhanvien*********----------------- */}
 
       <Route path="/TrangQLnhanvien" element={<TrangQLnhanvien />} />

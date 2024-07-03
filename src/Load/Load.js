@@ -1,6 +1,10 @@
 import "./Load.css";
 
 function Load() {
-  return <div className="custom-loader"></div>;
+  return (
+    <div className="Loadder">
+      <div className="custom-loader"></div>
+    </div>
+  );
 }
 export default Load;

@@ -3,7 +3,10 @@ import ModalQR from "./ModalQR";
 import Quanlyban from "./components/Quanlyban";
 import React, { useState, useEffect, useCallback } from "react";
 import { XemData, XoaData } from "./API/Api";
+import Load from "../../Load/Load";
+import Menunhanvien from "../Menunhanvien";
 function Trangchuquanly() {
+  const [quyen, setQuyen] = useState();
   const [menuOpen, setMenuOpen] = useState(false);
   const [maQR, setMaQR] = useState(
     window.location.href.split("/").slice(0, -1).join("/")
@@ -12,6 +15,7 @@ function Trangchuquanly() {
   const LayData = useCallback(async () => {
     try {
       const result = await XemData();
+      setQuyen(localStorage.getItem("quyen"));
       setTables(result.data);
     } catch (error) {
       console.error("Failed to fetch data", error);
@@ -126,8 +130,11 @@ function Trangchuquanly() {
             >
               <i className="fa-solid fa-user"></i>
             </a>
-
-            <Menuquanly toggleMenu={toggleMenu} menuOpen={menuOpen} />
+            {quyen == 1 ? (
+              <Menuquanly toggleMenu={toggleMenu} menuOpen={menuOpen} />
+            ) : (
+              <Menunhanvien toggleMenu={toggleMenu} menuOpen={menuOpen} />
+            )}
 
             <Quanlyban
               tables={tables}
@@ -143,7 +150,9 @@ function Trangchuquanly() {
           </div>
         </>
       ) : (
-        <>load</>
+        <>
+          <Load />
+        </>
       )}
     </>
   );

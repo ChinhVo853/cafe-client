@@ -1,6 +1,7 @@
 import Menuquanly from "../Menuquanly";
 import React, { useState, useEffect, useCallback } from "react";
 import { layData, XoaData } from "./API/Api";
+import Load from "../../Load/Load";
 function Trangquanlysize() {
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -18,6 +19,9 @@ function Trangquanlysize() {
     setMenuOpen(!menuOpen);
   };
   useEffect(() => {
+    if (localStorage.getItem("quyen") == 2) {
+      window.location.href = "/Trangchuquanly";
+    }
     LayDuLieu();
   }, [LayDuLieu]);
 
@@ -34,7 +38,7 @@ function Trangquanlysize() {
   };
   return (
     <>
-      {data && (
+      {data ? (
         <div>
           <div className="search-container-custom">
             <input type="text" placeholder="Tìm kiếm..." />
@@ -85,6 +89,8 @@ function Trangquanlysize() {
           </div>
           <Menuquanly toggleMenu={toggleMenu} menuOpen={menuOpen} />
         </div>
+      ) : (
+        <Load />
       )}
     </>
   );

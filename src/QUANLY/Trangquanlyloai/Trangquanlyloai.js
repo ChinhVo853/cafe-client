@@ -4,6 +4,7 @@ import HeadLoaiSection from "./components/HeadLoaiSection";
 import TimKiemSection from "./components/TimKiemSection";
 import ThongTinSection from "./components/ThongTinSection";
 import { layData, XoaData } from "./getAPI/GetApi";
+import Load from "../../Load/Load";
 function Trangquanlyloai() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [data, setData] = useState();
@@ -29,6 +30,9 @@ function Trangquanlyloai() {
   };
 
   useEffect(() => {
+    if (localStorage.getItem("quyen") == 2) {
+      window.location.href = "/Trangchuquanly";
+    }
     LayDuLieu();
   }, [LayDuLieu]);
   const toggleMenu = () => {
@@ -36,7 +40,7 @@ function Trangquanlyloai() {
   };
   return (
     <>
-      {data && (
+      {data ? (
         <div>
           <TimKiemSection />
           <div className="request-container mt-5">
@@ -45,6 +49,8 @@ function Trangquanlyloai() {
           </div>
           <Menuquanly toggleMenu={toggleMenu} menuOpen={menuOpen} />
         </div>
+      ) : (
+        <Load />
       )}
     </>
   );

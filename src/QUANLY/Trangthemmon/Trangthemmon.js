@@ -21,6 +21,9 @@ function Trangthemmon() {
   const [size, setSize] = useState();
   const [sizeDuyNhat, setSizeDuyNhat] = useState(false);
   useEffect(() => {
+    if (localStorage.getItem("quyen") == 2) {
+      window.location.href = "/Trangchuquanly";
+    }
     LayDuLieu();
   }, []);
   function closeModal() {

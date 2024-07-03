@@ -1,5 +1,8 @@
-import React, { useEffect, useState } from "react";
-
+import React, { useEffect, useState, useCallback } from "react";
+import { useParams } from "react-router-dom";
+import { DanhSachChiTietHoaDon } from "../API/Api";
+import Load from "../../../Load/Load";
+import config from "../../../config";
 const QLcacmondadat = () => {
   const [items, setItems] = useState([
     {
@@ -22,6 +25,22 @@ const QLcacmondadat = () => {
     },
   ]);
 
+  const { ban } = useParams();
+  const [data, setData] = useState();
+
+  useEffect(() => {
+    LayData();
+  }, [ban]);
+
+  const LayData = useCallback(async () => {
+    try {
+      const result = await DanhSachChiTietHoaDon(ban);
+      setData(result.data.data);
+    } catch (error) {
+      console.error("Failed to fetch data", error);
+    }
+  }, []);
+
   const handleConfirm = (id) => {
     setItems((prevItems) =>
       prevItems.map((item) =>
@@ -40,33 +59,45 @@ const QLcacmondadat = () => {
 
   return (
     <>
-      <div className="feedback-page">
-        <button className="home-button" onClick={handleGoBack}>
-          <i className="fa-solid fa-arrow-left"></i>
-        </button>
-        <div className="feedback-content">
-          <h3>Các Món Đã Đặt</h3>
+      {data ? (
+        <div className="feedback-page">
+          <button className="home-button" onClick={handleGoBack}>
+            <i className="fa-solid fa-arrow-left"></i>
+          </button>
+          <div className="feedback-content">
+            <h3>Các Món Đã Đặt</h3>
+          </div>
+          <ul id="cart-items">
+            {data.map((item, key) => (
+              <li
+                key={key}
+                className={`cart-item ${item.isConfirmed ? "confirmed" : ""}`}
+              >
+                <img
+                  src={config.imageBaseUrl + "/" + item.anh}
+                  alt={item.ten_mon}
+                  className="cart-item-image"
+                />
+                <div className="cart-item-details">
+                  <span className="cart-item-name">Tên: {item.tenMon}</span>
+                  <span className="cart-item-size">Size: {item.tenSize}</span>
+                  <span className="cart-item-price">
+                    Giá: {item.gia.toLocaleString()}đ
+                  </span>
+                  <span className="cart-item-quantity">
+                    Số lượng: {item.so_luong}
+                  </span>
+                </div>
+              </li>
+            ))}
+          </ul>
+          <div className="total-price">
+            Tổng tiền: {data[0] ? data[0].tong_tien.toLocaleString() : 0}đ
+          </div>
         </div>
-        <ul id="cart-items">
-          {items.map((item) => (
-            <li key={item.id} className={`cart-item ${item.isConfirmed ? "confirmed" : ""}`}>
-              <img src={item.image} alt={item.ten_mon} className="cart-item-image" />
-              <div className="cart-item-details">
-                <span className="cart-item-name">Tên: {item.ten_mon}</span>
-                <span className="cart-item-size">Size: {item.ten_size}</span>
-                <span className="cart-item-price">Giá: {item.gia.toLocaleString()}đ</span>
-                <span className="cart-item-quantity">Số lượng: {item.so_luong}</span>
-              </div>
-              <button className="confirm-button" onClick={() => handleConfirm(item.id)}>
-                {item.isConfirmed ? "✔" : "Xác nhận"}
-              </button>
-            </li>
-          ))}
-        </ul>
-        <div className="total-price">
-          Tổng tiền: {calculateTotalPrice().toLocaleString()}đ
-        </div>
-      </div>
+      ) : (
+        <Load />
+      )}
     </>
   );
 };
