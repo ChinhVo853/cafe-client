@@ -26,14 +26,12 @@ function Quanlyban({
     <div className="request-container mt-5">
       <div className="header">THỐNG KÊ</div>
       <div className="col text-end mb-3">
-        <button
+        <a href="/Trangthemban"
           className="btn btn-primary"
-          onClick={() => {
-            /* Logic để thêm bàn mới */
-          }}
+          
         >
           Thêm bàn
-        </button>
+        </a>
       </div>
       <div>
         <button
@@ -81,12 +79,13 @@ function Quanlyban({
                   >
                     QR
                   </button>
-                  <a href="/Trangyeucaucuaban"
+                  {table.dat_mon_id && (<a href={`/Trangyeucaucuaban/${table.dat_mon_id}`}
                     className="btn btn-warning payment-btn"
                     onClick={() => handlePayment(table.ban_id)}
                   >
                     Yêu cầu
-                  </a>
+                  </a>)}
+                  
                   <button
                     href="#"
                     className="btn btn-danger delete-btn"
@@ -100,12 +99,12 @@ function Quanlyban({
                   >
                     Lịch sử hóa đơn
                   </a>
-                  <button
+                  <a href={`/Trangcapnhatban/${table.dat_mon_id}  `}
                     className="btn btn-primary history-btn"
-                    onClick={() => viewOrderHistory(table.ban_id)}
+                    
                   >
                     Cập nhật
-                  </button>
+                  </a>
                   <button
                     className="btn btn-info history-btn"
                     onClick={() => viewOrderHistory(table.ban_id)}

@@ -24,7 +24,6 @@ function Trangdangnhap() {
       password: password,
     };
     await DangNhap(data);
-    window.location.href = "/Trangchuquanly";
   };
 
   return (
