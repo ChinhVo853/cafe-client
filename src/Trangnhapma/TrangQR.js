@@ -1,66 +1,55 @@
 import React, { useEffect, useCallback } from "react";
 import { useParams } from "react-router-dom";
-import { TaoDatMon, KiemTraMa as kiemTraMaAPI } from "./API/Api";
+import { TaoDatMon, KiemTraMa as kiemTraMaAPI, KiemTraBan } from "./API/Api";
 import Load from "../Load/Load";
 
 function TrangQR() {
   const { ban } = useParams();
+
   const KiemTraMa = useCallback(async () => {
     try {
+      const result2 = await KiemTraBan(ban);
+      if (result2.data.data.trang_thai_id == 1) {
+        const result = await TaoDatMon(ban);
+
+        //kiểm tra kết quả trả về có data không nếu có thì vào trang gọi món
+        localStorage.setItem("QR", result.data.data);
+        window.location.href = "/Trangchugoimon/" + ban;
+      }
       const maQR = localStorage.getItem("QR");
       if (maQR) {
-        //kiểm tra  trong local có mã qr chưa nếu có thì chuyển qua trang nhập mã để kiểm tra qr đó
-        const data = {
-          ma: maQR,
-          ban: ban,
-        };
+        const data = { ma: maQR, ban: ban };
         const result1 = await kiemTraMaAPI(data);
-        if (result1.data.data) {
-          window.location.href = "/Trangchugoimon/" + ban;
+        if (result1.data.errors) {
+          window.location.href = `/Trangnhapma/${ban}`;
         } else {
-          try {
-            const result = await TaoDatMon(ban);
-            if (result.data.status) {
-              window.location.href = "/Trangnhapma/" + ban;
-            } else {
-              localStorage.setItem("QR", result.data.data.id);
-              window.location.href = "/Trangchugoimon/" + ban;
-            }
-          } catch (error) {
-            console.error("Failed to fetch data", error);
-          }
+          window.location.href = "/Trangchugoimon/" + ban;
         }
-
-        //
       } else {
         //nếu chưa có qr sẽ kiểm tra bàn và tạo mới đặt món
         try {
           const result = await TaoDatMon(ban);
-          if (result.data.data) {
-            //kiểm tra kết quả trả về có data không nếu có thì vào trang gọi món
-            localStorage.setItem("QR", result.data.data);
-            window.location.href = "/Trangchugoimon/" + ban;
-          } else {
-            //ngược lại nếu ko có thì vào trang nhập mã
-            window.location.href = "/Trangnhapma/" + ban;
-          }
+
+          //kiểm tra kết quả trả về có data không nếu có thì vào trang gọi món
+          localStorage.setItem("QR", result.data.data);
+          window.location.href = "/Trangchugoimon/" + ban;
+
+          //ngược lại nếu ko có thì vào trang nhập mã
         } catch (error) {
           console.error("Failed to fetch data", error);
         }
       }
     } catch (error) {
       console.error("Failed to fetch data", error);
+      // Handle error: show error message or redirect to an error page
     }
   }, [ban]);
+
   useEffect(() => {
     KiemTraMa();
   }, [KiemTraMa]);
 
-  return (
-    <>
-      <Load />
-    </>
-  );
+  return <Load />;
 }
 
 export default TrangQR;

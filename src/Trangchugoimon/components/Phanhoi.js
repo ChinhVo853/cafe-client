@@ -6,10 +6,6 @@ const Phanhoi = () => {
   const { ban } = useParams();
   const [data, setData] = useState();
 
-  useEffect(() => {
-    LayData();
-  }, [ban]);
-
   const LayData = useCallback(async () => {
     try {
       const result = await LayYeuCau(ban);
@@ -17,7 +13,11 @@ const Phanhoi = () => {
     } catch (error) {
       console.error("Failed to fetch data", error);
     }
-  }, []);
+  }, [ban]); // Include `ban` as a dependency
+
+  useEffect(() => {
+    LayData();
+  }, [LayData]); // Include `LayData` as a dependency
 
   const handleGoBack = () => {
     window.history.back();

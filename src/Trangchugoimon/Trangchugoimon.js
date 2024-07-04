@@ -8,25 +8,12 @@ function Trangchugoimon() {
   const [noiDung, setNoiDung] = useState();
 
   const [showCallStaffForm, setShowCallStaffForm] = useState(false);
-  const [requestItems, setRequestItems] = useState({
-    tương_ớt: false,
-    tương_cà: false,
-    giấy: false,
-    tăm: false,
-    nước_tương: false,
-  });
-
   const toggleCallStaffForm = () => {
     setShowCallStaffForm(!showCallStaffForm);
   };
 
   const handleCallStaffClick = () => {
     setShowCallStaffForm(true);
-  };
-
-  const handleSubmitForm = () => {
-    console.log("Submitted request items:", requestItems);
-    setShowCallStaffForm(false);
   };
 
   const [showGoiThanhToan, setShowGoiThanhToan] = useState(false);
@@ -50,7 +37,7 @@ function Trangchugoimon() {
       ban: ban,
     };
 
-    const result = await TaoYeuCau(data);
+    await TaoYeuCau(data);
     window.location.href = "/Phanhoi/" + ban;
   };
 
@@ -76,7 +63,7 @@ function Trangchugoimon() {
       };
     }
 
-    const result = await TaoYeuCau(data);
+    await TaoYeuCau(data);
     window.location.href = "/Phanhoi/" + ban;
   };
 
@@ -93,7 +80,7 @@ function Trangchugoimon() {
       >
         <div className="container-xxl position-relative p-0">
           <nav className="navbar navbar-expand-lg navbar-dark bg-dark px-4 px-lg-5 py-3 py-lg-0">
-            <a href="" className="navbar-brand p-0">
+            <a href="/" className="navbar-brand p-0">
               <h1 className="text-primary m-0">
                 {" "}
                 <i className="fa fa-utensils me-3"></i>CHAOBỈNH
