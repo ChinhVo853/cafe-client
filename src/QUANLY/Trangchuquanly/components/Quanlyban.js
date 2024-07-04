@@ -60,7 +60,9 @@ function Quanlyban({
                   id={`table-${table.id}`}
                 >
                   <h5 className="card-title">Bàn {table.ten_ban}</h5>
-                  <p className="card-text">Mã bàn: {table.dat_mon_id}</p>
+                  <p className="card-text">
+                    Mã bàn: {table.trang_thai_id != 1 && table.dat_mon_id}
+                  </p>
                   <p className="card-text">
                     Trạng thái: {table.ten_trang_thai}
                   </p>
@@ -70,7 +72,7 @@ function Quanlyban({
                   >
                     QR
                   </button>
-                  {table.dat_mon_id && (
+                  {table.dat_mon_id && table.trang_thai_id != 1 && (
                     <a
                       href={`/Trangyeucaucuaban/${table.dat_mon_id}`}
                       className="btn btn-warning payment-btn"

@@ -1,30 +1,9 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { useParams } from "react-router-dom";
-import { DanhSachChiTietHoaDon } from "../API/Api";
+import { DanhSachChiTietHoaDon, ChiTietXN } from "../API/Api";
 import Load from "../../../Load/Load";
 import config from "../../../config";
 const QLcacmondadat = () => {
-  const [items, setItems] = useState([
-    {
-      id: 1,
-      ten_mon: "Tên món 1",
-      ten_size: "L",
-      gia: 100000,
-      so_luong: 2,
-      image: "link-to-image1.jpg",
-      isConfirmed: false,
-    },
-    {
-      id: 2,
-      ten_mon: "Tên món 2",
-      ten_size: "M",
-      gia: 80000,
-      so_luong: 1,
-      image: "link-to-image2.jpg",
-      isConfirmed: false,
-    },
-  ]);
-
   const { ban } = useParams();
   const [data, setData] = useState();
 
@@ -41,22 +20,14 @@ const QLcacmondadat = () => {
     }
   }, []);
 
-  const handleConfirm = (id) => {
-    setItems((prevItems) =>
-      prevItems.map((item) =>
-        item.id === id ? { ...item, isConfirmed: !item.isConfirmed } : item
-      )
-    );
-  };
-
-  const calculateTotalPrice = () => {
-    return items.reduce((total, item) => total + item.so_luong * item.gia, 0);
-  };
-
   const handleGoBack = () => {
     window.history.back();
   };
-
+  const XAcNhanChiTiet = async (id) => {
+    await ChiTietXN(id);
+    LayData();
+  };
+  console.log(data);
   return (
     <>
       {data ? (
@@ -87,6 +58,17 @@ const QLcacmondadat = () => {
                   <span className="cart-item-quantity">
                     Số lượng: {item.so_luong}
                   </span>
+                  {item.xac_nhan == 0 ? (
+                    <button
+                      type="button"
+                      className="btn btn-sm btn-request-confirm"
+                      onClick={() => XAcNhanChiTiet(item.chiTietID)}
+                    >
+                      Xác nhận
+                    </button>
+                  ) : (
+                    <span>Đã xác nhận</span>
+                  )}
                 </div>
               </li>
             ))}

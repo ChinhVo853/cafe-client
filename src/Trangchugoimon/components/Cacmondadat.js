@@ -8,10 +8,6 @@ const Cacmondadat = () => {
   const { ban } = useParams();
   const [data, setData] = useState();
 
-  useEffect(() => {
-    LayData();
-  }, [ban]);
-
   const LayData = useCallback(async () => {
     try {
       const result = await DanhSachChiTietHoaDon(ban);
@@ -19,7 +15,11 @@ const Cacmondadat = () => {
     } catch (error) {
       console.error("Failed to fetch data", error);
     }
-  }, []);
+  }, [ban]);
+
+  useEffect(() => {
+    LayData();
+  }, [LayData]);
 
   const handleGoBack = () => {
     window.history.back();
@@ -41,6 +41,7 @@ const Cacmondadat = () => {
                 <img
                   src={config.imageBaseUrl + "/" + item.anh}
                   className="cart-item-image"
+                  alt="ảnh sản phầm"
                 />
                 <div className="cart-item-details">
                   <span className="cart-item-name">Tên: {item.tenMon}</span>

@@ -6,7 +6,10 @@ function Trangnhapma() {
   const [ma, setMa] = useState();
   const KiemTra = useCallback(async () => {
     try {
+      localStorage.removeItem("QR");
       const maQR = localStorage.getItem("QR");
+
+      console.log(maQR);
       if (maQR) {
         const data = {
           ban: ban,

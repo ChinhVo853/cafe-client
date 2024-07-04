@@ -13,13 +13,16 @@ const Trangyeucaucuaban = () => {
       console.error("Failed to fetch data", error);
     }
   }, []);
-  console.log(data);
   useEffect(() => {
     LayDuLieu();
   }, [LayData]);
 
-  const handleStatusChange = async (id) => {
-    await XacNhanYeuCau(id);
+  const handleStatusChange = async (i_d, ban) => {
+    const data = {
+      id: i_d,
+      ban: ban,
+    };
+    await XacNhanYeuCau(data);
     LayDuLieu();
   };
   return (
@@ -78,7 +81,10 @@ const Trangyeucaucuaban = () => {
                                   : "btn-request-undo"
                               }`}
                               onClick={() =>
-                                handleStatusChange(request.yeu_cau_id)
+                                handleStatusChange(
+                                  request.yeu_cau_id,
+                                  request.ban_id
+                                )
                               }
                             >
                               Xác nhận
