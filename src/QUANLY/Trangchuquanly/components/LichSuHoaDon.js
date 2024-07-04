@@ -1,16 +1,30 @@
-import React, { useState } from 'react';
-
+import React, { useState,useCallback,useEffect } from 'react';
+import { LayDSHoaDon } from '../API/Api';
+import { useParams } from 'react-router-dom';
 const Lichsuhoadon = () => {
   const [requests, setRequests] = useState([
     { ma: 1, total: '108.000đ', time: '10:30 AM'},
     { ma: 2, total: '108.000đ', time: '10:35 AM'},
     { ma: 3, total: '108.000đ', time: '10:40 AM'},
   ]);
+  const {id}=useParams();
+  const [tables, setTables] = useState();
+  const LayData = useCallback(async () => {
+    try {
+      const result = await LayDSHoaDon(id);
+      setTables(result.data);
+    } catch (error) {
+      console.error("Failed to fetch data", error);
+    }
+  }, []);
 
-  
+  useEffect(() => {
+    LayData();
+  }, [LayData]);
+  console.log(tables);
   
   return (
-    <div>
+    <>{tables&&(<div>
       <div className="search-container-custom">
         <input type="text" placeholder="Tìm kiếm..." />
         <button type="button">🔍</button>
@@ -34,13 +48,13 @@ const Lichsuhoadon = () => {
                 </tr>
               </thead>
               <tbody>
-                {requests.map(request => (
-                  <tr key={request.ma}>
-                    <td>{request.ma}</td>
-                    <td>{request.total}</td>
-                    <td>{request.time}</td>
+                {tables.map(request => (
+                  <tr key={request.id}>
+                    <td>{request.id}</td>
+                    <td>{request.tong_tien}</td>
+                    <td>{request.created_at}</td>
                     <td>
-                    <a href='/Chitiethoadon' className="btn btn-success mx-2">CHI TIẾT HÓA ĐƠN</a>
+                    <a href={`/Chitiethoadon/${request.id}`} className="btn btn-success mx-2">CHI TIẾT HÓA ĐƠN</a>
                     </td>
                   </tr>
                 ))}
@@ -49,7 +63,9 @@ const Lichsuhoadon = () => {
           </div>
         </div>
       </div>
-    </div>
+    </div>)}
+    
+    </>
   );
 };
 
