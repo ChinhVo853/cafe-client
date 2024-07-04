@@ -50,6 +50,7 @@ export const LayYeuCau = async (ban) => {
 export const TaoYeuCau = async (data) => {
   try {
     const response = await apiClient.post("api/Yeu-Cau/Tao", data);
+
     return response;
   } catch (error) {
     if (error.response.status == 422) {

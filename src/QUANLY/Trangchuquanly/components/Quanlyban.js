@@ -5,6 +5,7 @@ import ModalQR from "../ModalQR";
 
 function Quanlyban({
   tables,
+  TrangThai,
   handlePayment,
   openModal,
   XoaDuLieu,
@@ -13,15 +14,8 @@ function Quanlyban({
   modalIsOpen,
   afterOpenModal,
   closeModal,
+  LamTrongBan,
 }) {
-  const [filter, setFilter] = useState("all");
-  const handleFilterChange = (newFilter) => {
-    setFilter(newFilter);
-  };
-  const filteredTables = tables.filter((table) => {
-    if (filter === "all") return true;
-    return table.ten_trang_thai === filter;
-  });
   return (
     <div className="request-container mt-5">
       <div className="header">THỐNG KÊ</div>
@@ -33,25 +27,25 @@ function Quanlyban({
       <div>
         <button
           className="btn btn-outline-secondary me-2"
-          onClick={() => handleFilterChange("Trống")}
+          onClick={() => TrangThai(1)}
         >
           Trống
         </button>
         <button
           className="btn btn-outline-secondary me-2"
-          onClick={() => handleFilterChange("Đang sử dụng")}
+          onClick={() => TrangThai(2)}
         >
           Đang sử dụng
         </button>
         <button
           className="btn btn-outline-secondary me-2"
-          onClick={() => handleFilterChange("Đang chờ thanh toán")}
+          onClick={() => TrangThai(3)}
         >
           Đang chờ thanh toán
         </button>
         <button
           className="btn btn-outline-secondary"
-          onClick={() => handleFilterChange("Đang dọn bàn")}
+          onClick={() => TrangThai(4)}
         >
           Đang dọn bàn
         </button>
@@ -101,16 +95,16 @@ function Quanlyban({
                     Lịch sử hóa đơn
                   </a>
                   <a
-                    href={`/Trangcapnhatban/${table.dat_mon_id}  `}
+                    href={`/Trangcapnhatban/${table.ban_id}  `}
                     className="btn btn-primary history-btn"
                   >
                     Cập nhật
                   </a>
                   <button
                     className="btn btn-info history-btn"
-                    onClick={() => viewOrderHistory(table.ban_id)}
+                    onClick={() => LamTrongBan(table.ban_id)}
                   >
-                    Trạng thái
+                    Làm trống bàn
                   </button>
                   <a
                     href={`/QLcacmondadat/${table.ban_id}`}
