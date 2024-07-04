@@ -1,15 +1,15 @@
-
 import React, { useState, useEffect, useCallback } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useParams } from "react-router-dom";
-import { XemData,XoaData } from "../API/Api";
+import { XemData, XoaData, TimBan, SuaBan } from "../API/Api";
+import Load from "../../../Load/Load";
 function Trangcapnhatban() {
   const [sizeName, setsizeName] = useState("");
   const { id } = useParams();
   const LayDuLieu = useCallback(async () => {
     try {
-      const result = await XemData();
-      setsizeName(result.data.ten);
+      const result = await TimBan(id);
+      setsizeName(result.data.data);
     } catch (error) {
       console.error("Failed to fetch data", error);
     }
@@ -25,9 +25,7 @@ function Trangcapnhatban() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const data = {
-      
       id: id,
-
     };
     // Handle the form submission
     try {
@@ -38,35 +36,47 @@ function Trangcapnhatban() {
     }
   };
 
+  const Sua = async () => {
+    const data = {
+      ten_ban: sizeName,
+      id: id,
+    };
+    await SuaBan(data);
+  };
 
   return (
-    <div className="them-mon-container">
-      <div className="header">CẬP NHẬT BÀN</div>
-      <form onSubmit={handleSubmit}>
-        <div className="mb-3">
-          <label htmlFor="sizeName" className="form-label">
-            Tên bàn
-          </label>
-          <input
-            type="text"
-            className="form-control"
-            id="sizeName"
-            placeholder="Nhập tên bàn"
-            value={sizeName}
-            onChange={handleNameChange}
-          />
+    <>
+      {sizeName ? (
+        <div className="them-mon-container">
+          <div className="header">CẬP NHẬT BÀN</div>
+
+          <div className="mb-3">
+            <label htmlFor="sizeName" className="form-label">
+              Tên bàn
+            </label>
+            <input
+              type="text"
+              className="form-control"
+              id="sizeName"
+              placeholder="Nhập tên bàn"
+              value={sizeName}
+              onChange={handleNameChange}
+            />
+          </div>
+          <button type="button" className="btn btn-custom w-100" onClick={Sua}>
+            Cập nhật
+          </button>
+          <a
+            href="/Trangchuquanly"
+            className="quaylai btn btn-secondary go-back-btn"
+          >
+            Hủy
+          </a>
         </div>
-        <button type="submit" className="btn btn-custom w-100">
-          Cập nhật
-        </button>
-        <a
-          href="/Trangchuquanly"
-          className="quaylai btn btn-secondary go-back-btn"
-        >
-          Hủy
-        </a>
-      </form>
-    </div>
+      ) : (
+        <Load />
+      )}
+    </>
   );
 }
 

@@ -51,7 +51,7 @@ function Trangchugoimon() {
     };
 
     const result = await TaoYeuCau(data);
-    console.log(result);
+    window.location.href = "/Phanhoi/" + ban;
   };
 
   const YeuCauThanhToan = async () => {
@@ -77,7 +77,7 @@ function Trangchugoimon() {
     }
 
     const result = await TaoYeuCau(data);
-    console.log(result);
+    window.location.href = "/Phanhoi/" + ban;
   };
 
   const handleNameChange = (e) => {

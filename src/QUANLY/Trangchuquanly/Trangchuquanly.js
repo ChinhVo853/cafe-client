@@ -2,7 +2,7 @@ import Menuquanly from "../Menuquanly";
 import ModalQR from "./ModalQR";
 import Quanlyban from "./components/Quanlyban";
 import React, { useState, useEffect, useCallback } from "react";
-import { XemData, XoaData } from "./API/Api";
+import { XemData, XoaData, DSTrangThaiBan, LamTrong } from "./API/Api";
 import Load from "../../Load/Load";
 import Menunhanvien from "../Menunhanvien";
 function Trangchuquanly() {
@@ -114,6 +114,14 @@ function Trangchuquanly() {
     // Logic để hiển thị lịch sử hóa đơn
     console.log(`Xem lịch sử hóa đơn cho bàn ${tableId}`);
   };
+  const TrangThai = async (trangthai) => {
+    const result = await DSTrangThaiBan(trangthai);
+    setTables(result.data.data);
+  };
+  const LamTrongBan = async (ban) => {
+    await LamTrong(ban);
+    LayData();
+  };
   return (
     <>
       {tables ? (
@@ -138,6 +146,7 @@ function Trangchuquanly() {
 
             <Quanlyban
               tables={tables}
+              TrangThai={TrangThai}
               handlePayment={handlePayment}
               openModal={openModal}
               XoaDuLieu={XoaDuLieu}
@@ -146,6 +155,7 @@ function Trangchuquanly() {
               modalIsOpen={modalIsOpen}
               afterOpenModal={afterOpenModal}
               closeModal={closeModal}
+              LamTrongBan={LamTrongBan}
             />
           </div>
         </>
