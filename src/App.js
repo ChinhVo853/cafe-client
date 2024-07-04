@@ -42,8 +42,8 @@ function App() {
       <Route path="/Trangchuquanly" element={<Trangchuquanly />} />
       <Route path="/Trangcapnhatban/:id" element={<Trangcapnhatban />} />
       <Route path="/Trangyeucaucuaban/:id" element={<Trangyeucaucuaban />} />
-      <Route path="/Lichsuhoadon" element={<Lichsuhoadon />} />
-      <Route path="/Chitiethoadon" element={<Chitiethoadon />} />
+      <Route path="/Lichsuhoadon/:id" element={<Lichsuhoadon />} />
+      <Route path="/Chitiethoadon/:id" element={<Chitiethoadon />} />
       <Route path="/QLcacmondadat" element={<QLcacmondadat />} />
       <Route path="/Trangthemban" element={<Trangthemban />} />
 
