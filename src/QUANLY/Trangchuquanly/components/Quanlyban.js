@@ -88,9 +88,8 @@ function Quanlyban({
                     Xóa
                   </button>
                   <a
-                    href="/Lichsuhoadon"
+                    href={`/Lichsuhoadon/${table.ban_id}`}
                     className="btn btn-secondary history-btn"
-                    onClick={() => viewOrderHistory(table.ban_id)}
                   >
                     Lịch sử hóa đơn
                   </a>
