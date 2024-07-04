@@ -26,10 +26,7 @@ function Quanlyban({
     <div className="request-container mt-5">
       <div className="header">THỐNG KÊ</div>
       <div className="col text-end mb-3">
-        <a href="/Trangthemban"
-          className="btn btn-primary"
-          
-        >
+        <a href="/Trangthemban" className="btn btn-primary">
           Thêm bàn
         </a>
       </div>
@@ -79,13 +76,16 @@ function Quanlyban({
                   >
                     QR
                   </button>
-                  {table.dat_mon_id && (<a href={`/Trangyeucaucuaban/${table.dat_mon_id}`}
-                    className="btn btn-warning payment-btn"
-                    onClick={() => handlePayment(table.ban_id)}
-                  >
-                    Yêu cầu
-                  </a>)}
-                  
+                  {table.dat_mon_id && (
+                    <a
+                      href={`/Trangyeucaucuaban/${table.dat_mon_id}`}
+                      className="btn btn-warning payment-btn"
+                      onClick={() => handlePayment(table.ban_id)}
+                    >
+                      Yêu cầu
+                    </a>
+                  )}
+
                   <button
                     href="#"
                     className="btn btn-danger delete-btn"
@@ -93,15 +93,16 @@ function Quanlyban({
                   >
                     Xóa
                   </button>
-                  <a href="/Lichsuhoadon"
+                  <a
+                    href="/Lichsuhoadon"
                     className="btn btn-secondary history-btn"
                     onClick={() => viewOrderHistory(table.ban_id)}
                   >
                     Lịch sử hóa đơn
                   </a>
-                  <a href={`/Trangcapnhatban/${table.dat_mon_id}  `}
+                  <a
+                    href={`/Trangcapnhatban/${table.dat_mon_id}  `}
                     className="btn btn-primary history-btn"
-                    
                   >
                     Cập nhật
                   </a>
@@ -111,12 +112,12 @@ function Quanlyban({
                   >
                     Trạng thái
                   </button>
-                  <button
+                  <a
+                    href={`/QLcacmondadat/${table.ban_id}`}
                     className="btn btn-outline-secondary"
-                    
                   >
                     Các món được order
-                  </button>
+                  </a>
                 </div>
               </div>
               <ModalQR

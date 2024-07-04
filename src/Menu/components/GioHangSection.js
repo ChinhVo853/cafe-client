@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-
+import config from "../../config";
 const GioHangSection = ({
   data,
   cartDetailsIsOpen,
@@ -59,7 +59,7 @@ const GioHangSection = ({
           {data.map((item, index) => (
             <li key={index} className="cart-item">
               <img
-                src={item.image}
+                src={config.imageBaseUrl + "/" + item.anh}
                 alt={item.ten_mon}
                 className="cart-item-image"
               />

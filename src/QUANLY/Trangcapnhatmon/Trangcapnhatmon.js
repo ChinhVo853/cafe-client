@@ -7,6 +7,7 @@ import config from "../../config";
 import axios from "axios";
 import Cookies from "js-cookie";
 import Swal from "sweetalert2";
+import Load from "../../Load/Load";
 function Trangcapnhatmon() {
   const [selectedImage, setSelectedImage] = useState(null);
   const [data, setData] = useState();
@@ -23,6 +24,9 @@ function Trangcapnhatmon() {
 
   const LayDuLieu = useCallback(async () => {
     try {
+      if (localStorage.getItem("quyen") == 2) {
+        window.location.href = "/Trangchuquanly";
+      }
       const result = await XemData(id);
       setData(result.data.data);
       setGia(result.data.data.gia);
@@ -107,7 +111,7 @@ function Trangcapnhatmon() {
   };
   return (
     <>
-      {data && (
+      {data ? (
         <div className="them-mon-container">
           <div className="header">CẬP NHẬT MÓN</div>
 
@@ -217,6 +221,8 @@ function Trangcapnhatmon() {
             Hủy
           </a>
         </div>
+      ) : (
+        <Load />
       )}
     </>
   );

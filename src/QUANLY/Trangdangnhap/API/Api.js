@@ -13,20 +13,19 @@ const apiClient = axios.create({
 export const DangNhap = async (data) => {
   try {
     const response = await apiClient.post("api/Login", data);
-    window.location.href = "/Trangchuquanly";
 
+    localStorage.setItem("quyen", response.data.quyen_id);
     Cookies.set("token", response.data.access_token, { expires: 7 });
+    window.location.href = "/Trangchuquanly";
     return response;
   } catch (error) {
-    if(error.response.status == 401)
-      {
-        Swal.fire({
-          title: "Thất bại",
-          text: "Tài khoản mật khẩu không đúng",
-          icon: "error",
-        });
-      }
-     else if (error.response.status == 422) {
+    if (error.response.status == 401) {
+      Swal.fire({
+        title: "Thất bại",
+        text: "Tài khoản mật khẩu không đúng",
+        icon: "error",
+      });
+    } else if (error.response.status == 422) {
       const errors = error.response.data.errors;
       if (typeof errors === "string") {
         Swal.fire({
@@ -64,7 +63,6 @@ export const Me = async () => {
     return response;
   } catch (error) {
     if (error.response.status == 401) {
-      console.log(1);
     } else {
       console.error("Error fetching data:", error);
       throw error;

@@ -3,6 +3,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import "@fortawesome/fontawesome-free/css/all.css";
 import { LayData as LayDuLieu, SuaTT, Xoa } from "./API/Api";
 import config from "../../config";
+import Load from "../../Load/Load";
 function Trangquanlymon() {
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -16,6 +17,9 @@ function Trangquanlymon() {
     }
   }, []);
   useEffect(() => {
+    if (localStorage.getItem("quyen") == 2) {
+      window.location.href = "/Trangchuquanly";
+    }
     LayData();
   }, [LayData]);
   const toggleMenu = () => {
@@ -40,7 +44,7 @@ function Trangquanlymon() {
 
   return (
     <div>
-      {data && (
+      {data ? (
         <>
           <div className="search-container-custom">
             <input type="text" placeholder="Tìm kiếm..." />
@@ -126,6 +130,8 @@ function Trangquanlymon() {
           </div>
           <Menuquanly toggleMenu={toggleMenu} menuOpen={menuOpen} />
         </>
+      ) : (
+        <Load />
       )}
     </div>
   );

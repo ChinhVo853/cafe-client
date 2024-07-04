@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useParams } from "react-router-dom";
 import { LayData, SuaData } from "./API/Api";
+import Load from "../../Load/Load";
 function Trangcapnhatsize() {
   const [sizeName, setsizeName] = useState("");
   const { id } = useParams();
@@ -14,6 +15,9 @@ function Trangcapnhatsize() {
     }
   }, []);
   useEffect(() => {
+    if (localStorage.getItem("quyen") == 2) {
+      window.location.href = "/Trangchuquanly";
+    }
     LayDuLieu();
   }, [LayDuLieu]);
 
@@ -36,33 +40,42 @@ function Trangcapnhatsize() {
   };
 
   return (
-    <div className="them-mon-container">
-      <div className="header">CẬP NHẬT SIZE</div>
-      <form onSubmit={handleSubmit}>
-        <div className="mb-3">
-          <label htmlFor="sizeName" className="form-label">
-            Tên size
-          </label>
-          <input
-            type="text"
-            className="form-control"
-            id="sizeName"
-            placeholder="Nhập tên loại"
-            value={sizeName}
-            onChange={handleNameChange}
-          />
-        </div>
-        <button type="submit" className="btn btn-custom w-100">
-          Cập nhật
-        </button>
-        <a
-          href="/Trangquanlysize"
-          className="quaylai btn btn-secondary go-back-btn"
-        >
-          Hủy
-        </a>
-      </form>
-    </div>
+    <>
+      {sizeName ? (
+        <>
+          {" "}
+          <div className="them-mon-container">
+            <div className="header">CẬP NHẬT SIZE</div>
+            <form onSubmit={handleSubmit}>
+              <div className="mb-3">
+                <label htmlFor="sizeName" className="form-label">
+                  Tên size
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="sizeName"
+                  placeholder="Nhập tên loại"
+                  value={sizeName}
+                  onChange={handleNameChange}
+                />
+              </div>
+              <button type="submit" className="btn btn-custom w-100">
+                Cập nhật
+              </button>
+              <a
+                href="/Trangquanlysize"
+                className="quaylai btn btn-secondary go-back-btn"
+              >
+                Hủy
+              </a>
+            </form>
+          </div>
+        </>
+      ) : (
+        <Load />
+      )}
+    </>
   );
 }
 

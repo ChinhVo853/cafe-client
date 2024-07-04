@@ -25,7 +25,9 @@ function Trangthemloai() {
       console.error("Failed to submit data", error);
     }
   };
-
+  if (localStorage.getItem("quyen") == 2) {
+    window.location.href = "/Trangchuquanly";
+  }
   return (
     <div className="them-mon-container">
       <div className="header">THÊM LOẠI</div>
