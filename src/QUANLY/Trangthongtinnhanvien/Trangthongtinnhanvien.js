@@ -86,7 +86,7 @@ function TrangthongTinNhanVien() {
                     <div className="col-md-6">
                       <label className="labels">SỐ ĐIỆN THOẠI</label>
                       <input
-                        type="text"
+                        type="number"
                         className="form-control"
                         placeholder="..."
                         name="phone"
@@ -106,6 +106,11 @@ function TrangthongTinNhanVien() {
                         value={data.email}
                         readOnly
                       />
+                    </div>
+                  </div>
+                  <div className="row mt-2">
+                    <div className="col-md-6 mt-5">
+                      <a href="/DoiMatKhau">Đổi mật khẩu</a>
                     </div>
                   </div>
                 </div>

@@ -1,7 +1,10 @@
-import React, { useState, useCallback, useEffect } from "react";
+import React, { useState, useCallback, useEffect, useRef } from "react";
 import { ChiTietHoaDonTheoMa } from "../API/Api";
 import { useParams } from "react-router-dom";
 import config from "../../../config";
+import { format } from "date-fns";
+import { useReactToPrint } from "react-to-print";
+
 const ChiTietHoaDon = () => {
   // const [billDetails, setBillDetails] = useState({
   //   billId: 'HD001',
@@ -38,6 +41,12 @@ const ChiTietHoaDon = () => {
 
   const { id } = useParams();
   const [tables, setTables] = useState();
+  const componentRef = useRef();
+
+  const handlePrint = useReactToPrint({
+    content: () => componentRef.current,
+  });
+
   const LayData = useCallback(async () => {
     try {
       const result = await ChiTietHoaDonTheoMa(id);
@@ -50,6 +59,7 @@ const ChiTietHoaDon = () => {
   useEffect(() => {
     LayData();
   }, [LayData]);
+  console.log(tables);
 
   const handleGoBack = () => {
     window.history.back();
@@ -59,10 +69,6 @@ const ChiTietHoaDon = () => {
     <>
       {tables && (
         <div>
-          <div className="search-container-custom">
-            <input type="text" placeholder="Tìm kiếm..." />
-            <button type="button">🔍</button>
-          </div>
           <a onClick={handleGoBack}>
             <button className="btn-quayve" type="button">
               <i className="fa-solid fa-circle-chevron-left"></i>
@@ -71,8 +77,35 @@ const ChiTietHoaDon = () => {
           <div className="request-container mt-5">
             <div className="header">QUẢN LÝ YÊU CẦU CỦA BÀN 1</div>
             <div className="bill-details-container mt-5">
-              <div className="row">
+              <button
+                type="button"
+                class="btn btn-outline-success"
+                onClick={handlePrint}
+              >
+                In hoá đơn
+              </button>
+              <div
+                className="row"
+                style={{ padding: "0 50px" }}
+                ref={componentRef}
+              >
                 <div className="col">
+                  <div className="mt-5">
+                    <b>Giờ vào:</b>
+                    <p>
+                      {format(
+                        new Date(tables[0].created_at),
+                        "dd-MM-yyyy HH:mm:ss"
+                      )}
+                    </p>
+                    <b>Giờ ra:</b>{" "}
+                    <p>
+                      {format(
+                        new Date(tables[0].updated_at),
+                        "dd-MM-yyyy HH:mm:ss"
+                      )}
+                    </p>
+                  </div>
                   <table className="table table-striped">
                     <thead>
                       <tr>
@@ -80,7 +113,7 @@ const ChiTietHoaDon = () => {
                         <th scope="col">Tên sản phẩm</th>
                         <th scope="col">Số lượng</th>
                         <th scope="col">Giá</th>
-                        <th scope="col"></th>
+                        <th scope="col">Thành tiền</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -95,7 +128,7 @@ const ChiTietHoaDon = () => {
                           <td>{item.tenMon}</td>
                           <td>{item.so_luong}</td>
                           <td>{item.gia.toLocaleString()}</td>
-                          <td></td>
+                          <td>{item.thanh_tien.toLocaleString()}</td>
                         </tr>
                       ))}
                     </tbody>
