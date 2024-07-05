@@ -46,10 +46,6 @@ const TrangQLnhanvien = () => {
     <>
       {employees ? (
         <div>
-          <div className="search-container-custom">
-            <input type="text" placeholder="Tìm kiếm..." />
-            <button type="button">🔍</button>
-          </div>
           <div className="request-container mt-5">
             <div className="header">QUẢN LÝ NHÂN VIÊN</div>
             <div className="text-end mb-3">

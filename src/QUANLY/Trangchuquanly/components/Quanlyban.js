@@ -58,6 +58,7 @@ function Quanlyban({
                 <div
                   className={`card-body ${table.ten_trang_thai}`}
                   id={`table-${table.id}`}
+                  style={table.yeuCau !== 0 ? { background: "#FFFF99" } : {}}
                 >
                   <h5 className="card-title">Bàn {table.ten_ban}</h5>
                   <p className="card-text">

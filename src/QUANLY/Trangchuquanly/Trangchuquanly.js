@@ -84,7 +84,6 @@ function Trangchuquanly() {
   let subtitle;
   const [modalIsOpen, setIsOpen] = React.useState(false);
 
-  const [ma, setMa] = useState();
   function openModal(ban) {
     setMaQR(
       window.location.href.split("/").slice(0, -1).join("/") +
@@ -127,10 +126,6 @@ function Trangchuquanly() {
       {tables ? (
         <>
           <div>
-            <div className="search-container-custom">
-              <input type="text" placeholder="Tìm kiếm..." />
-              <button type="button">🔍</button>
-            </div>
             <a
               href="/Trangthongtinnhanvien"
               className="btn-trangnhanvien"

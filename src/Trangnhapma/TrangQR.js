@@ -9,7 +9,7 @@ function TrangQR() {
   const KiemTraMa = useCallback(async () => {
     try {
       const result2 = await KiemTraBan(ban);
-      if (result2.data.data.trang_thai_id == 1) {
+      if (result2.data.data.trang_thai_id === 1) {
         const result = await TaoDatMon(ban);
 
         //kiểm tra kết quả trả về có data không nếu có thì vào trang gọi món

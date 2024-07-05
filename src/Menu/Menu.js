@@ -36,7 +36,7 @@ function Menu() {
     }));
   };
 
-  const handleAddToCart = async (size, quantity, name) => {
+  const handleAddToCart = async (size, quantity, name, productId) => {
     const data = {
       tenMon: name,
       tenSize: size,
@@ -45,6 +45,7 @@ function Menu() {
     };
     await ThemData(data);
     await LayDuLieu();
+    handleCloseButtonClick(productId);
   };
 
   const handleCartContainerClick = () => {
@@ -85,7 +86,6 @@ function Menu() {
     await GoiMon(ban);
     LayDuLieu();
   };
-  console.log(data);
   return (
     <>
       {data ? (
