@@ -1,6 +1,5 @@
 import React, { useRef } from "react";
 import { useReactToPrint } from "react-to-print";
-import jsPDF from "jspdf";
 function XuatPDF() {
   const componentRef = useRef();
 
@@ -10,8 +9,6 @@ function XuatPDF() {
 
   return (
     <div>
-      <h1>Xuất hóa đơn trong React</h1>
-      <button onClick={handlePrint}>In hóa đơn</button>
       <div ref={componentRef}>
         <h1>Hóa đơn</h1>
         <p>Tên khách hàng: Nguyễn Văn A</p>

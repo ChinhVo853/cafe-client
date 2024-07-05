@@ -33,6 +33,8 @@ import Chitiethoadon from "./QUANLY/Trangchuquanly/components/Chitiethoadon";
 import QLcacmondadat from "./QUANLY/Trangchuquanly/components/QLcacmondadat";
 import Trangthemban from "./QUANLY/Trangchuquanly/components/Trangthemban";
 import Load from "./Load/Load";
+import XuatPDF from "./QUANLY/XuatPDF";
+import TrangDoiMatKhau from "./QUANLY/Trangdangnhap/TrangDoiMatKhau";
 
 function App() {
   return (
@@ -90,6 +92,7 @@ function App() {
       <Route path="/Trangnhapma/QR/:ban" element={<TrangQR />} />
       <Route path="/Phanhoi/:ban" element={<Phanhoi />} />
       <Route path="/Cacmondadat/:ban" element={<Cacmondadat />} />
+      <Route path="/DoiMatKhau" element={<TrangDoiMatKhau />} />
     </Routes>
   );
 }
