@@ -1,12 +1,12 @@
 import Menuquanly from "../Menuquanly";
 import React, { useState, useEffect, useCallback } from "react";
 import "@fortawesome/fontawesome-free/css/all.css";
-import { LayData as LayDuLieu, SuaTT, Xoa } from "./API/Api";
+import { LayData as LayDuLieu, SuaTT, TimMon, Xoa } from "./API/Api";
 import config from "../../config";
 import Load from "../../Load/Load";
 function Trangquanlymon() {
   const [menuOpen, setMenuOpen] = useState(false);
-
+  const [tim, setTim] = useState();
   const [data, setData] = useState();
   const LayData = useCallback(async () => {
     try {
@@ -17,7 +17,7 @@ function Trangquanlymon() {
     }
   }, []);
   useEffect(() => {
-    if (localStorage.getItem("quyen") == 2) {
+    if (localStorage.getItem("quyen") === 2) {
       window.location.href = "/Trangchuquanly";
     }
     LayData();
@@ -41,14 +41,34 @@ function Trangquanlymon() {
     await Xoa(data);
     LayData();
   };
-
+  const handleNameChange = (e) => {
+    setTim(e.target.value);
+  };
+  const TimM = async () => {
+    const data1 = {
+      tim: tim,
+    };
+    try {
+      const result = await TimMon(data1);
+      setData(result.data.data);
+    } catch (error) {
+      console.error("Failed to fetch data", error);
+    }
+  };
   return (
     <div>
       {data ? (
         <>
           <div className="search-container-custom">
-            <input type="text" placeholder="Tìm kiếm..." />
-            <button type="button">🔍</button>
+            <input
+              type="text"
+              placeholder="Tìm kiếm..."
+              value={tim}
+              onChange={handleNameChange}
+            />
+            <button type="button" onClick={TimM}>
+              🔍
+            </button>
           </div>
           <div className="request-container mt-5">
             <div className="header">QUẢN LÝ MÓN</div>
@@ -68,7 +88,6 @@ function Trangquanlymon() {
                       <th scope="col">Loại</th>
                       <th scope="col">Size</th>
                       <th scope="col">Giá</th>
-                      <th scope="col">Số lượng đánh giá</th>
                       <th scope="col">Trạng thái</th>
                       <th scope="col"></th>
                     </tr>
@@ -89,9 +108,8 @@ function Trangquanlymon() {
                         <td>{dish.tenSize}</td>
 
                         <td>{dish.gia.toLocaleString("vi-VN")}</td>
-                        <td>{dish.so_luong_danh_gia}</td>
                         <td>
-                          {dish.trang_thai == 0 ? (
+                          {dish.trang_thai === 0 ? (
                             <button
                               className="btn btn-outline-info btn-sm"
                               onClick={() => SuaTrangThai(1, dish.id)}

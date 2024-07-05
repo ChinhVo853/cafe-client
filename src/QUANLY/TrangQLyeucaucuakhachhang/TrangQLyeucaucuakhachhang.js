@@ -32,10 +32,6 @@ const TrangQLyeucaucuakhachhang = () => {
     <>
       {requests ? (
         <div>
-          <div className="search-container-custom">
-            <input type="text" placeholder="Tìm kiếm..." />
-            <button type="button">🔍</button>
-          </div>
           <div className="request-container mt-5">
             <div className="header">QUẢN LÝ YÊU CẦU KHÁCH HÀNG</div>
             <div className="row">

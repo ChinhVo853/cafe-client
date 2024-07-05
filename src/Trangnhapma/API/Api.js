@@ -13,7 +13,7 @@ export const TaoDatMon = async (id) => {
     const response = await apiClient.get("api/Dat-Mon/ban/" + id);
     return response;
   } catch (error) {
-    if (error.response.status == 422) {
+    if (error.response.status === 422) {
       window.location.href = "/Trangnhapma/" + id;
     } else {
       console.error("Error fetching data:", error);
@@ -26,9 +26,9 @@ export const KiemTraMa = async (data) => {
     const response = await apiClient.post("api/Dat-Mon/Kiem-Tra-Ban", data);
     return response;
   } catch (error) {
-    if (error.response.status == 401) {
+    if (error.response.status === 401) {
       window.location.href = "/Trangdangnhap";
-    } else if (error.response.status == 422) {
+    } else if (error.response.status === 422) {
       const errors = error.response.data.errors;
       if (typeof errors === "string") {
         Swal.fire({
@@ -65,9 +65,9 @@ export const KiemTraBan = async (id) => {
     const response = await apiClient.get("api/Kiem-Tra-Ban/" + id);
     return response;
   } catch (error) {
-    if (error.response.status == 401) {
+    if (error.response.status === 401) {
       window.location.href = "/Trangdangnhap";
-    } else if (error.response.status == 422) {
+    } else if (error.response.status === 422) {
       const errors = error.response.data.errors;
       if (typeof errors === "string") {
         Swal.fire({

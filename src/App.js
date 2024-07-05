@@ -45,7 +45,7 @@ function App() {
       <Route path="/Trangyeucaucuaban/:id" element={<Trangyeucaucuaban />} />
       <Route path="/Lichsuhoadon/:id" element={<Lichsuhoadon />} />
       <Route path="/Chitiethoadon/:id" element={<Chitiethoadon />} />
-      <Route path="/QLcacmondadat" element={<QLcacmondadat />} />
+      <Route path="/QLcacmondadat/:ban" element={<QLcacmondadat />} />
       <Route path="/Trangthemban" element={<Trangthemban />} />
 
       {/* -----------------------*******QuanLyMon*********----------------- */}
@@ -65,7 +65,7 @@ function App() {
         path="/TrangQLyeucaucuakhachhang"
         element={<TrangQLyeucaucuakhachhang />}
       />
-      <Route path="/QLcacmondadat/:ban" element={<QLcacmondadat />} />
+
       {/* -----------------------*******TrangQLnhanvien*********----------------- */}
 
       <Route path="/TrangQLnhanvien" element={<TrangQLnhanvien />} />

@@ -68,7 +68,7 @@ const Trangyeucaucuaban = () => {
                           })()}
                         </td>
                         <td>
-                          {request.trang_thai == 0
+                          {request.trang_thai === 0
                             ? "Chờ xác nhận"
                             : "Đã phục vụ"}
                         </td>

@@ -19,7 +19,7 @@ function Trangquanlysize() {
     setMenuOpen(!menuOpen);
   };
   useEffect(() => {
-    if (localStorage.getItem("quyen") == 2) {
+    if (localStorage.getItem("quyen") === 2) {
       window.location.href = "/Trangchuquanly";
     }
     LayDuLieu();
@@ -40,10 +40,6 @@ function Trangquanlysize() {
     <>
       {data ? (
         <div>
-          <div className="search-container-custom">
-            <input type="text" placeholder="Tìm kiếm..." />
-            <button type="button">🔍</button>
-          </div>
           <div className="request-container mt-5">
             <div className="header">QUẢN LÝ SIZE</div>
             <div className="col text-end">

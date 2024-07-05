@@ -1,7 +1,6 @@
 import Menuquanly from "../Menuquanly";
 import React, { useState, useCallback, useEffect } from "react";
 import HeadLoaiSection from "./components/HeadLoaiSection";
-import TimKiemSection from "./components/TimKiemSection";
 import ThongTinSection from "./components/ThongTinSection";
 import { layData, XoaData } from "./getAPI/GetApi";
 import Load from "../../Load/Load";
@@ -30,7 +29,7 @@ function Trangquanlyloai() {
   };
 
   useEffect(() => {
-    if (localStorage.getItem("quyen") == 2) {
+    if (localStorage.getItem("quyen") === 2) {
       window.location.href = "/Trangchuquanly";
     }
     LayDuLieu();
@@ -42,7 +41,6 @@ function Trangquanlyloai() {
     <>
       {data ? (
         <div>
-          <TimKiemSection />
           <div className="request-container mt-5">
             <HeadLoaiSection />
             <ThongTinSection data={data.data} Xoa={Xoa} />

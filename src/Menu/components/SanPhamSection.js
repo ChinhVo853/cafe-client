@@ -78,7 +78,8 @@ const SanPhamSection = ({
                       parseInt(
                         document.getElementById(`quantity-${productId}`).value
                       ),
-                      name
+                      name,
+                      productId
                     )
                   }
                 >
