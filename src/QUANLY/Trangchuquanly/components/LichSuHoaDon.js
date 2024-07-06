@@ -1,12 +1,9 @@
 import React, { useState,useCallback,useEffect } from 'react';
 import { LayDSHoaDon } from '../API/Api';
 import { useParams } from 'react-router-dom';
+import { format } from 'date-fns';
 const Lichsuhoadon = () => {
-  const [requests, setRequests] = useState([
-    { ma: 1, total: '108.000đ', time: '10:30 AM'},
-    { ma: 2, total: '108.000đ', time: '10:35 AM'},
-    { ma: 3, total: '108.000đ', time: '10:40 AM'},
-  ]);
+  
   const {id}=useParams();
   const [tables, setTables] = useState();
   const LayData = useCallback(async () => {
@@ -44,6 +41,7 @@ const Lichsuhoadon = () => {
                   <th scope="col">MÃ</th>
                   <th scope="col">TỔNG TIỀN</th>
                   <th scope="col">NGÀY</th>
+                  <th scope="col">THỜI GIAN</th>
                   <th scope="col"></th>
                 </tr>
               </thead>
@@ -52,7 +50,16 @@ const Lichsuhoadon = () => {
                   <tr key={request.id}>
                     <td>{request.id}</td>
                     <td>{request.tong_tien}</td>
-                    <td>{request.created_at}</td>
+                    <td>{format(
+                        new Date(request.created_at),
+                        "dd-MM-yyyy "
+                      )}</td>
+                      <td>
+                      {format(
+                        new Date(request.created_at),
+                        " HH:mm:ss"
+                      )}
+                      </td>
                     <td>
                     <a href={`/Chitiethoadon/${request.id}`} className="btn btn-success mx-2">CHI TIẾT HÓA ĐƠN</a>
                     </td>

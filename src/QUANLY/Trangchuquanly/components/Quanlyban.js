@@ -50,6 +50,11 @@ function Quanlyban({
           Đang dọn bàn
         </button>
       </div>
+      <br/>
+      <h3>CHÚ Ý:</h3>
+      <p className="chu-y">*KHI CÓ YÊU CẦU TỪ KHÁCH HÀNG THÌ BÀN SẼ ĐỔI SANG MÀU VÀNG!!!</p>
+
+      <p className="chu-y">*KHI CÓ ORDER NÚT "CÁC MÓN ĐƯỢC ORDER" SẼ ĐỔI SANG MÀU CAM!!!</p>
       <div className="container">
         <div className="row">
           {tables.map((table) => (
@@ -58,7 +63,7 @@ function Quanlyban({
                 <div
                   className={`card-body ${table.ten_trang_thai}`}
                   id={`table-${table.id}`}
-                  style={table.yeuCau !== 0 ? { background: "#FFFF99" } : {}}
+                  style={table.yeuCau > 0 ? { background: "#FFFF99" } : {}}
                 >
                   <h5 className="card-title">Bàn {table.ten_ban}</h5>
                   <p className="card-text">
@@ -111,6 +116,7 @@ function Quanlyban({
                   <a
                     href={`/QLcacmondadat/${table.ban_id}`}
                     className="btn btn-outline-secondary"
+                    style={table.hd > 0 ? { background: "#f4a261" } : {}}
                   >
                     Các món được order
                   </a>

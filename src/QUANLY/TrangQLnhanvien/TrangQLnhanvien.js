@@ -78,12 +78,7 @@ const TrangQLnhanvien = () => {
                         <td>{employee.email}</td>
                         <td>{employee.ten_quyen}</td>
                         <td>
-                          <button
-                            className="btn btn-outline-primary btn-sm me-2"
-                            onClick={() => handleUpdate(employee.id)}
-                          >
-                            Cập nhật
-                          </button>
+                          
                           <button
                             className="btn btn-outline-danger btn-sm"
                             onClick={() => handleDelete(employee.id)}

@@ -113,4 +113,45 @@ export const DoiMatKhau = async (data) => {
       throw error;
     }
   }
+
+};
+
+export const LayLaiMatKhau = async (data) => {
+  try {
+    const response = await apiClient.post("/api/Tranglaymatkhau", data);
+    window.location.href = "/Trangdangnhap";
+
+    return response;
+  } catch (error) {
+    if (error.response.status == 422) {
+      const errors = error.response.data.errors;
+      if (typeof errors === "string") {
+        Swal.fire({
+          title: "Thất bại",
+          text: errors,
+          icon: "error",
+        });
+      } else {
+        const errorMessages = [];
+
+        // Duyệt qua các trường trong errors và gom thông báo lỗi thành một chuỗi HTML
+        for (const field in errors) {
+          if (errors.hasOwnProperty(field)) {
+            errors[field].forEach((message) => {
+              errorMessages.push(`<p>${message}</p>`);
+            });
+          }
+        }
+        Swal.fire({
+          title: "Thất bại",
+          html: `<div>${errorMessages.join("")}</div>`,
+          icon: "error",
+        });
+      }
+    } else {
+      console.error("Error fetching data:", error);
+      throw error;
+    }
+  }
+
 };

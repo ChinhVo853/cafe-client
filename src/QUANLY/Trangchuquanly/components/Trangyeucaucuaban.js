@@ -47,7 +47,6 @@ const Trangyeucaucuaban = () => {
                 <table className="table table-striped">
                   <thead>
                     <tr>
-                      <th scope="col">ID</th>
                       <th scope="col">Tên bàn</th>
                       <th scope="col">Nội dung</th>
                       <th scope="col">Thời gian yêu cầu</th>

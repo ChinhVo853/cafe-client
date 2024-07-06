@@ -47,6 +47,7 @@ function Trangdangnhap() {
         <div className="login-buttons" onClick={Login}>
           <button>Đăng nhập </button>
         </div>
+        <a href="/Tranglaymatkhau">Quên mật khẩu</a>
       </div>
     </div>
   );
