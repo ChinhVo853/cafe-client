@@ -15,6 +15,7 @@ function Trangcapnhatban() {
     }
   }, []);
   useEffect(() => {
+    document.title = "Cập nhật bàn";
     LayDuLieu();
   }, [LayDuLieu]);
 

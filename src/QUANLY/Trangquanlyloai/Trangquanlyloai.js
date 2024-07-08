@@ -10,6 +10,7 @@ function Trangquanlyloai() {
 
   const LayDuLieu = useCallback(async () => {
     try {
+      document.title = "Quản lý loại";
       const result = await layData();
       setData(result);
     } catch (error) {

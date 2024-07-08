@@ -20,6 +20,7 @@ function TrangthongTinNhanVien() {
   }, []);
   console.log(so_dien_thoai);
   useEffect(() => {
+    document.title = "Thông tin";
     LayData();
   }, []);
 

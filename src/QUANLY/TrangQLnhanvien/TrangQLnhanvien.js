@@ -15,6 +15,8 @@ const TrangQLnhanvien = () => {
   }, []);
 
   useEffect(() => {
+    document.title = "Quản lý nhân viên";
+
     if (localStorage.getItem("quyen") == 2) {
       window.location.href = "/Trangchuquanly";
     }
@@ -78,7 +80,6 @@ const TrangQLnhanvien = () => {
                         <td>{employee.email}</td>
                         <td>{employee.ten_quyen}</td>
                         <td>
-                          
                           <button
                             className="btn btn-outline-danger btn-sm"
                             onClick={() => handleDelete(employee.id)}

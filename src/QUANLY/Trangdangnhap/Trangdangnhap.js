@@ -16,6 +16,7 @@ function Trangdangnhap() {
     }
   };
   useEffect(() => {
+    document.title = "Đăng nhập";
     KiemTra();
   }, []);
   const Login = async () => {
@@ -33,7 +34,7 @@ function Trangdangnhap() {
         <input
           type="text"
           name="username"
-          placeholder="Tên đăng nhập"
+          placeholder="email"
           value={username}
           onChange={handleInputChange}
         />

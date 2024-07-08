@@ -8,6 +8,7 @@ const QLcacmondadat = () => {
   const [data, setData] = useState();
 
   useEffect(() => {
+    document.title = "Các món đã order";
     LayData();
   }, [ban]);
 
@@ -27,7 +28,6 @@ const QLcacmondadat = () => {
     await ChiTietXN(id);
     LayData();
   };
-  console.log(data);
   return (
     <>
       {data ? (

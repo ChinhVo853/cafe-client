@@ -16,6 +16,7 @@ const Phanhoi = () => {
   }, [ban]); // Include `ban` as a dependency
 
   useEffect(() => {
+    document.title = "CHAOBÍNH";
     LayData();
   }, [LayData]); // Include `LayData` as a dependency
 

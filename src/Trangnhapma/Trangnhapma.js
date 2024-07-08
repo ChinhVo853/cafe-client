@@ -1,15 +1,16 @@
 import React, { useEffect, useCallback, useState } from "react";
-import { KiemTraMa } from "./API/Api";
+import { KiemTraMa, KiemTraBan } from "./API/Api";
 import { useParams } from "react-router-dom";
 function Trangnhapma() {
   const { ban } = useParams();
   const [ma, setMa] = useState();
   const KiemTra = useCallback(async () => {
     try {
-      localStorage.removeItem("QR");
       const maQR = localStorage.getItem("QR");
-
-      console.log(maQR);
+      const result2 = await KiemTraBan(ban);
+      if (result2.data.data.trang_thai_id === 1) {
+        localStorage.removeItem("QR");
+      }
       if (maQR) {
         const data = {
           ban: ban,
@@ -25,6 +26,7 @@ function Trangnhapma() {
     }
   }, [ban]);
   useEffect(() => {
+    document.title = "CHAOBÍNH";
     KiemTra();
   }, [KiemTra]);
 

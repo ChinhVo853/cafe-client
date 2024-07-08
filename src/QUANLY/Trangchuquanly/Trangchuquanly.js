@@ -23,6 +23,7 @@ function Trangchuquanly() {
   }, []);
 
   useEffect(() => {
+    document.title = "Thống kê";
     LayData();
   }, [LayData]);
   const toggleMenu = () => {

@@ -40,6 +40,7 @@ function Trangcapnhatmon() {
   }, []);
   //console.log(sizeID);
   useEffect(() => {
+    document.title = "Cập nhật món";
     LayDuLieu();
   }, [LayDuLieu]);
   const handleUpload = async (event) => {
@@ -185,32 +186,6 @@ function Trangcapnhatmon() {
             </div>
           </div>
 
-          <div className="mb-3">
-            <label htmlFor="foodStatus" className="form-label">
-              Trạng thái
-            </label>
-            {trangThai == 0 ? (
-              <select
-                className="form-control"
-                id="foodStatus"
-                name="foodStatus"
-                onChange={handleChangeTrangThai}
-              >
-                <option value="0">Hết hàng</option>
-                <option value="1">Còn hàng</option>
-              </select>
-            ) : (
-              <select
-                className="form-control"
-                id="foodStatus"
-                onChange={handleChangeTrangThai}
-                name="foodStatus"
-              >
-                <option value="1">Còn hàng</option>
-                <option value="0">Hết hàng</option>
-              </select>
-            )}
-          </div>
           <button onClick={handleUpload} className="btn btn-custom w-100">
             Cập nhật
           </button>

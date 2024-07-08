@@ -25,6 +25,7 @@ const Trangyeucaucuaban = () => {
     await XacNhanYeuCau(data);
     LayDuLieu();
   };
+  document.title = "Yêu cầu bàn";
   return (
     <>
       {data && (

@@ -3,19 +3,25 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { useParams } from "react-router-dom";
 import { LayData, SuaData } from "./API/Api";
 import Load from "../../Load/Load";
+
 function Trangcapnhatsize() {
   const [sizeName, setsizeName] = useState("");
+  const [loadding, setLoadding] = useState(false);
   const { id } = useParams();
+
   const LayDuLieu = useCallback(async () => {
     try {
       const result = await LayData(id);
       setsizeName(result.data.ten);
+      setLoadding(true);
     } catch (error) {
       console.error("Failed to fetch data", error);
     }
-  }, []);
+  }, [id]);
+
   useEffect(() => {
-    if (localStorage.getItem("quyen") == 2) {
+    document.title = "Cập nhật size";
+    if (localStorage.getItem("quyen") === "2") {
       window.location.href = "/Trangchuquanly";
     }
     LayDuLieu();
@@ -31,19 +37,20 @@ function Trangcapnhatsize() {
       ten: sizeName,
       id: id,
     };
-    // Handle the form submission
+    setLoadding(false);
     try {
       await SuaData(data);
+      setLoadding(true);
     } catch (error) {
       console.error("Failed to submit data", error);
+      alert("Cập nhật thất bại!");
     }
   };
 
   return (
     <>
-      {sizeName ? (
+      {loadding ? (
         <>
-          {" "}
           <div className="them-mon-container">
             <div className="header">CẬP NHẬT SIZE</div>
             <form onSubmit={handleSubmit}>

@@ -6,6 +6,8 @@ import Load from "../../Load/Load";
 function Trangcapnhatloai() {
   const [typeName, settypeName] = useState("");
   const { id } = useParams();
+  const [loadding, setLoadding] = useState(false);
+
   const LayDuLieu = useCallback(async () => {
     try {
       const result = await layData(id);
@@ -13,11 +15,13 @@ function Trangcapnhatloai() {
         window.location.href = "/Trangchuquanly";
       }
       settypeName(result.data.ten);
+      setLoadding(true);
     } catch (error) {
       console.error("Failed to fetch data", error);
     }
   }, []);
   useEffect(() => {
+    document.title = "Cập nhật loai";
     LayDuLieu();
   }, [LayDuLieu]);
 
@@ -33,7 +37,9 @@ function Trangcapnhatloai() {
     };
     // Handle the form submission
     try {
+      setLoadding(false);
       await Sua(data);
+      setLoadding(true);
       //window.location.href = "/Trangquanlyloai";
     } catch (error) {
       console.error("Failed to submit data", error);
@@ -42,7 +48,7 @@ function Trangcapnhatloai() {
 
   return (
     <>
-      {typeName ? (
+      {loadding ? (
         <div className="them-mon-container">
           <div className="header">CẬP NHẬT LOẠI</div>
           <form onSubmit={handleSubmit}>

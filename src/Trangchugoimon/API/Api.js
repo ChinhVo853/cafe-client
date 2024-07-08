@@ -47,10 +47,10 @@ export const LayYeuCau = async (ban) => {
   }
 };
 
-export const TaoYeuCau = async (data) => {
+export const TaoYeuCau = async (data, ban) => {
   try {
     const response = await apiClient.post("api/Yeu-Cau/Tao", data);
-
+    window.location.href = "/Phanhoi/" + ban;
     return response;
   } catch (error) {
     if (error.response.status == 422) {

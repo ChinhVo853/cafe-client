@@ -25,6 +25,7 @@ function ModalSection({
   size,
   ThemData,
   sizeDuyNhat,
+  status,
 }) {
   const foodCategoryIndex = parseInt(formData.foodCategory, 10) - 1;
   const tenValue =
@@ -116,21 +117,14 @@ function ModalSection({
               <label htmlFor="foodStatus" className="form-label">
                 Trạng thái
               </label>
-              <select
-                className="form-control"
-                id="foodStatus"
-                name="foodStatus"
-              >
-                <option value="Còn hàng">Còn hàng</option>
-                <option value="Hết hàng">Hết hàng</option>
-              </select>
+              {status == 0 ? "Còn hàng" : "hết hàng"}
             </div>
             <button
               type="button"
               className="btn btn-custom w-100"
               onClick={ThemData}
             >
-              Cập nhật
+              THÊM
             </button>
             <a
               className="quaylai btn btn-secondary go-back-btn"

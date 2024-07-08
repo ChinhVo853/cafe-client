@@ -10,7 +10,7 @@ function Trangthemloai() {
   const handleSize = (e) => {
     setSize(e.target.checked);
   };
-
+  document.title = "Thêm loại";
   const handleSubmit = async (e) => {
     e.preventDefault();
     // Handle the form submission

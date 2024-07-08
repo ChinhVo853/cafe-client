@@ -17,6 +17,7 @@ function Trangquanlymon() {
     }
   }, []);
   useEffect(() => {
+    document.title = "Quản lý món";
     if (localStorage.getItem("quyen") === 2) {
       window.location.href = "/Trangchuquanly";
     }

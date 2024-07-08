@@ -11,7 +11,7 @@ function Trangthemmon() {
     foodReviews: "",
     foodCategory: "1",
     foodSize: [],
-    foodStatus: "Còn hàng",
+    foodStatus: 0,
   });
 
   const [modalIsOpen, setIsOpen] = useState(false);
@@ -21,6 +21,7 @@ function Trangthemmon() {
   const [size, setSize] = useState();
   const [sizeDuyNhat, setSizeDuyNhat] = useState(false);
   useEffect(() => {
+    document.title = "Thêm món";
     if (localStorage.getItem("quyen") == 2) {
       window.location.href = "/Trangchuquanly";
     }
@@ -218,8 +219,8 @@ function Trangthemmon() {
           value={formData.foodStatus}
           onChange={handleChange}
         >
-          <option value="Còn hàng">Còn hàng</option>
-          <option value="Hết hàng">Hết hàng</option>
+          <option value="0">Còn hàng</option>
+          <option value="1">Hết hàng</option>
         </select>
       </div>
       <button
@@ -245,6 +246,7 @@ function Trangthemmon() {
         size={size}
         ThemData={ThemData}
         sizeDuyNhat={sizeDuyNhat}
+        status={formData.foodStatus}
       />
     </div>
   );

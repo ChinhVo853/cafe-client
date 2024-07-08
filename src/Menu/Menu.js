@@ -2,7 +2,14 @@ import React, { useState, useCallback, useEffect } from "react";
 import DanhSachMenuSection from "./components/DanhSachMenuSection";
 import SanPhamSection from "./components/SanPhamSection";
 import GioHangSection from "./components/GioHangSection";
-import { getSomeData, ThemData, ThemSL, GiamSL, GoiMon } from "./getAPI.js/API";
+import {
+  getSomeData,
+  ThemData,
+  ThemSL,
+  GiamSL,
+  GoiMon,
+  KiemTraBan,
+} from "./getAPI.js/API";
 import { useParams } from "react-router-dom";
 import Load from "../Load/Load";
 function Menu() {
@@ -12,6 +19,10 @@ function Menu() {
   const { ban } = useParams();
   const LayDuLieu = useCallback(async () => {
     try {
+      const result2 = await KiemTraBan(ban);
+      if (result2.data.data.trang_thai_id === 1) {
+        window.location.href = "/TrangnhapMa/" + ban;
+      }
       const result = await getSomeData(ban);
       setData(result);
     } catch (error) {
@@ -20,6 +31,7 @@ function Menu() {
   }, []);
 
   useEffect(() => {
+    document.title = "CHAOBÍNH";
     LayDuLieu();
   }, [LayDuLieu]);
 

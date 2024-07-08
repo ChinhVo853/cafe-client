@@ -7,6 +7,7 @@ function Trangthemsize() {
   const handleNameChange = (e) => {
     setsizeName(e.target.value);
   };
+  document.title = "Thêm size";
 
   const handleSubmit = async (e) => {
     e.preventDefault();

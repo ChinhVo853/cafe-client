@@ -19,6 +19,7 @@ function Trangquanlysize() {
     setMenuOpen(!menuOpen);
   };
   useEffect(() => {
+    document.title = "Quản size";
     if (localStorage.getItem("quyen") === 2) {
       window.location.href = "/Trangchuquanly";
     }

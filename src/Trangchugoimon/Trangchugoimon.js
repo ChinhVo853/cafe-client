@@ -18,6 +18,7 @@ function Trangchugoimon() {
     }
   }, [ban]); // Include `ban` as a dependency
   useEffect(() => {
+    document.title = "CHAOBÍNH";
     LayData();
   }, [LayData]);
   const [showCallStaffForm, setShowCallStaffForm] = useState(false);
@@ -50,8 +51,8 @@ function Trangchugoimon() {
       ban: ban,
     };
 
-    await TaoYeuCau(data);
-    window.location.href = "/Phanhoi/" + ban;
+    await TaoYeuCau(data, ban);
+    // window.location.href = "/Phanhoi/" + ban;
   };
 
   const YeuCauThanhToan = async () => {
@@ -68,7 +69,7 @@ function Trangchugoimon() {
         noiDung: "Gọi thanh toán: thanh toán chuyển khoản",
         ban: ban,
       };
-    } else {
+    } else if (yeuCau === 3) {
       data = {
         yeuCau: "Thanh toán",
         noiDung: "Gọi thanh toán: thanh toán bằng thẻ",
@@ -76,8 +77,7 @@ function Trangchugoimon() {
       };
     }
 
-    await TaoYeuCau(data);
-    window.location.href = "/Phanhoi/" + ban;
+    await TaoYeuCau(data, ban);
   };
 
   const handleNameChange = (e) => {

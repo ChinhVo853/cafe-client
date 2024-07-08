@@ -18,6 +18,7 @@ const Cacmondadat = () => {
   }, [ban]);
 
   useEffect(() => {
+    document.title = "CHAOBÍNH";
     LayData();
   }, [LayData]);
 

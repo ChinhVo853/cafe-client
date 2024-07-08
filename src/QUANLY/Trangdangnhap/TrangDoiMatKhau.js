@@ -25,6 +25,7 @@ function TrangDoiMatKhau() {
     };
     await DoiMatKhau(data1);
   };
+  document.title = "Đổi mật khẩu";
   return (
     <div className="login-container">
       <div className="login-form">

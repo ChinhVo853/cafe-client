@@ -9,7 +9,7 @@ function Trangthemnhanvien() {
     username: "",
     password: "",
   });
-
+  document.title = "Thêm nhân viên";
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({

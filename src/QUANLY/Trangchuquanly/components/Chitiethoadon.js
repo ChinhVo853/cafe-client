@@ -57,6 +57,7 @@ const ChiTietHoaDon = () => {
   }, []);
 
   useEffect(() => {
+    document.title = "Chi tiết hoá đơn";
     LayData();
   }, [LayData]);
   console.log(tables);

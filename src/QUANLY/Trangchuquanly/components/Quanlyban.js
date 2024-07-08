@@ -50,11 +50,15 @@ function Quanlyban({
           Đang dọn bàn
         </button>
       </div>
-      <br/>
+      <br />
       <h3>CHÚ Ý:</h3>
-      <p className="chu-y">*KHI CÓ YÊU CẦU TỪ KHÁCH HÀNG THÌ BÀN SẼ ĐỔI SANG MÀU VÀNG!!!</p>
+      <p className="chu-y">
+        *KHI CÓ YÊU CẦU TỪ KHÁCH HÀNG THÌ BÀN SẼ ĐỔI SANG MÀU VÀNG!!!
+      </p>
 
-      <p className="chu-y">*KHI CÓ ORDER NÚT "CÁC MÓN ĐƯỢC ORDER" SẼ ĐỔI SANG MÀU CAM!!!</p>
+      <p className="chu-y">
+        *KHI CÓ ORDER NÚT "CÁC MÓN ĐƯỢC ORDER" SẼ ĐỔI SANG MÀU CAM!!!
+      </p>
       <div className="container">
         <div className="row">
           {tables.map((table) => (
@@ -65,7 +69,7 @@ function Quanlyban({
                   id={`table-${table.id}`}
                   style={table.yeuCau > 0 ? { background: "#FFFF99" } : {}}
                 >
-                  <h5 className="card-title">Bàn {table.ten_ban}</h5>
+                  <h5 className="card-title">Tên bàn: {table.ten_ban}</h5>
                   <p className="card-text">
                     Mã bàn: {table.trang_thai_id != 1 && table.dat_mon_id}
                   </p>

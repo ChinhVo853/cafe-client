@@ -7,6 +7,7 @@ const TrangQLyeucaucuakhachhang = () => {
   const [quyen, setQuyen] = useState();
   const [requests, setRequests] = useState();
   useEffect(() => {
+    document.title = "Quản lý yêu cầu";
     LayData();
   }, []);
 
@@ -19,7 +20,6 @@ const TrangQLyeucaucuakhachhang = () => {
       console.error("Failed to fetch data", error);
     }
   }, []);
-  console.log(requests);
   const handleStatusChange = async (id) => {
     await XacNhanYeuCau(id);
     LayData();
