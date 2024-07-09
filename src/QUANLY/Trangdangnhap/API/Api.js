@@ -22,7 +22,7 @@ export const DangNhap = async (data) => {
     if (error.response.status == 401) {
       Swal.fire({
         title: "Thất bại",
-        text: "Tài khoản mật khẩu không đúng",
+        text: "Tài khoản hoặc mật khẩu không đúng",
         icon: "error",
       });
     } else if (error.response.status == 422) {
@@ -80,7 +80,7 @@ export const DoiMatKhau = async (data) => {
     if (error.response.status == 401) {
       Swal.fire({
         title: "Thất bại",
-        text: "Tài khoản mật khẩu không đúng",
+        text: "Tài khoản hoặc mật khẩu không đúng",
         icon: "error",
       });
     } else if (error.response.status == 422) {

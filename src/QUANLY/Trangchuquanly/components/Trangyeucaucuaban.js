@@ -30,10 +30,7 @@ const Trangyeucaucuaban = () => {
     <>
       {data && (
         <div>
-          <div className="search-container-custom">
-            <input type="text" placeholder="Tìm kiếm..." />
-            <button type="button">🔍</button>
-          </div>
+          
           <a href="/Trangchuquanly">
             <button className="btn-quayve" type="button">
               <i className="fa-solid fa-circle-chevron-left"></i>

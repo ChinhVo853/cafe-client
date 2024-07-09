@@ -34,7 +34,7 @@ function Trangdangnhap() {
         <input
           type="text"
           name="username"
-          placeholder="email"
+          placeholder="Email"
           value={username}
           onChange={handleInputChange}
         />
