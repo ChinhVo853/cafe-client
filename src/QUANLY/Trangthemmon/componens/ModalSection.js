@@ -113,12 +113,6 @@ function ModalSection({
               </div>
             </div>
 
-            <div className="mb-3">
-              <label htmlFor="foodStatus" className="form-label">
-                Trạng thái
-              </label>
-              {status == 0 ? "Còn hàng" : "hết hàng"}
-            </div>
             <button
               type="button"
               className="btn btn-custom w-100"

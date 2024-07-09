@@ -208,21 +208,6 @@ function Trangthemmon() {
         <p>Loại này chỉ có 1 size</p>
       )}
 
-      <div className="mb-3">
-        <label htmlFor="foodStatus" className="form-label">
-          Trạng thái
-        </label>
-        <select
-          className="form-control"
-          id="foodStatus"
-          name="foodStatus"
-          value={formData.foodStatus}
-          onChange={handleChange}
-        >
-          <option value="0">Còn hàng</option>
-          <option value="1">Hết hàng</option>
-        </select>
-      </div>
       <button
         type="button"
         className="btn btn-custom w-100"
