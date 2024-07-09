@@ -1,5 +1,5 @@
 import React, { useEffect, useCallback, useState } from "react";
-import { KiemTraMa, KiemTraBan } from "./API/Api";
+import { KiemTraMa, KiemTraBan, KiemTraMaDau } from "./API/Api";
 import { useParams } from "react-router-dom";
 function Trangnhapma() {
   const { ban } = useParams();
@@ -16,7 +16,7 @@ function Trangnhapma() {
           ban: ban,
           ma: maQR,
         };
-        const result = await KiemTraMa(data);
+        const result = await KiemTraMaDau(data);
         if (result.data.data) {
           window.location.href = "/Trangchugoimon/" + ban;
         }
@@ -41,7 +41,7 @@ function Trangnhapma() {
     };
     const result = await KiemTraMa(data);
 
-    if (result.data.data.id) {
+    if (result?.data.data.id) {
       localStorage.setItem("QR", result.data.data.id);
       window.location.href = "/Trangchugoimon/" + ban;
     }

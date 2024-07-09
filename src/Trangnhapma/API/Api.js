@@ -21,6 +21,15 @@ export const TaoDatMon = async (id) => {
     }
   }
 };
+export const KiemTraMaDau = async (data) => {
+  try {
+    const response = await apiClient.post("api/Dat-Mon/Kiem-Tra-Ban", data);
+    return response;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const KiemTraMa = async (data) => {
   try {
     const response = await apiClient.post("api/Dat-Mon/Kiem-Tra-Ban", data);
