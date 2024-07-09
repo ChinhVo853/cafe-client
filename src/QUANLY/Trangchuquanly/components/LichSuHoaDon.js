@@ -1,10 +1,13 @@
 import React, { useState, useCallback, useEffect } from "react";
-import { LayDSHoaDon } from "../API/Api";
+import { LayDSHoaDon, TimNgayHoaDon } from "../API/Api";
 import { useParams } from "react-router-dom";
 import { format } from "date-fns";
 const Lichsuhoadon = () => {
   const { id } = useParams();
   const [tables, setTables] = useState();
+  const [ngayBatDau, setNgayBatDay] = useState();
+  const [ngayKetThuc, setNgayKetThuc] = useState();
+
   const LayData = useCallback(async () => {
     try {
       const result = await LayDSHoaDon(id);
@@ -18,16 +21,36 @@ const Lichsuhoadon = () => {
     document.title = "Lịch sử hoá đơn";
     LayData();
   }, [LayData]);
-  console.log(tables);
+
+  const LayNgayBD = (e) => {
+    const rawDate = e.target.value;
+    const formattedDate = new Date(rawDate)
+      .toLocaleString("sv-SE")
+      .replace("T", " ");
+    setNgayBatDay(formattedDate);
+  };
+  const LayNgayKT = (e) => {
+    const rawDate = e.target.value;
+    const formattedDate = new Date(rawDate)
+      .toLocaleString("sv-SE")
+      .replace("T", " ");
+    setNgayKetThuc(formattedDate);
+  };
+
+  const TimN = async () => {
+    const data = {
+      ban: id,
+      ngayDB: ngayBatDau,
+      ngayKT: ngayKetThuc,
+    };
+    const result = await TimNgayHoaDon(data);
+    setTables(result.data.data);
+  };
 
   return (
     <>
       {tables && (
         <div>
-          <div className="search-container-custom">
-            <input type="text" placeholder="Tìm kiếm..." />
-            <button type="button">🔍</button>
-          </div>
           <a href="/Trangchuquanly">
             <button className="btn-quayve" type="button">
               <i className="fa-solid fa-circle-chevron-left"></i>
@@ -37,6 +60,32 @@ const Lichsuhoadon = () => {
             <div className="header">LỊCH SỬ HÓA ĐƠN BÀN 1</div>
             <div className="row">
               <div className="col">
+                <div className="ta-ct">
+                  <label htmlFor="ngaybatdau">Ngày bắt đầu</label>
+                  <input
+                    name="ngaybatdau"
+                    type="datetime-local"
+                    placeholder="Tìm kiếm..."
+                    onChange={LayNgayBD}
+                  />
+                  <span className="mg-0-20 d-b">-</span>
+                  <label htmlFor="ngaykhetthuc">Ngày kết thúc</label>
+
+                  <input
+                    name="ngayketthuc"
+                    type="datetime-local"
+                    placeholder="Tìm kiếm..."
+                    onChange={LayNgayKT}
+                  />
+                  <br></br>
+                  <button
+                    type="button"
+                    className="btn btn-primary"
+                    onClick={TimN}
+                  >
+                    Tìm
+                  </button>
+                </div>
                 <table className="table table-striped">
                   <thead>
                     <tr>

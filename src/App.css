@@ -338,6 +338,21 @@ body {
   margin-top: 50px;
 }
 
+/* Margin*/
+
+.mg-0-20 {
+  margin: 0 20px;
+}
+
+@media (max-width: 770px) {
+  .w-30 {
+    width: 30% !important;
+  }
+
+  .d-b {
+    display: block;
+  }
+}
 /*Style width*/
 .w-10 {
   width: 10%;
@@ -1807,6 +1822,6 @@ h3 {
   border: solid 1px #ba68c8;
 }
 /********************************************ĐỔI MÀU BÀN**********************************************/
-.chu-y{
+.chu-y {
   color: #f4a261;
 }
