@@ -107,10 +107,7 @@ function Menu() {
             menuIsOpen={menuIsOpen}
             handleMenuToggle={handleMenuToggle}
           />
-          <div className="search-container-custom">
-            <input type="text" placeholder="Tìm kiếm..." />
-            <button type="button">🔍</button>
-          </div>
+
           {Object.entries(data.data).map(([key, item]) => (
             <div key={key}>
               <div className="category-container">

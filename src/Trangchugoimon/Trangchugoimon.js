@@ -1,6 +1,6 @@
 import React, { useState, useCallback, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { TaoYeuCau, TimMaBAn } from "./API/Api"; // Ensure this import is correct
+import { TaoYeuCau, TimMaBAn, KiemTraBan, KiemTraMaDau } from "./API/Api"; // Ensure this import is correct
 import Load from "../Load/Load";
 
 function Trangchugoimon() {
@@ -11,6 +11,24 @@ function Trangchugoimon() {
 
   const LayData = useCallback(async () => {
     try {
+      const maQR = localStorage.getItem("QR");
+      const result2 = await KiemTraBan(ban);
+      if (result2.data.data.trang_thai_id === 1) {
+        localStorage.removeItem("QR");
+        window.location.href = `/Trangnhapma/${ban}`;
+      }
+
+      if (maQR) {
+        const data = {
+          ban: ban,
+          ma: maQR,
+        };
+        const result3 = await KiemTraMaDau(data);
+        if (!result3) {
+          window.location.href = `/Trangnhapma/${ban}`;
+        }
+      }
+
       const result = await TimMaBAn(ban);
       setData(result.data.data);
     } catch (error) {

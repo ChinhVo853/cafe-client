@@ -1,6 +1,11 @@
 import React, { useEffect, useCallback } from "react";
 import { useParams } from "react-router-dom";
-import { TaoDatMon, KiemTraMa as kiemTraMaAPI, KiemTraBan } from "./API/Api";
+import {
+  TaoDatMon,
+  KiemTraMa as kiemTraMaAPI,
+  KiemTraBan,
+  KiemTraMaDau,
+} from "./API/Api";
 import Load from "../Load/Load";
 
 function TrangQR() {
@@ -19,8 +24,9 @@ function TrangQR() {
       const maQR = localStorage.getItem("QR");
       if (maQR) {
         const data = { ma: maQR, ban: ban };
-        const result1 = await kiemTraMaAPI(data);
-        if (result1.data.errors) {
+        const result1 = await KiemTraMaDau(data);
+
+        if (result1 == undefined) {
           window.location.href = `/Trangnhapma/${ban}`;
         } else {
           window.location.href = "/Trangchugoimon/" + ban;
@@ -36,11 +42,11 @@ function TrangQR() {
 
           //ngược lại nếu ko có thì vào trang nhập mã
         } catch (error) {
-          console.error("Failed to fetch data", error);
+          // console.error("Failed to fetch data", error);
         }
       }
     } catch (error) {
-      console.error("Failed to fetch data", error);
+      //  console.error("Failed to fetch data", error);
       // Handle error: show error message or redirect to an error page
     }
   }, [ban]);

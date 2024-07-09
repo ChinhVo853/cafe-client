@@ -26,7 +26,7 @@ export const KiemTraMaDau = async (data) => {
     const response = await apiClient.post("api/Dat-Mon/Kiem-Tra-Ban", data);
     return response;
   } catch (error) {
-    console.log(error);
+    //  console.log(error);
   }
 };
 
