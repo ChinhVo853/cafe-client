@@ -113,7 +113,7 @@ function Quanlyban({
                   </a>
                   <button
                     className="btn btn-info history-btn"
-                    onClick={() => LamTrongBan(table.ban_id)}
+                    onClick={() => LamTrongBan(table.ban_id,table.dat_mon_id)}
                   >
                     Làm trống bàn
                   </button>

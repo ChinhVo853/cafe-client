@@ -294,7 +294,7 @@ export const LayDSCTHoaDon = async (id) => {
 };
 export const LamTrong = async (ban) => {
   try {
-    const response = await apiClient.get("api/Ban/Lam-Trong/" + ban);
+    const response = await apiClient.post("api/Ban/Lam-Trong/",ban);
     return response;
   } catch (error) {
     if (error.response.status == 401) {

@@ -15,8 +15,8 @@ const DanhSachMenuSection = ({ data, menuIsOpen, handleMenuToggle }) => {
                 to={item.ten_loai}
                 spy={true}
                 smooth={true}
-                offset={-70}
-                duration={500}
+                offset={-10}
+                duration={100}
                 onClick={handleMenuToggle} // Đóng menu khi click
               >
                 {item.ten_loai}

@@ -1,6 +1,6 @@
 const config = {
-  apiBaseUrl: "http://192.168.1.6:8000",
-  imageBaseUrl: "http://192.168.1.6:8000/AnhMonAn",
+  apiBaseUrl: "http://172.20.10.5:8000",
+  imageBaseUrl: "http://172.20.10.5:8000/AnhMonAn",
 };
 
 export default config;

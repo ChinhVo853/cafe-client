@@ -28,6 +28,11 @@ function TrangDoiMatKhau() {
   document.title = "Đổi mật khẩu";
   return (
     <div className="login-container">
+      <a href="/Trangthongtinnhanvien">
+              <button className="btn-quayve" type="button">
+                <i className="fa-solid fa-circle-chevron-left"></i>
+              </button>
+            </a>
       <div className="login-form">
         <h2>Đổi mật khẩu</h2>
         <input
