@@ -101,6 +101,12 @@ function Quanlyban({
                   >
                     Các món được order
                   </a>
+                  <a
+                    href={`/Lichsuhoadon/${table.ban_id}`}
+                    className="btn btn-primary history-btn"
+                  >
+                    Xem danh sách hoá đơn
+                  </a>
                 </div>
               </div>
               <ModalQR

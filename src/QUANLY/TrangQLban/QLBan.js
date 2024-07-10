@@ -47,7 +47,7 @@ function QLBan() {
                   <thead>
                     <tr>
                       <th scope="col">Tên bàn</th>
-                      <th>Lịch sử hoá đơn</th>
+
                       <th scope="col"></th>
                     </tr>
                   </thead>
@@ -55,15 +55,7 @@ function QLBan() {
                     {tables.map((item, index) => (
                       <tr key={index}>
                         <td>{item.ten_ban}</td>
-                        <td>
-                          {" "}
-                          <a
-                            href={`/Lichsuhoadon/${item.ban_id}`}
-                            className="btn btn-primary history-btn"
-                          >
-                            Xem danh sách hoá đơn
-                          </a>
-                        </td>
+
                         <td>
                           <a
                             href={`/Trangcapnhatban/${item.ban_id}  `}
