@@ -118,11 +118,11 @@ function Trangchuquanly() {
     const result = await DSTrangThaiBan(trangthai);
     setTables(result.data.data);
   };
-  const LamTrongBan = async (ban,datmon) => {
-    const data={
-      ban:ban,
-      dat_mon_id:datmon
-    }
+  const LamTrongBan = async (ban, datmon) => {
+    const data = {
+      ban: ban,
+      dat_mon_id: datmon,
+    };
     await LamTrong(data);
     LayData();
   };

@@ -68,7 +68,7 @@ function Trangcapnhatban() {
             Cập nhật
           </button>
           <a
-            href="/Trangchuquanly"
+            href="/TrangQLban"
             className="quaylai btn btn-secondary go-back-btn"
           >
             Hủy

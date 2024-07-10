@@ -9,6 +9,11 @@ function Menuquanly({ menuOpen, toggleMenu }) {
             </a>
           </li>
           <li>
+            <a href="/TrangQLban">
+              <i className="fas fa-table"></i> BÀN
+            </a>
+          </li>
+          <li>
             <a href="/Trangquanlymon">
               <i className="fas fa-utensils"></i> MÓN
             </a>

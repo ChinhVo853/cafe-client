@@ -42,10 +42,7 @@ function Trangthemban() {
         <button type="submit" className="btn btn-custom w-100">
           Thêm
         </button>
-        <a
-          href="/Trangchuquanly"
-          className="quaylai btn btn-secondary go-back-btn"
-        >
+        <a href="/TrangQLban" className="quaylai btn btn-secondary go-back-btn">
           Hủy
         </a>
       </form>

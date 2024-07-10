@@ -57,7 +57,7 @@ const Lichsuhoadon = () => {
             </button>
           </a>
           <div className="request-container mt-5">
-            <div className="header">LỊCH SỬ HÓA ĐƠN BÀN 1</div>
+            <div className="header">LỊCH SỬ HÓA ĐƠN {tables[0].ten_ban}</div>
             <div className="row">
               <div className="col">
                 <div className="ta-ct">

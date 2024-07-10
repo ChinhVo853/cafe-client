@@ -19,11 +19,7 @@ function Quanlyban({
   return (
     <div className="request-container mt-5">
       <div className="header">THỐNG KÊ</div>
-      <div className="col text-end mb-3">
-        <a href="/Trangthemban" className="btn btn-primary">
-          Thêm bàn
-        </a>
-      </div>
+
       <div>
         <button
           className="btn btn-outline-secondary me-2"
@@ -65,7 +61,7 @@ function Quanlyban({
             <div className="col-md-4" key={table.ban_id}>
               <div className="card mb-3">
                 <div
-                  className={`card-body ${table.ten_trang_thai}`}
+                  className={`card-body ${table.ten_trang_thai} ta-ct `}
                   id={`table-${table.id}`}
                   style={table.yeuCau > 0 ? { background: "#FFFF99" } : {}}
                 >
@@ -93,27 +89,8 @@ function Quanlyban({
                   )}
 
                   <button
-                    href="#"
-                    className="btn btn-danger delete-btn"
-                    onClick={() => XoaDuLieu(table.ban_id)}
-                  >
-                    Xóa
-                  </button>
-                  <a
-                    href={`/Lichsuhoadon/${table.ban_id}`}
-                    className="btn btn-secondary history-btn"
-                  >
-                    Lịch sử hóa đơn
-                  </a>
-                  <a
-                    href={`/Trangcapnhatban/${table.ban_id}  `}
-                    className="btn btn-primary history-btn"
-                  >
-                    Cập nhật
-                  </a>
-                  <button
                     className="btn btn-info history-btn"
-                    onClick={() => LamTrongBan(table.ban_id,table.dat_mon_id)}
+                    onClick={() => LamTrongBan(table.ban_id, table.dat_mon_id)}
                   >
                     Làm trống bàn
                   </button>
