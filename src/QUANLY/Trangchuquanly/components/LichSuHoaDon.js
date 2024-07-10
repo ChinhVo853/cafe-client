@@ -43,8 +43,12 @@ const Lichsuhoadon = () => {
       ngayDB: ngayBatDau,
       ngayKT: ngayKetThuc,
     };
-    const result = await TimNgayHoaDon(data);
-    setTables(result.data.data);
+    try {
+      const result = await TimNgayHoaDon(data);
+      setTables(result.data.data);
+    } catch (error) {
+      console.error("Failed to fetch data", error);
+    }
   };
 
   return (

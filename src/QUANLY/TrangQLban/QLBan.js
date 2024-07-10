@@ -19,7 +19,7 @@ function QLBan() {
   };
 
   useEffect(() => {
-    document.title = "Thống kê";
+    document.title = "Quản lý bàn";
     LayData();
   }, [LayData]);
 

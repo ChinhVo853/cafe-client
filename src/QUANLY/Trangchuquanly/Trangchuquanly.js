@@ -21,10 +21,23 @@ function Trangchuquanly() {
       console.error("Failed to fetch data", error);
     }
   }, []);
+  const fetchData = async () => {
+    try {
+      await LayData();
+      // Continue with other actions or fetch more data if needed
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
 
   useEffect(() => {
     document.title = "Thống kê";
     LayData();
+    const interval = setInterval(() => {
+      fetchData();
+    }, 5000); // 5000 milliseconds = 5 seconds
+
+    return () => clearInterval(interval); // Cleanup interval on component unmount
   }, [LayData]);
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);

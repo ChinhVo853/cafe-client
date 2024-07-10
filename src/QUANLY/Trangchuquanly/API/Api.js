@@ -239,7 +239,6 @@ export const DanhSachChiTietHoaDon = async (ban) => {
 export const LayDSHoaDon = async (id) => {
   try {
     const response = await apiClient.get("api/Hoa-Don/DanhSachHoaDon/" + id);
-
     return response.data;
   } catch (error) {
     if (error.response.status == 401) {
