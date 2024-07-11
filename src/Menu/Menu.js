@@ -33,6 +33,11 @@ function Menu() {
   useEffect(() => {
     document.title = "CHAOBÍNH";
     LayDuLieu();
+    const interval = setInterval(() => {
+      LayDuLieu();
+    }, 5000); // 5000 milliseconds = 5 seconds
+
+    return () => clearInterval(interval); // Cleanup interval on component unmount
   }, [LayDuLieu]);
 
   const [cartDetailsIsOpen, setCartDetailsIsOpen] = useState(false);
