@@ -152,6 +152,21 @@ function Trangchuquanly() {
     await LamTrong(data);
     LayData();
   };
+  const startInterval = () => {
+    const id = setInterval(() => {
+      // Thực hiện các hành động cần thiết trong interval
+      fetchData();
+    }, 5000); // Ví dụ, mỗi 5 giây
+
+    setIntervalId(id); // Lưu id của interval vào state
+  };
+  const restoreInterval = async () => {
+    setLoading(false);
+    await LayData();
+    if (!intervalId) {
+      startInterval();
+    }
+  };
   return (
     <>
       {tables && loading ? (
@@ -182,6 +197,7 @@ function Trangchuquanly() {
               afterOpenModal={afterOpenModal}
               closeModal={closeModal}
               LamTrongBan={LamTrongBan}
+              restoreInterval={restoreInterval}
             />
           </div>
         </>

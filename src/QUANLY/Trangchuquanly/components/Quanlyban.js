@@ -15,6 +15,7 @@ function Quanlyban({
   afterOpenModal,
   closeModal,
   LamTrongBan,
+  restoreInterval,
 }) {
   return (
     <div className="request-container mt-5">
@@ -44,6 +45,9 @@ function Quanlyban({
           onClick={() => TrangThai(4)}
         >
           Đang dọn bàn
+        </button>
+        <button className="btn btn-outline-secondary" onClick={restoreInterval}>
+          Tất cả
         </button>
       </div>
       <br />
