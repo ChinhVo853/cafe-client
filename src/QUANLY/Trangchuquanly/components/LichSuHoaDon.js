@@ -2,16 +2,19 @@ import React, { useState, useCallback, useEffect } from "react";
 import { LayDSHoaDon, TimNgayHoaDon } from "../API/Api";
 import { useParams } from "react-router-dom";
 import { format } from "date-fns";
+import Load from "../../../Load/Load";
 const Lichsuhoadon = () => {
   const { id } = useParams();
   const [tables, setTables] = useState();
   const [ngayBatDau, setNgayBatDay] = useState();
   const [ngayKetThuc, setNgayKetThuc] = useState();
+  const [loading, setLoading] = useState(false);
 
   const LayData = useCallback(async () => {
     try {
       const result = await LayDSHoaDon(id);
       setTables(result.data);
+      setLoading(true);
     } catch (error) {
       console.error("Failed to fetch data", error);
     }
@@ -38,6 +41,7 @@ const Lichsuhoadon = () => {
   };
 
   const TimN = async () => {
+    setLoading(false);
     const data = {
       ban: id,
       ngayDB: ngayBatDau,
@@ -49,11 +53,12 @@ const Lichsuhoadon = () => {
     } catch (error) {
       console.error("Failed to fetch data", error);
     }
+    setLoading(true);
   };
 
   return (
     <>
-      {tables && (
+      {tables && loading ? (
         <div>
           <a href="/Trangchuquanly">
             <button className="btn-quayve" type="button">
@@ -61,7 +66,9 @@ const Lichsuhoadon = () => {
             </button>
           </a>
           <div className="request-container mt-5">
-            <div className="header">LỊCH SỬ HÓA ĐƠN {tables[0].ten_ban}</div>
+            <div className="header">
+              LỊCH SỬ HÓA ĐƠN {tables[0] && tables[0].ten_ban}
+            </div>
             <div className="row">
               <div className="col">
                 <div className="ta-ct">
@@ -104,7 +111,7 @@ const Lichsuhoadon = () => {
                     {tables.map((request) => (
                       <tr key={request.id}>
                         <td>{request.id}</td>
-                        <td>{request.tong_tien}</td>
+                        <td>{request.tong_tien.toLocaleString()}</td>
                         <td>
                           {format(new Date(request.created_at), "dd-MM-yyyy ")}
                         </td>
@@ -127,6 +134,8 @@ const Lichsuhoadon = () => {
             </div>
           </div>
         </div>
+      ) : (
+        <Load />
       )}
     </>
   );

@@ -7,11 +7,13 @@ import Load from "../../Load/Load";
 const Cacmondadat = () => {
   const { ban } = useParams();
   const [data, setData] = useState();
+  const [loading, setLoading] = useState(false);
 
   const LayData = useCallback(async () => {
     try {
       const result = await DanhSachChiTietHoaDon(ban);
       setData(result.data.data);
+      setLoading(true);
     } catch (error) {
       console.error("Failed to fetch data", error);
     }
@@ -28,7 +30,7 @@ const Cacmondadat = () => {
 
   return (
     <>
-      {data ? (
+      {data && loading ? (
         <div className="feedback-page">
           <button className="home-button" onClick={handleGoBack}>
             <i className="fa-solid fa-arrow-left"></i>

@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import config from "../../../config";
 import { format } from "date-fns";
 import { useReactToPrint } from "react-to-print";
+import Load from "../../../Load/Load";
 
 const ChiTietHoaDon = () => {
   // const [billDetails, setBillDetails] = useState({
@@ -60,7 +61,6 @@ const ChiTietHoaDon = () => {
     document.title = "Chi tiết hoá đơn";
     LayData();
   }, [LayData]);
-  console.log(tables);
 
   const handleGoBack = () => {
     window.history.back();
@@ -68,7 +68,7 @@ const ChiTietHoaDon = () => {
 
   return (
     <>
-      {tables && (
+      {tables ? (
         <div>
           <a onClick={handleGoBack}>
             <button className="btn-quayve" type="button">
@@ -80,7 +80,7 @@ const ChiTietHoaDon = () => {
             <div className="bill-details-container mt-5">
               <button
                 type="button"
-                class="btn btn-outline-success"
+                className="btn btn-outline-success"
                 onClick={handlePrint}
               >
                 In hoá đơn
@@ -94,17 +94,19 @@ const ChiTietHoaDon = () => {
                   <div className="mt-5">
                     <b>Giờ vào:</b>
                     <p>
-                      {format(
-                        new Date(tables[0].created_at),
-                        "dd-MM-yyyy HH:mm:ss"
-                      )}
+                      {tables[0] &&
+                        format(
+                          new Date(tables[0].created_at),
+                          "dd-MM-yyyy HH:mm:ss"
+                        )}
                     </p>
                     <b>Giờ ra:</b>{" "}
                     <p>
-                      {format(
-                        new Date(tables[0].updated_at),
-                        "dd-MM-yyyy HH:mm:ss"
-                      )}
+                      {tables[0] &&
+                        format(
+                          new Date(tables[0].updated_at),
+                          "dd-MM-yyyy HH:mm:ss"
+                        )}
                     </p>
                   </div>
                   <table className="table table-striped">
@@ -112,6 +114,7 @@ const ChiTietHoaDon = () => {
                       <tr>
                         <th scope="col">Hình sản phẩm</th>
                         <th scope="col">Tên sản phẩm</th>
+                        <th scope="col">Tên size</th>
                         <th scope="col">Số lượng</th>
                         <th scope="col">Giá</th>
                         <th scope="col">Thành tiền</th>
@@ -127,6 +130,8 @@ const ChiTietHoaDon = () => {
                             />
                           </td>
                           <td>{item.tenMon}</td>
+                          <td>{item.tenSize}</td>
+
                           <td>{item.so_luong}</td>
                           <td>{item.gia.toLocaleString()}</td>
                           <td>{item.thanh_tien.toLocaleString()}</td>
@@ -154,6 +159,8 @@ const ChiTietHoaDon = () => {
             </div>
           </div>
         </div>
+      ) : (
+        <Load />
       )}
     </>
   );

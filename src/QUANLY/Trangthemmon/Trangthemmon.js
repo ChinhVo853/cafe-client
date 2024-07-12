@@ -107,7 +107,7 @@ function Trangthemmon() {
     formData.foodSize.forEach((size, index) => {
       truyenDuLieu.append(`foodSize[${index}]`, size);
     });
-    const result = await ThemMon(truyenDuLieu);
+    await ThemMon(truyenDuLieu);
   };
   return (
     <div className="them-mon-container">

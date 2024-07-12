@@ -8,10 +8,13 @@ function Trangquanlymon() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [tim, setTim] = useState();
   const [data, setData] = useState();
+  const [loading, setLoading] = useState(false);
+
   const LayData = useCallback(async () => {
     try {
       const result = await LayDuLieu();
       setData(result.data.data);
+      setLoading(true);
     } catch (error) {
       console.error("Failed to fetch data", error);
     }
@@ -28,6 +31,7 @@ function Trangquanlymon() {
   };
 
   const SuaTrangThai = async (tt, id) => {
+    setLoading(false);
     const data = {
       id: id,
       trangThai: tt,
@@ -36,6 +40,7 @@ function Trangquanlymon() {
     LayData();
   };
   const XoaMon = async (id) => {
+    setLoading(false);
     const data = {
       id: id,
     };
@@ -58,7 +63,7 @@ function Trangquanlymon() {
   };
   return (
     <div>
-      {data ? (
+      {data && loading ? (
         <>
           <div className="search-container-custom">
             <input

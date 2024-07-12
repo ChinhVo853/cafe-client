@@ -5,11 +5,13 @@ import Load from "../../Load/Load";
 const Phanhoi = () => {
   const { ban } = useParams();
   const [data, setData] = useState();
+  const [loading, setLoading] = useState(false);
 
   const LayData = useCallback(async () => {
     try {
       const result = await LayYeuCau(ban);
       setData(result);
+      setLoading(true);
     } catch (error) {
       console.error("Failed to fetch data", error);
     }
@@ -44,7 +46,7 @@ const Phanhoi = () => {
 
   return (
     <>
-      {data ? (
+      {data && loading ? (
         <div className="feedback-page">
           <button className="home-button" onClick={handleGoBack}>
             <i className="fas fa-home"></i>

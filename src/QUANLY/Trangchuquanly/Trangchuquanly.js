@@ -8,6 +8,9 @@ import Menunhanvien from "../Menunhanvien";
 function Trangchuquanly() {
   const [quyen, setQuyen] = useState();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [intervalId, setIntervalId] = useState(null);
+
   const [maQR, setMaQR] = useState(
     window.location.href.split("/").slice(0, -1).join("/")
   );
@@ -17,6 +20,7 @@ function Trangchuquanly() {
       const result = await XemData();
       setQuyen(localStorage.getItem("quyen"));
       setTables(result.data);
+      setLoading(true);
     } catch (error) {
       console.error("Failed to fetch data", error);
     }
@@ -33,11 +37,13 @@ function Trangchuquanly() {
   useEffect(() => {
     document.title = "Thống kê";
     LayData();
-    const interval = setInterval(() => {
+    const id = setInterval(() => {
       fetchData();
     }, 5000); // 5000 milliseconds = 5 seconds
 
-    return () => clearInterval(interval); // Cleanup interval on component unmount
+    setIntervalId(id);
+
+    return () => clearInterval(id); // Cleanup interval on component unmount
   }, [LayData]);
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -128,10 +134,17 @@ function Trangchuquanly() {
     console.log(`Xem lịch sử hóa đơn cho bàn ${tableId}`);
   };
   const TrangThai = async (trangthai) => {
+    setLoading(false);
+    if (intervalId) {
+      clearInterval(intervalId);
+      setIntervalId(null);
+    }
     const result = await DSTrangThaiBan(trangthai);
     setTables(result.data.data);
+    setLoading(true);
   };
   const LamTrongBan = async (ban, datmon) => {
+    setLoading(false);
     const data = {
       ban: ban,
       dat_mon_id: datmon,
@@ -141,7 +154,7 @@ function Trangchuquanly() {
   };
   return (
     <>
-      {tables ? (
+      {tables && loading ? (
         <>
           <div>
             <a

@@ -17,6 +17,7 @@ function Menu() {
   const [productOptions, setProductOptions] = useState({});
   const [data, setData] = useState();
   const { ban } = useParams();
+  const [loading, setLoading] = useState(false);
   const LayDuLieu = useCallback(async () => {
     try {
       const result2 = await KiemTraBan(ban);
@@ -25,6 +26,7 @@ function Menu() {
       }
       const result = await getSomeData(ban);
       setData(result);
+      setLoading(true);
     } catch (error) {
       console.error("Failed to fetch data", error);
     }
@@ -54,6 +56,7 @@ function Menu() {
   };
 
   const handleAddToCart = async (size, quantity, name, productId) => {
+    setLoading(false);
     const data = {
       tenMon: name,
       tenSize: size,
@@ -81,6 +84,7 @@ function Menu() {
   };
 
   const handleIncreaseQuantity = async (size, name) => {
+    setLoading(false);
     const data = {
       tenMon: name,
       tenSize: size,
@@ -91,6 +95,7 @@ function Menu() {
   };
 
   const handleDecreaseQuantity = async (size, name) => {
+    setLoading(false);
     const data = {
       tenMon: name,
       tenSize: size,
@@ -100,12 +105,13 @@ function Menu() {
     await LayDuLieu();
   };
   const handleOrderSubmit = async () => {
+    setLoading(false);
     await GoiMon(ban);
     LayDuLieu();
   };
   return (
     <>
-      {data ? (
+      {data && loading ? (
         <>
           <DanhSachMenuSection
             data={data}
