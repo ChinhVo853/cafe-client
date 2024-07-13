@@ -101,7 +101,7 @@ function Quanlyban({
                   <a
                     href={`/QLcacmondadat/${table.ban_id}`}
                     className="btn btn-outline-secondary"
-                    style={table.hd > 0 ? { background: "#f4a261" } : {}}
+                    style={table.hd  ? { background: "#f4a261" } : {}}
                   >
                     Các món được order
                   </a>
