@@ -20,11 +20,10 @@ function Menu() {
   const [loading, setLoading] = useState(false);
   const LayDuLieu = useCallback(async () => {
     try {
-      const result2 = await KiemTraBan(ban);
-      if (result2.data.data.trang_thai_id === 1) {
+      const result = await getSomeData(ban);
+      if (result.ban.trang_thai_id === 1) {
         window.location.href = "/TrangnhapMa/" + ban;
       }
-      const result = await getSomeData(ban);
       setData(result);
       setLoading(true);
     } catch (error) {
