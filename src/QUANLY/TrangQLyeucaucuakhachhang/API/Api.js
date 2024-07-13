@@ -24,9 +24,9 @@ export const LayYeuCau = async () => {
   }
 };
 
-export const XacNhanYeuCau = async (id) => {
+export const XacNhanYeuCau = async (data) => {
   try {
-    const response = await apiClient.get("api/Yeu-Cau/Xac-Nhan/" + id);
+    const response = await apiClient.post("api/Yeu-Cau/Xac-Nhan/", data);
     return response;
   } catch (error) {
     if (error.response.status == 401) {

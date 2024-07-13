@@ -144,13 +144,16 @@ function Trangchuquanly() {
     setLoading(true);
   };
   const LamTrongBan = async (ban, datmon) => {
-    setLoading(false);
-    const data = {
-      ban: ban,
-      dat_mon_id: datmon,
-    };
-    await LamTrong(data);
-    LayData();
+    try {
+      const data = {
+        ban: ban,
+        dat_mon_id: datmon,
+      };
+      await LamTrong(data);
+      LayData();
+    } catch (error) {
+      console.log("Lỗi");
+    }
   };
   const startInterval = () => {
     const id = setInterval(() => {

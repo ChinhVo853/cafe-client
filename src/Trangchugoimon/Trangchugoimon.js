@@ -117,10 +117,11 @@ function Trangchugoimon() {
                     <i className="fa fa-utensils me-3"></i>CHAOBỈNH
                   </h1>
                 </a>
-                <div
-                  className="collapse navbar-collapse"
-                  id="navbarCollapse"
-                ></div>
+                <div className="collapse navbar-collapse" id="navbarCollapse">
+                  <a href={`/Phanhoi/${ban}`} className="fixed-button">
+                    <i className="fa fa-bullhorn"></i>
+                  </a>
+                </div>
               </nav>
 
               <div className="container-xxl py-5 bg-dark hero-header mb-5">

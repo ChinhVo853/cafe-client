@@ -56,7 +56,6 @@ function Menu() {
 
   const handleAddToCart = async (size, quantity, name, productId) => {
     try {
-      setLoading(false);
       const data = {
         tenMon: name,
         tenSize: size,
@@ -67,7 +66,7 @@ function Menu() {
       await LayDuLieu();
       handleCloseButtonClick(productId);
     } catch (error) {
-      setLoading(true);
+      console.log(error);
     }
   };
 

@@ -33,6 +33,7 @@ function Trangquanlysize() {
     // Handle the form submission
     try {
       await XoaData(data);
+      LayDuLieu();
     } catch (error) {
       console.error("Failed to submit data", error);
     }

@@ -51,12 +51,14 @@ function Trangquanlymon() {
     setTim(e.target.value);
   };
   const TimM = async () => {
+    setLoading(false);
     const data1 = {
       tim: tim,
     };
     try {
       const result = await TimMon(data1);
       setData(result.data.data);
+      setLoading(true);
     } catch (error) {
       console.error("Failed to fetch data", error);
     }

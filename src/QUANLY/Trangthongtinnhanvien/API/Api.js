@@ -13,7 +13,7 @@ const apiClient = axios.create({
 export const LayData = async () => {
   try {
     const response = await apiClient.get("api/me");
-    
+
     return response.data;
   } catch (error) {
     if (error.response.status == 401) {
@@ -51,84 +51,86 @@ export const LayData = async () => {
 };
 
 export const Capnhatthongtin = async (data) => {
-    try {
-      const response = await apiClient.post("api/Nguoi-Dung/Capnhatthongtin",data);
-      
-      return response.data;
-    } catch (error) {
-      if (error.response.status == 401) {
-        window.location.href = "/Trangdangnhap";
-      } else if (error.response.status == 422) {
-        const errors = error.response.data.errors;
-        if (typeof errors === "string") {
-          Swal.fire({
-            title: "Thất bại",
-            text: errors,
-            icon: "error",
-          });
-        } else {
-          const errorMessages = [];
-  
-          // Duyệt qua các trường trong errors và gom thông báo lỗi thành một chuỗi HTML
-          for (const field in errors) {
-            if (errors.hasOwnProperty(field)) {
-              errors[field].forEach((message) => {
-                errorMessages.push(`<p>${message}</p>`);
-              });
-            }
-          }
-          Swal.fire({
-            title: "Thất bại",
-            html: `<div>${errorMessages.join("")}</div>`,
-            icon: "error",
-          });
-        }
+  try {
+    const response = await apiClient.post(
+      "api/Nguoi-Dung/Capnhatthongtin",
+      data
+    );
+
+    return response.data;
+  } catch (error) {
+    if (error.response.status == 401) {
+      window.location.href = "/Trangdangnhap";
+    } else if (error.response.status == 422) {
+      const errors = error.response.data.errors;
+      if (typeof errors === "string") {
+        Swal.fire({
+          title: "Thất bại",
+          text: errors,
+          icon: "error",
+        });
       } else {
-        console.error("Error fetching data:", error);
-        throw error;
+        const errorMessages = [];
+
+        // Duyệt qua các trường trong errors và gom thông báo lỗi thành một chuỗi HTML
+        for (const field in errors) {
+          if (errors.hasOwnProperty(field)) {
+            errors[field].forEach((message) => {
+              errorMessages.push(`<p>${message}</p>`);
+            });
+          }
+        }
+        Swal.fire({
+          title: "Thất bại",
+          html: `<div>${errorMessages.join("")}</div>`,
+          icon: "error",
+        });
       }
+    } else {
+      console.error("Error fetching data:", error);
+      throw error;
     }
-  };
+  }
+};
 
 export const Dangxuat = async () => {
-    try {
-      const response = await apiClient.post("api/Logout");
-      Cookies.remove("token");
-      window.location.href = "/Trangdangnhap";
+  try {
+    const response = await apiClient.post("api/Logout");
+    Cookies.remove("token");
+    window.location.href = "/Trangdangnhap";
 
-      return response.data;
-    } catch (error) {
-      if (error.response.status == 401) {
-        window.location.href = "/Trangdangnhap";
-      } else if (error.response.status == 422) {
-        const errors = error.response.data.errors;
-        if (typeof errors === "string") {
-          Swal.fire({
-            title: "Thất bại",
-            text: errors,
-            icon: "error",
-          });
-        } else {
-          const errorMessages = [];
-  
-          // Duyệt qua các trường trong errors và gom thông báo lỗi thành một chuỗi HTML
-          for (const field in errors) {
-            if (errors.hasOwnProperty(field)) {
-              errors[field].forEach((message) => {
-                errorMessages.push(`<p>${message}</p>`);
-              });
-            }
-          }
-          Swal.fire({
-            title: "Thất bại",
-            html: `<div>${errorMessages.join("")}</div>`,
-            icon: "error",
-          });
-        }
+    return response.data;
+  } catch (error) {
+    if (error.response.status == 401) {
+      window.location.href = "/Trangdangnhap";
+    } else if (error.response.status == 422) {
+      const errors = error.response.data.errors;
+      if (typeof errors === "string") {
+        Swal.fire({
+          title: "Thất bại",
+          text: errors,
+          icon: "error",
+        });
       } else {
-        console.error("Error fetching data:", error);
-        throw error;
+        const errorMessages = [];
+
+        // Duyệt qua các trường trong errors và gom thông báo lỗi thành một chuỗi HTML
+        for (const field in errors) {
+          if (errors.hasOwnProperty(field)) {
+            errors[field].forEach((message) => {
+              errorMessages.push(`<p>${message}</p>`);
+            });
+          }
+        }
+        Swal.fire({
+          title: "Thất bại",
+          html: `<div>${errorMessages.join("")}</div>`,
+          icon: "error",
+        });
       }
+    } else {
+      console.error("Error fetching data:", error);
+      throw error;
     }
-  };
-  
+  }
+};

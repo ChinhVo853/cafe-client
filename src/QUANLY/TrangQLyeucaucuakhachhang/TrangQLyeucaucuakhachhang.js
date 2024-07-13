@@ -25,8 +25,12 @@ const TrangQLyeucaucuakhachhang = () => {
       console.error("Failed to fetch data", error);
     }
   }, []);
-  const handleStatusChange = async (id) => {
-    await XacNhanYeuCau(id);
+  const handleStatusChange = async (id, ban) => {
+    const data = {
+      id: id,
+      ban: ban,
+    };
+    await XacNhanYeuCau(data);
     LayData();
   };
   const [menuOpen, setMenuOpen] = useState(false);
@@ -57,7 +61,6 @@ const TrangQLyeucaucuakhachhang = () => {
                         <td>{request.ten_ban}</td>
                         <td>{request.noi_dung}</td>
                         <td>
-                          {" "}
                           {(() => {
                             const timeString = request.thoi_gian.split(" ")[1];
                             const [hours, minutes] = timeString.split(":");
@@ -78,7 +81,10 @@ const TrangQLyeucaucuakhachhang = () => {
                                   : "btn-request-undo"
                               }`}
                               onClick={() =>
-                                handleStatusChange(request.yeu_cau_id)
+                                handleStatusChange(
+                                  request.yeu_cau_id,
+                                  request.ban_id
+                                )
                               }
                             >
                               Xác nhận

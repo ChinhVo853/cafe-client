@@ -2,6 +2,8 @@ import React, { useState, useEffect, useCallback } from "react";
 import Logout from "../Logout";
 import { LayData as LayDuLieu, Capnhatthongtin, Dangxuat } from "./API/Api";
 import Load from "../../Load/Load";
+import Swal from "sweetalert2";
+
 function TrangthongTinNhanVien() {
   const [ho_ten, set_ho_ten] = useState();
   const [so_dien_thoai, set_so_dien_thoai] = useState();
@@ -31,6 +33,10 @@ function TrangthongTinNhanVien() {
       id: data.id,
     };
     await Capnhatthongtin(data2);
+    Swal.fire({
+      title: "Thành công",
+      icon: "success",
+    });
     LayData();
   };
   const handleNameChange = (e) => {

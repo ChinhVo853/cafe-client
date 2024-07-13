@@ -21,7 +21,13 @@ const Cacmondadat = () => {
 
   useEffect(() => {
     document.title = "CHAOBÍNH";
+
     LayData();
+    const interval = setInterval(() => {
+      LayData();
+    }, 5000); // 5000 milliseconds = 5 seconds
+
+    return () => clearInterval(interval); // Cleanup interval on component unmount
   }, [LayData]);
 
   const handleGoBack = () => {
