@@ -56,16 +56,20 @@ function Menu() {
   };
 
   const handleAddToCart = async (size, quantity, name, productId) => {
-    setLoading(false);
-    const data = {
-      tenMon: name,
-      tenSize: size,
-      soLuong: quantity,
-      id: ban,
-    };
-    await ThemData(data);
-    await LayDuLieu();
-    handleCloseButtonClick(productId);
+    try {
+      setLoading(false);
+      const data = {
+        tenMon: name,
+        tenSize: size,
+        soLuong: quantity,
+        id: ban,
+      };
+      await ThemData(data);
+      await LayDuLieu();
+      handleCloseButtonClick(productId);
+    } catch (error) {
+      setLoading(true);
+    }
   };
 
   const handleCartContainerClick = () => {
@@ -84,30 +88,42 @@ function Menu() {
   };
 
   const handleIncreaseQuantity = async (size, name) => {
-    setLoading(false);
-    const data = {
-      tenMon: name,
-      tenSize: size,
-      id: ban,
-    };
-    await ThemSL(data);
-    await LayDuLieu();
+    try {
+      setLoading(false);
+      const data = {
+        tenMon: name,
+        tenSize: size,
+        id: ban,
+      };
+      await ThemSL(data);
+      await LayDuLieu();
+    } catch (error) {
+      setLoading(true);
+    }
   };
 
   const handleDecreaseQuantity = async (size, name) => {
-    setLoading(false);
-    const data = {
-      tenMon: name,
-      tenSize: size,
-      id: ban,
-    };
-    await GiamSL(data);
-    await LayDuLieu();
+    try {
+      setLoading(false);
+      const data = {
+        tenMon: name,
+        tenSize: size,
+        id: ban,
+      };
+      await GiamSL(data);
+      await LayDuLieu();
+    } catch (error) {
+      setLoading(true);
+    }
   };
   const handleOrderSubmit = async () => {
-    setLoading(false);
-    await GoiMon(ban);
-    LayDuLieu();
+    try {
+      setLoading(false);
+      await GoiMon(ban);
+      LayDuLieu();
+    } catch (error) {
+      setLoading(true);
+    }
   };
   return (
     <>
@@ -138,6 +154,9 @@ function Menu() {
                     />
                   ))}
                 </div>
+                <a href={`/Phanhoi/${ban}`} className="fixed-button">
+                  <i className="fa fa-bullhorn"></i>
+                </a>
               </div>
 
               {/* <h2>{item.ten_loai}</h2> */}

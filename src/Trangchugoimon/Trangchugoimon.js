@@ -14,7 +14,6 @@ function Trangchugoimon() {
       const maQR = localStorage.getItem("QR");
       const result2 = await KiemTraBan(ban);
       if (result2.data.data.trang_thai_id === 1) {
-        localStorage.removeItem("QR");
         window.location.href = `/Trangnhapma/${ban}`;
       }
 
@@ -115,7 +114,6 @@ function Trangchugoimon() {
               <nav className="navbar navbar-expand-lg navbar-dark bg-dark px-4 px-lg-5 py-3 py-lg-0">
                 <a href="/" className="navbar-brand p-0">
                   <h1 className="text-primary m-0">
-                    {" "}
                     <i className="fa fa-utensils me-3"></i>CHAOBỈNH
                   </h1>
                 </a>
@@ -206,10 +204,6 @@ function Trangchugoimon() {
                 <div className="row g-5 align-items-center"></div>
               </div>
             </div>
-
-            <a href={`/Phanhoi/${ban}`} className="fixed-button">
-              <i className="fa fa-bullhorn"></i>
-            </a>
           </div>
 
           {showCallStaffForm && (
