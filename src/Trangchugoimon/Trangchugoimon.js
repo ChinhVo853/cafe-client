@@ -26,6 +26,8 @@ function Trangchugoimon() {
         if (!result3) {
           window.location.href = `/Trangnhapma/${ban}`;
         }
+      } else {
+        window.location.href = `/Trangnhapma/${ban}`;
       }
 
       const result = await TimMaBAn(ban);
