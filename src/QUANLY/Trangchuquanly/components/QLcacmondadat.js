@@ -28,6 +28,12 @@ const QLcacmondadat = () => {
     await ChiTietXN(id);
     LayData();
   };
+  const TongTien = () => {
+    return data.reduce(
+      (tongTien, item) => tongTien + item.gia * item.so_luong,
+      0
+    );
+  };
   return (
     <>
       {data ? (
@@ -58,7 +64,7 @@ const QLcacmondadat = () => {
                   <span className="cart-item-quantity">
                     Số lượng: {item.so_luong}
                   </span>
-                  {item.xac_nhan == 0 ? (
+                  {item.xac_nhan_thanh_toan == 0 ? (
                     <button
                       type="button"
                       className="btn btn-sm btn-request-confirm"
@@ -74,7 +80,7 @@ const QLcacmondadat = () => {
             ))}
           </ul>
           <div className="total-price">
-            Tổng tiền: {data[0] ? data[0].tong_tien.toLocaleString() : 0}đ
+            Tổng tiền: {TongTien().toLocaleString()}đ
           </div>
         </div>
       ) : (

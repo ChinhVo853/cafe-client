@@ -92,14 +92,6 @@ const ChiTietHoaDon = () => {
               >
                 <div className="col">
                   <div className="mt-5">
-                    <b>Giờ vào:</b>
-                    <p>
-                      {tables[0] &&
-                        format(
-                          new Date(tables[0].created_at),
-                          "dd-MM-yyyy HH:mm:ss"
-                        )}
-                    </p>
                     <b>Giờ ra:</b>{" "}
                     <p>
                       {tables[0] &&
@@ -112,7 +104,6 @@ const ChiTietHoaDon = () => {
                   <table className="table table-striped">
                     <thead>
                       <tr>
-                        <th scope="col">Hình sản phẩm</th>
                         <th scope="col">Tên sản phẩm</th>
                         <th scope="col">Tên size</th>
                         <th scope="col">Số lượng</th>
@@ -123,12 +114,6 @@ const ChiTietHoaDon = () => {
                     <tbody>
                       {tables.map((item) => (
                         <tr key={item.id}>
-                          <td>
-                            <img
-                              src={config.imageBaseUrl + "/" + item.anh}
-                              width="50"
-                            />
-                          </td>
                           <td>{item.tenMon}</td>
                           <td>{item.tenSize}</td>
 

@@ -33,6 +33,12 @@ const Cacmondadat = () => {
   const handleGoBack = () => {
     window.history.back();
   };
+  const TongTien = () => {
+    return data.reduce(
+      (tongTien, item) => tongTien + item.gia * item.so_luong,
+      0
+    );
+  };
 
   return (
     <>
@@ -66,7 +72,7 @@ const Cacmondadat = () => {
             ))}
           </ul>
           <div className="total-price">
-            Tổng tiền: {data[0] ? data[0].tong_tien.toLocaleString() : 0}đ
+            Tổng tiền: {TongTien().toLocaleString()}đ
           </div>
         </div>
       ) : (

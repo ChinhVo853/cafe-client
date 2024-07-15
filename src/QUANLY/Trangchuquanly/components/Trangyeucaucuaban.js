@@ -60,7 +60,6 @@ const Trangyeucaucuaban = () => {
                         <td>{request.ten_ban}</td>
                         <td>{request.noi_dung}</td>
                         <td>
-                          {" "}
                           {(() => {
                             const timeString = request.thoi_gian.split(" ")[1];
                             const [hours, minutes] = timeString.split(":");
